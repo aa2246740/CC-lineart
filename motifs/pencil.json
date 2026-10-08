@@ -1,0 +1,16 @@
+{
+  "name": "pencil",
+  "description": "铅笔与稿纸",
+  "tags": [
+    "write",
+    "writing",
+    "docs",
+    "markdown",
+    "notes",
+    "editor",
+    "text"
+  ],
+  "color": "peach",
+  "block": "M6 10 L48 8.5 L50.5 48 L8.5 50 Z",
+  "ink": "<path d=\"M11 20 L43 18.2 L45.5 56 L13.5 57.5 Z\" fill=\"{PAPER}\"/>\n<path d=\"M17.5 29 C20.5 26 22.5 32 25.5 29 S30.5 26 33.5 29\"/>\n<path d=\"M17.5 38 C20.5 35 22.5 41 25.5 38 S29.5 35 32 37.5\"/>\n<path d=\"M17.5 47 L26 46.6\"/>\n<path d=\"M34 46 L35.72 36.04 L54.32 11.24 L61.68 16.76 L43.08 41.56 Z\" fill=\"{PAPER}\" stroke=\"none\"/>\n<path d=\"M54.32 11.24 L61.68 16.76 L58.08 21.56 L50.72 16.04 Z\" fill=\"#D97757\" stroke=\"none\"/>\n<path d=\"M34 46 L35.72 36.04 L54.32 11.24 L61.68 16.76 L43.08 41.56 Z\" fill=\"none\"/>\n<path d=\"M35.72 36.04 L43.08 41.56\"/>\n<path d=\"M50.72 16.04 L58.08 21.56\"/>\n<path d=\"M34 46 L34.51 42.63 L37.09 44.57 Z\" fill=\"{INK}\"/>"
+}
