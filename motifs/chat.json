@@ -1,0 +1,15 @@
+{
+  "name": "chat",
+  "description": "两个对话气泡",
+  "tags": [
+    "chat",
+    "message",
+    "conversation",
+    "scratch",
+    "talk",
+    "bot"
+  ],
+  "color": "heather",
+  "block": "M25 27 L60 25 L62 61 L27 62.5 Z",
+  "ink": "<path d=\"M30 8.5 C44 7.5 56.5 11.5 56.5 21.5 C56.5 30.5 47.5 35 38.5 35 L37 42 L31.5 34.6 C24 33 19 28 19.5 21.5 C20 13 25 9 30 8.5 Z\" fill=\"{PAPER}\"/>\n<path d=\"M24 26 C14 25.5 7 30 7 37.5 C7 44 12.5 48 19 48.5 L18 56.5 L25.5 49 C34 49 41.5 45 41.5 37.5 C41.5 30 34 26.3 24 26 Z\" fill=\"{PAPER}\"/>\n<circle cx=\"16.5\" cy=\"38\" r=\"1.9\" fill=\"{INK}\" stroke=\"none\"/>\n<circle cx=\"24\" cy=\"38\" r=\"1.9\" fill=\"{INK}\" stroke=\"none\"/>\n<circle cx=\"31.5\" cy=\"38\" r=\"1.9\" fill=\"{INK}\" stroke=\"none\"/>"
+}

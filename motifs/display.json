@@ -1,0 +1,15 @@
+{
+  "name": "display",
+  "description": "显示器 + Claude 星芒",
+  "tags": [
+    "display",
+    "screen",
+    "monitor",
+    "ui",
+    "frontend",
+    "preview"
+  ],
+  "color": "mineral",
+  "block": "M4 20 L40 18 L42.5 53 L6 55 Z",
+  "ink": "<path d=\"M33 42 L31.8 51.5\"/>\n<path d=\"M22 52.8 C28 52 36 52 42 52.6\"/>\n<path d=\"M12 10 C27 9.4 43 9.6 58 10.3 L57.3 41.5 C43 42.2 27 42 12.6 41.6 Z\" fill=\"{PAPER}\"/>\n<g stroke-width=\"3\"><path d=\"M35.0 23.8 L35.5 16.0 M36.7 24.6 L41.8 20.7 M37.2 26.3 L45.3 27.4 M36.4 27.7 L40.2 32.6 M34.7 28.2 L33.6 35.7 M33.2 27.2 L27.7 30.9 M32.9 25.4 L25.2 23.2\"/></g>"
+}

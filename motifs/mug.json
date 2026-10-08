@@ -1,0 +1,14 @@
+{
+  "name": "mug",
+  "description": "冒热气的咖啡杯",
+  "tags": [
+    "daily",
+    "routine",
+    "cafe",
+    "break",
+    "misc"
+  ],
+  "color": "peach",
+  "block": "M21 14 L58 16 L56 53 L19 51 Z",
+  "ink": "<path d=\"M23 16 C20 12 26 9 23 4\"/>\n<path d=\"M31 16 C28 12 34 9 31 4\"/>\n<path d=\"M39 16 C36 12 42 9 39 4\"/>\n<path d=\"M44 29 C53.5 28 55.5 42 43 44.5\"/>\n<path d=\"M14 22 C24 21.4 34 21.6 44 22.3 L42 54 C33 56 25 56 16 54 Z\" fill=\"{PAPER}\"/>"
+}
