@@ -2,6 +2,8 @@
 
 A line-art skill for drawing icons in a hand-drawn ink + watercolor style, inspired by claude.com.
 
+<p align="center"><img src="docs/hero.png" width="840" alt="CC-lineart"></p>
+
 ## Install
 
 Copy this folder into your agent's skills directory (e.g. `~/.claude/skills/cc-lineart`).
@@ -21,5 +23,7 @@ python3 -I scripts/lineart.py render mac -o out/mac.svg --size lg
 python3 -I scripts/lineart.py lint out/mac.svg
 python3 -I scripts/lineart.py preview out/mac.svg -o out/sheet.png
 ```
+
+<p align="center"><img src="docs/icons.png" width="840" alt="Icons"></p>
 
 MIT
