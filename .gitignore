@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*$py.class
+out/
+*.svg
+!examples/**/*.svg
+.DS_Store
+.venv/
+venv/
+docs/out/
