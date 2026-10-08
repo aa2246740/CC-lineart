@@ -1,0 +1,14 @@
+{
+  "name": "sprout",
+  "description": "花盆新芽",
+  "tags": [
+    "new",
+    "starter",
+    "grow",
+    "init",
+    "seed"
+  ],
+  "color": "olive",
+  "block": "M9 12 L50 14 L48 50 L7 48 Z",
+  "ink": "<path d=\"M32 40 C32 32 31 26 32 20\"/>\n<path d=\"M32 30 C24 31 17 26 16 18 C24 17 30 21 32 30 Z\" fill=\"{PAPER}\"/>\n<path d=\"M32 22 C36 14 44 11 51 12 C50 20 42 25 32 22 Z\" fill=\"{PAPER}\"/>\n<path d=\"M20 40 C28 39.6 36 39.8 44 40.2 L41 58 C35 58.6 29 58.5 23 57.8 Z\" fill=\"{PAPER}\"/>\n<path d=\"M17.5 40.3 C27 39.4 37 39.6 46.5 40\" stroke-width=\"4.2\"/>"
+}

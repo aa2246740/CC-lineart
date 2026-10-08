@@ -1,0 +1,14 @@
+{
+  "name": "plane",
+  "description": "纸飞机 + 虚线轨迹",
+  "tags": [
+    "send",
+    "deploy",
+    "ship",
+    "release",
+    "mail"
+  ],
+  "color": "clay",
+  "block": "M8 20 L46 18 L48.5 56 L10 58 Z",
+  "ink": "<path d=\"M6 47 C12 51.5 18 53 24.5 50.5\" stroke-dasharray=\"3.5 4.5\"/>\n<path d=\"M6 30 L58 8 L44 50 L32 36 Z\" fill=\"{PAPER}\"/>\n<path d=\"M58 8 L32 36\"/>\n<path d=\"M32 36 L30.5 47 L37.5 41.5\" fill=\"{PAPER}\"/>"
+}
