@@ -2,14 +2,12 @@
 
 The drawing guide says how to put marks on the canvas. This file says which marks to make. Two agents using the same palette, filters and helpers can still produce one picture that feels drawn and one that feels like clip-art; the difference is made of the decisions below, and every one of them can be checked.
 
-`references/calibration/t3-logo-a-vs-b.png` shows the gap. Both logos use the same filters, palette and letter technique. A is the reference. B is what came out when the rules here were missing. Look at it before you start a larger piece.
-
 ## The process
 
 Do these in order. Skipping steps 1–3 is the most common reason a piece comes out flat.
 
 1. **Brief, in one sentence.** What is the piece about, and which one or two elements does it take from the subject's existing identity? For a logo that means the original mark (its shapes, its motif, its colors); for a project icon, the thing its name or README describes. Test: swap in a different product name. If the picture still works unchanged, it says nothing about this subject. Pick a different idea.
-2. **Thumbnails, in words.** Before any coordinates, write two or three layouts as short text: where each wash sits (which quadrant, how big), where the subject sits, what overlaps what, and which area stays empty. Choose one and say why in one line. Example: "Washes upper-right and lower-left, overlapping behind the T; letters centered slightly low; cloud A behind the 3, cloud B across the T's foot; top-left stays empty except a sparkle cluster."
+2. **Thumbnails, in words.** Before any coordinates, write two or three layouts as short text: where each wash sits (which quadrant, how big), where the subject sits, what overlaps what, and which area stays empty. Choose one and say why in one line. Example: "Washes upper-right and lower-left, overlapping behind the subject; subject centered slightly low; one shape behind, one across the front; top-left stays empty except a sparkle cluster."
 3. **Layer plan.** List every element bottom to top: washes, strokes that pass behind paper, paper shapes back to front, details on top, accents. At least one element must sit *behind* the subject and one *in front* of it. A piece where everything shares one plane reads as a sticker.
 4. **Big shapes first.** Draw only the washes and the main paper shapes. Render at full size and at thumbnail size and judge the composition now, while moving things is cheap. No details yet.
 5. **Ink, one pen stroke at a time.** Each `<path>` is one movement of a pen: it has a start, a direction, and an end where the round cap shows. Draw an outline the way a hand would draw it, in two or three strokes that meet or slightly overshoot, not as a polygon traced around the shape. Letters and bars are centerline strokes (the double-stroke technique in the drawing guide), never outlined polygons.
@@ -65,17 +63,17 @@ Answer every line in writing after each render. "Yes" needs evidence: a number f
 
 Question 10 always has an answer. If you can't find one, you haven't looked closely enough.
 
-## Case study: the T3 Nightly logo
+## Case study: good vs flat
 
-In `calibration/t3-logo-a-vs-b.png`, B scores well on lint's mechanical checks for its letters (they reuse A's centerlines) and still looks worse. Here is why, mapped to the rules:
+Two logos can share the same filters, palette and letter technique and still look different. The flat one usually scores fine on lint's mechanical checks and still fails the rules above. Mapped:
 
-| B does | Rule | A does instead |
+| Flat version | Rule | Drawn version |
 |---|---|---|
-| One plum square behind everything, centered | Wash offset, coverage ≤ 50% | Two washes, upper-right and lower-left, overlapping into a darker glaze behind the T |
-| Every element on one plane | Something behind, something in front | One cloud behind the 3, one across the T's foot |
-| A diamond star, a `+` in each corner, white dots inside the wash | 3–6 accents, clustered | Sparkle cluster top-left and one echo by the lower cloud |
-| A smooth geometric crescent, symmetric sparkles | No primitives, asymmetry | Starburst of 7 uneven rays on a round watercolor spot, tilted sparkles |
-| Generic night symbols | Earned symbols | Keeps the original Nightly icon's night sky and clouds, and adds the Claude starburst |
-| One color | Two washes, focal spot | Plum + sky glazed together, with a clay spot as the focal point |
+| One color square behind everything, centered | Wash offset, coverage ≤ 50% | Two washes, upper-right and lower-left, overlapping into a darker glaze |
+| Every element on one plane | Something behind, something in front | One shape behind the subject, one across its front |
+| A diamond star, a `+` in each corner, white dots inside the wash | 3–6 accents, clustered | Sparkle cluster in the quiet area and one small echo |
+| A smooth geometric crescent, symmetric sparkles | No primitives, asymmetry | Starburst of uneven rays on a round wash spot, tilted sparkles |
+| Generic stock symbols | Earned symbols | Motifs the subject already owns |
+| One color | Two washes, focal spot | Warm + cool glazed together, with a clay spot as the focal point |
 
-What B got right, and should be kept: legible letters, the watercolor texture, and the moon crossing the wash edge.
+What the flat version often still gets right: legible letters, watercolor texture, and the subject crossing the wash edge. Keep those; fix the rest.

@@ -8,8 +8,6 @@ Commands:
   render MOTIF -o OUT.svg      MOTIF is a library name or a motif .json path
   preview SVG... -o SHEET.png  render at 256px and 28px side by side (needs rsvg-convert, magick)
   add DRAFT.json               validate a drawn motif and save it into the library
-  t3-icon MOTIF --project NAME write a sidebar-sized icon for a T3 project, print its absolute path
-  assigned                     project -> motif/color map of icons made with t3-icon
   handify "PATH_D"             roughen a geometric path so it reads as drawn by hand
   circle CX CY R               a hand-drawn circle as path data (uneven radius, visible seam)
   sparkle X Y R                a hand-drawn sparkle: two crossing strokes, unequal arms, tilted
@@ -29,12 +27,6 @@ import tempfile
 
 SKILL_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MOTIF_DIR = os.path.join(SKILL_DIR, "motifs")
-# Optional T3 Code sidebar-icon output. Override with CC_LINEART_T3_ASSETS.
-T3_ASSETS = os.path.expanduser(
-    os.environ.get("CC_LINEART_T3_ASSETS", "~/.t3/userdata/theme-assets/claude-watercolor")
-)
-PROJECT_ICON_DIR = os.path.join(T3_ASSETS, "projects")
-INDEX_PATH = os.path.join(PROJECT_ICON_DIR, "index.json")
 
 INK = "#141413"
 PAPER = "#FAF9F5"
@@ -50,7 +42,7 @@ COLORS = {
     "kraft": ("#D4A27F", "#B9845F"),
     "olive": ("#788C5D", "#5D7046"),
 }
-# lg: detailed, for galleries and anything >= 48px. sm: the 14px T3 sidebar slot.
+# lg: detailed, for galleries and anything >= 48px. sm: tiny UI slots (~14px).
 SIZES = {
     "lg": {"stroke": 3.2, "wash_alpha": "-1.1 1.45", "block_scale": 1.0, "ink_wobble": 1.5},
     "sm": {"stroke": 4.3, "wash_alpha": "-0.45 1.3", "block_scale": 1.14, "ink_wobble": 1.2},
@@ -116,9 +108,6 @@ def build_svg(m, color=None, size="lg", seed_key=None):
 </svg>
 """
 
-
-def slugify(text):
-    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-") or "project"
 
 
 # ---------------------------------------------------------------- path geometry
@@ -573,7 +562,7 @@ def cmd_preview(a):
         big, small = f"{tmp}/{i}-b.png", f"{tmp}/{i}-s.png"
         subprocess.run(["rsvg-convert", "-w", "256", "-h", "256", "-b", PAPER, svg, "-o", big], check=True)
         subprocess.run(["rsvg-convert", "-w", "28", "-h", "28", "-b", "#F3F1EA", svg, "-o", small], check=True)
-        # 28px is the real 14pt sidebar slot on a 2x display; upscale it blocky so it can be judged.
+        # 28px ≈ 14pt on a 2x display; upscale it blocky so it can be judged.
         subprocess.run(["magick", small, "-filter", "point", "-resize", "400%", "-gravity", "center",
                         "-background", "#F3F1EA", "-extent", "128x256", small], check=True)
         row = f"{tmp}/{i}.png"
@@ -593,31 +582,6 @@ def cmd_add(a):
     with open(dest, "w") as f:
         json.dump(m, f, ensure_ascii=False, indent=2)
     print(dest)
-
-
-def read_index():
-    if os.path.exists(INDEX_PATH):
-        with open(INDEX_PATH) as f:
-            return json.load(f)
-    return {}
-
-
-def cmd_t3_icon(a):
-    m = load_motif(a.motif)
-    validate(m)
-    color = a.color or m["color"]
-    os.makedirs(PROJECT_ICON_DIR, exist_ok=True)
-    slug = slugify(a.project)
-    out = os.path.join(PROJECT_ICON_DIR, f"{slug}.svg")
-    with open(out, "w") as f:
-        f.write(build_svg(m, color, "sm", seed_key=slug))
-    with open(os.path.join(PROJECT_ICON_DIR, f"{slug}-lg.svg"), "w") as f:
-        f.write(build_svg(m, color, "lg", seed_key=slug))
-    index = read_index()
-    index[a.project] = {"motif": m["name"], "color": color, "file": out}
-    with open(INDEX_PATH, "w") as f:
-        json.dump(index, f, ensure_ascii=False, indent=2)
-    print(out)
 
 
 def cmd_handify(a):
@@ -640,20 +604,6 @@ def cmd_lint(a):
         print(f"{level.upper():<5} {msg}")
     warns = sum(1 for level, _ in findings if level == "warn")
     print(f"\n{warns} warning(s). Lint catches mechanical tells only; it cannot tell you the piece is good.")
-
-
-def cmd_assigned(_):
-    index = read_index()
-    if not index:
-        print("no icons recorded yet")
-    counts = {}
-    for project, info in index.items():
-        counts[info["color"]] = counts.get(info["color"], 0) + 1
-        print(f"{project:<28} {info['motif']:<12} {info['color']}")
-    if counts:
-        unused = [c for c in COLORS if c not in counts]
-        print("\ncolor use:", ", ".join(f"{c}={n}" for c, n in sorted(counts.items(), key=lambda x: -x[1])))
-        print("unused:", ", ".join(unused) or "none")
 
 
 def main():
@@ -679,12 +629,6 @@ def main():
     d.add_argument("draft")
     d.add_argument("--force", action="store_true")
     d.set_defaults(fn=cmd_add)
-    t = sub.add_parser("t3-icon")
-    t.add_argument("motif")
-    t.add_argument("--project", required=True, help="project title, used for the file name and wobble seed")
-    t.add_argument("--color", choices=COLORS)
-    t.set_defaults(fn=cmd_t3_icon)
-    sub.add_parser("assigned").set_defaults(fn=cmd_assigned)
     h = sub.add_parser("handify")
     h.add_argument("d", help="SVG path data")
     h.add_argument("--amount", type=float, default=0.8, help="drift in path units: ~0.8 on a 64 grid, ~6 on 512")

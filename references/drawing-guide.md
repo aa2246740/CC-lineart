@@ -2,7 +2,7 @@
 
 ## The grid
 
-Icons use a 64×64 viewBox. Keep the subject inside roughly 6–58 on both axes; strokes are 3.2 units wide at `lg` and 4.3 at `sm`, so anything finer than about 3 units between parallel lines merges at sidebar size.
+Icons use a 64×64 viewBox. Keep the subject inside roughly 6–58 on both axes; strokes are 3.2 units wide at `lg` and 4.3 at `sm`, so anything finer than about 3 units between parallel lines merges at small sizes.
 
 A good layout puts the block in one quadrant-ish region and lets the subject overlap it by about half:
 
@@ -37,7 +37,7 @@ To color part of the object (the pencil's eraser), draw the paper fill, then the
 ## Mistakes earlier drafts made
 
 - **Block hidden** — the book and chat drafts put the block entirely behind the paper shapes, leaving them grey. Move the block so a strip of 8–15 units shows on at least two sides.
-- **Too pale at sidebar size** — light colors (peach, heather, cactus) almost vanish at 14px. The `sm` preset fixes most of this with a bigger, denser block and heavier ink; always preview the 28px column.
+- **Too pale at small sizes** — light colors (peach, heather, cactus) almost vanish at 14px. The `sm` preset fixes most of this with a bigger, denser block and heavier ink; always preview the 28px column.
 - **Muddy overlaps** — in larger pieces, `multiply` blends clay over plum into a brown. Keep complementary washes apart, or let one sit on top with normal blending.
 - **Edge clipping** — an app-icon squircle cuts anything near its corners; inset the artwork to about 80%.
 - **Too much detail** — two window dots read at 64px but are noise at 14px. When in doubt, drop details for the `sm` look rather than adding them.
@@ -53,6 +53,5 @@ For a 512 canvas (logos, banners), multiply by 8 what the icon presets use:
 | wash displacement `scale` | 2.6 | 12–14, `baseFrequency` ≈ 0.011, `numOctaves` 4 |
 | block rim width | 1.4 | 4–5 |
 
-Outlined letters: stroke each letter's centerline twice, ink at `W + 2t`, then paper at `W`, with matching caps and joins. Draw all ink passes before all paper passes so letter parts merge cleanly. See `examples/t3_logo.py`.
-
+Outlined letters: stroke each letter's centerline twice, ink at `W + 2t`, then paper at `W`, with matching caps and joins. Draw all ink passes before all paper passes so letter parts merge cleanly. 
 Overlapping washes with `mix-blend-mode: multiply` inside an `isolation: isolate` group glaze like real watercolor layers.
