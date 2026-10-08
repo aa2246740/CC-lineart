@@ -2,10 +2,6 @@
 
 A line-art skill for drawing icons in a hand-drawn ink + watercolor style, inspired by claude.com.
 
-![Hero](docs/hero.png)
-
-![Icons](docs/icons.png)
-
 ## Install
 
 Copy this folder into your agent's skills directory (e.g. `~/.claude/skills/cc-lineart`).
