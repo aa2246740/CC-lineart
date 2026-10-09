@@ -1,0 +1,15 @@
+{
+  "name": "inbox",
+  "description": "开口收件盘，斜放的信封一半插在里面，盘沿双线",
+  "tags": [
+    "inbox",
+    "tray",
+    "mail",
+    "operator",
+    "main",
+    "deliver"
+  ],
+  "color": "kraft",
+  "block": "M14 10 L54 14 L50 52 L10 49 Z",
+  "ink": "<path d=\"M22 20 L42 22.5 L40.5 34 L21 31.5 Z\" fill=\"{PAPER}\"/>\n<path d=\"M23 21.5 L31.5 28 L40.5 23\"/>\n<path d=\"M12 36.5 C20 34.8 44 34.4 52 36 L47.5 52.5 C39 54.3 25 54.2 16.5 52.8 Z\" fill=\"{PAPER}\"/>\n<path d=\"M12 37 C21 35.2 44 34.8 52 36.2\" stroke-width=\"4.2\"/>\n<path d=\"M24 43 C30 44 36 44.2 42 43.4\"/>"
+}
