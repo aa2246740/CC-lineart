@@ -1,19 +1,21 @@
 ---
 name: cc-lineart
 description: >-
-  Draw SVG illustrations, icons, product UI components, empty states,
-  architecture diagrams, editorial data visualizations, repo branding/badges,
-  and animated stroke-draw slide visuals in a hand-drawn ink + watercolor style
-  (bold #141413 ink line art with #FAF9F5 paper-white fills over a mottled
-  watercolor color block: clay, sky, cactus, heather, plum, mineral, peach,
-  kraft, olive). Use when the user asks for a line-art / 线稿 / 水彩 /
-  claude.com-style illustration, icon, logo, UI kit, empty state, diagram,
-  chart, banner, or 插画, or says "给项目画个图标", "新项目没图标", "补图标".
+  Draw SVG illustrations, icons, full-page Hero landing pages, boutique
+  e-commerce storefronts, product UI components, empty states, architecture
+  diagrams, editorial data visualizations, repo branding/badges, and animated
+  stroke-draw slide visuals in a hand-drawn ink + watercolor style (bold #141413
+  ink line art with #FAF9F5 paper-white fills over a mottled watercolor color
+  block: clay, sky, cactus, heather, plum, mineral, peach, kraft, olive). Use
+  when the user asks for a line-art / 线稿 / 水彩 / claude.com-style
+  illustration, icon, logo, Hero page, landing page, storefront / 商城, UI kit,
+  empty state, diagram, chart, banner, or 插画, or says "给项目画个图标",
+  "新项目没图标", "补图标".
 ---
 
 # CC line art
 
-Hand-drawn ink + watercolor SVG design system for coding agents — scaling from **64×64 project icons** to **512×512+ product UI kits, empty states, architecture diagrams, benchmark charts, repo branding, and animated presentation visuals**. Copy this folder into your agent's skills directory (for example Claude Code `~/.claude/skills/cc-lineart` or your Cursor/Codex skills path), then run commands from this folder. Needs `python3`, `rsvg-convert`, ImageMagick (`magick`), and Pillow for `lint`.
+Hand-drawn ink + watercolor SVG design system for coding agents — scaling from **64×64 project icons** to **512×512+ product UI kits, full-page Hero landing pages, boutique e-commerce storefronts, empty states, architecture diagrams, benchmark charts, repo branding, and animated presentation visuals**. Copy this folder into your agent's skills directory (for example Claude Code `~/.claude/skills/cc-lineart` or your Cursor/Codex skills path), then run commands from this folder. Needs `python3`, `rsvg-convert`, ImageMagick (`magick`), and Pillow for `lint`.
 
 ```
 apt-get install librsvg2-bin imagemagick   # or: brew install librsvg imagemagick
@@ -52,7 +54,7 @@ Read both references first: `references/art-direction.md` (the process, and the 
 4. Answer the critique checklist in art direction in writing, fix what fails, and render again. At least one revision round. Every `lint` warning is fixed or explained.
 5. `add` it to the library.
 
-## Larger pieces & expanded scenarios (512×512+ canvases & web UI)
+## Larger pieces & expanded scenarios (512×512+ canvases & full-page web design)
 
 Same three layers on a bigger canvas (`512×512` or `800×480`), importing `handify`, `wobbly_circle`, `sparkle`, `COLORS`, `INK`, and `PAPER` from `scripts/lineart.py`. Scale stroke widths (`8–9` primary, `5.5–6.5` details, `4–5` accents) and filter parameters (`wash` `scale=13, baseFrequency=0.011`; `ink` `scale=6.2, baseFrequency=0.013`) per `references/drawing-guide.md`.
 
@@ -68,6 +70,10 @@ Reference implementations and evaluations in `examples/`:
    - Use for GitHub README hero cards, release headers (`v2.0`), wax seals, and verification stamps. Draw display lettering and version numbers with the centerline double-stroke cutout technique (all `INK` spines at `W + 2t` first, then all `PAPER` cores at `W` second).
 5. **Animated Stroke-Draw Line Art & Slide Deck Visuals (`examples/motion-and-slides/`)**
    - Because every `<path>` is authored as a single pen movement, adding `pathLength="1"` and sequential `data-step` indices enables choreographed CSS `stroke-dashoffset` pen drawing, delayed `{PAPER}` fill reveals, and gently breathing watercolor washes — while exporting bit-identically to static PNG/PDF via `rsvg-convert`.
+6. **AI-Designed Editorial Product Hero Landing Pages (`examples/pages-hero/`)**
+   - Solves the "generic dark-mode SaaS template / broken stock photo" problem when AI agents design product landing pages. Combines an editorial split Hero with a self-drawing 512×512 `CC-lineart` centerpiece (`hero-centerpiece.svg`), live watercolor theme switcher, handwritten margin annotations, a 3-card Bento feature grid with mini-illustrations and hover wash parallax, and a 2-tier pricing section with a tilted terracotta wax-seal stamp (`hero-landing-page.html`).
+7. **AI-Designed Boutique E-Commerce & Creator Storefronts (`examples/pages-storefront/`)**
+   - Enables AI agents to design complete physical or digital goods storefronts without needing product photography. Every SKU card features a bespoke inline `CC-lineart` product illustration (ceramic pour-over dripper, field monograph, keycap set, canvas satchel, prompt deck, brass lamp) over its own watercolor wash, paired with tilted hanging price tags (`$42`, `$24`), stamp badges (`BESTSELLER`, `LIMITED`), category filter pills, and a live shopping bag drawer with a custom empty-bag illustration (`marketplace-storefront.html`).
 
 ## Notes
 

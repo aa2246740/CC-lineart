@@ -2,7 +2,7 @@
 
 **Hand-drawn `#141413` ink + `#FAF9F5` paper cutout + mottled watercolor SVG design system for coding agents**, inspired by the editorial warmth of claude.com.
 
-Originally created to draw 64×64 project icons, **CC-lineart** is a complete programmatic illustration and tactile UI system. Because its primitives (`handify`, `wobbly_circle`, `sparkle`), watercolor displacement filters (`#wash`, `#ink`), and mechanical style linter (`scripts/lineart.py lint`) are deterministic and resolution-independent, agents can use it to build **icons, interactive web UI kits, empty states, system architecture diagrams, editorial benchmark charts, open-source repo branding, and animated presentation visuals**.
+Originally created to draw 64×64 project icons, **CC-lineart** is a complete programmatic illustration and tactile web design system. Because its primitives (`handify`, `wobbly_circle`, `sparkle`), watercolor displacement filters (`#wash`, `#ink`), and mechanical style linter (`scripts/lineart.py lint`) are deterministic and resolution-independent, agents can use it to build **icons, full-page Hero landing pages, boutique e-commerce storefronts, interactive web UI kits, empty states, system architecture diagrams, editorial benchmark charts, open-source repo branding, and animated presentation visuals**.
 
 <p align="center"><img src="docs/hero.png" width="840" alt="CC-lineart Hero"></p>
 
@@ -10,7 +10,7 @@ Originally created to draw 64×64 project icons, **CC-lineart** is a complete pr
 
 ## Why CC-lineart? (The Three-Layer Physical Metaphor)
 
-Most AI-generated SVGs look like sterile CAD clip-art: ruler-straight `<rect>` boxes, symmetric primitives, flat hex fills, and uniform 1px strokes sitting on a single plane.
+Most AI-generated SVGs and web pages look like sterile templates: ruler-straight `<rect>` boxes, symmetric primitives, generic stock photo placeholders, and uniform 1px borders sitting on a flat plane.
 
 Every `CC-lineart` piece is built from three physical layers, bottom to top:
 
@@ -20,18 +20,20 @@ Every `CC-lineart` piece is built from three physical layers, bottom to top:
 
 ---
 
-## 6 Core Application Scenarios & Visual Gallery
+## 8 Core Application Scenarios & Visual Gallery
 
-Through multi-agent exploration and `lineart.py lint` calibration (**0 warnings** across all 10 showcase pieces), `CC-lineart` is proven across six high-value workflows:
+Through multi-agent exploration and `lineart.py lint` calibration (**0 warnings** across all 12 showcase SVGs), `CC-lineart` is proven across eight high-value workflows:
 
 | # | Scenario | Best Used For | Key Engineering Pattern | Reference Directory |
 | :- | :--- | :--- | :--- | :--- |
 | **1** | **Project & Sidebar Icons (`64×64`)** | IDE / T3 Code project icons, CLI toolbars, category badges (`lg` 48px+ & `sm` 14–28px presets) | Single-wash offset block + high-contrast `{PAPER}` silhouette + 28px hole-survival check | [`motifs/`](motifs/) · [`scripts/lineart.py`](scripts/lineart.py) |
-| **2** | **Tactile UI Kits, Empty States & Interactive Web UI** | Zero-inbox / empty states, onboarding cards, `⌘K` search bars, toggles, toasts, live HTML/CSS workbenches | Shared zero-size SVG `<defs>` filter bank (`#ui-wash`, `#ui-ink`) + `vector-effect="non-scaling-stroke"` + hover wash parallax | [`examples/ui-kit/`](examples/ui-kit/) · [`EVALUATION.md`](examples/ui-kit/EVALUATION.md) |
-| **3** | **Editorial Architecture & Multi-Agent Diagrams** | Engineering blog diagrams, RFC topologies, multi-agent fan-out/synthesis flows, RAG pipelines | Warm + cool glazed washes as logical zones (no dashed bounding boxes) + miniature motifs replacing `<text>` + S-curve `handify` buses | [`examples/diagrams/`](examples/diagrams/) · [`EVALUATION.md`](examples/diagrams/EVALUATION.md) |
-| **4** | **Editorial DataViz, Benchmarks & KPI Cards** | Model launch comparisons, capability velocity charts, telemetry gauges, sparkline summary cards | Tiered `handify` wobble (`1.6–2.0` ticks/glyphs, `2.8–3.0` bars, `3.5` splines, `5.5` washes) to preserve quantitative accuracy | [`examples/dataviz/`](examples/dataviz/) · [`EVALUATION.md`](examples/dataviz/EVALUATION.md) |
-| **5** | **Open-Source Repo Branding, Hero Cards & Badges** | GitHub README banners, OpenGraph social cards, release headers (`v2.0`), wax seals & verification stamps | Centerline double-stroke paper cutout lettering (all `INK` spines at `W + 2t` first, then all `PAPER` cores at `W` second) | [`examples/branding/`](examples/branding/) · [`EVALUATION.md`](examples/branding/EVALUATION.md) |
-| **6** | **Animated Stroke-Draw Line Art & Slide Decks** | Keynote / HTML deck hero visuals, step-by-step workflow narratives, live self-drawing workspace scenes | `pathLength="1"` + sequential `data-step` CSS `stroke-dashoffset` choreography + delayed `{PAPER}` fill fade-in | [`examples/motion-and-slides/`](examples/motion-and-slides/) · [`EVALUATION.md`](examples/motion-and-slides/EVALUATION.md) |
+| **2** | **AI-Designed Editorial Hero Landing Pages** | SaaS & developer tool launches, product homepages, Bento feature grids, editorial pricing tiers | Split Hero with self-drawing 512×512 centerpiece + live watercolor theme switcher + Bento mini-illustrations + wax-seal pricing stamp | [`examples/pages-hero/`](examples/pages-hero/) · [`EVALUATION.md`](examples/pages-hero/EVALUATION.md) |
+| **3** | **Boutique E-Commerce & Creator Storefronts** | Physical/digital goods shops, creator merch, skill/template marketplaces without stock photos | Custom inline `CC-lineart` product illustrations per SKU + tilted hanging price tags + stamp badges + interactive cart drawer | [`examples/pages-storefront/`](examples/pages-storefront/) · [`EVALUATION.md`](examples/pages-storefront/EVALUATION.md) |
+| **4** | **Tactile UI Kits, Empty States & Interactive Web UI** | Zero-inbox / empty states, onboarding cards, `⌘K` search bars, toggles, toasts, live HTML/CSS workbenches | Shared zero-size SVG `<defs>` filter bank (`#ui-wash`, `#ui-ink`) + `vector-effect="non-scaling-stroke"` + hover wash parallax | [`examples/ui-kit/`](examples/ui-kit/) · [`EVALUATION.md`](examples/ui-kit/EVALUATION.md) |
+| **5** | **Editorial Architecture & Multi-Agent Diagrams** | Engineering blog diagrams, RFC topologies, multi-agent fan-out/synthesis flows, RAG pipelines | Warm + cool glazed washes as logical zones (no dashed bounding boxes) + miniature motifs replacing `<text>` + S-curve `handify` buses | [`examples/diagrams/`](examples/diagrams/) · [`EVALUATION.md`](examples/diagrams/EVALUATION.md) |
+| **6** | **Editorial DataViz, Benchmarks & KPI Cards** | Model launch comparisons, capability velocity charts, telemetry gauges, sparkline summary cards | Tiered `handify` wobble (`1.6–2.0` ticks/glyphs, `2.8–3.0` bars, `3.5` splines, `5.5` washes) to preserve quantitative accuracy | [`examples/dataviz/`](examples/dataviz/) · [`EVALUATION.md`](examples/dataviz/EVALUATION.md) |
+| **7** | **Open-Source Repo Branding, Hero Cards & Badges** | GitHub README banners, OpenGraph social cards, release headers (`v2.0`), wax seals & verification stamps | Centerline double-stroke paper cutout lettering (all `INK` spines at `W + 2t` first, then all `PAPER` cores at `W` second) | [`examples/branding/`](examples/branding/) · [`EVALUATION.md`](examples/branding/EVALUATION.md) |
+| **8** | **Animated Stroke-Draw Line Art & Slide Decks** | Keynote / HTML deck hero visuals, step-by-step workflow narratives, live self-drawing workspace scenes | `pathLength="1"` + sequential `data-step` CSS `stroke-dashoffset` choreography + delayed `{PAPER}` fill fade-in | [`examples/motion-and-slides/`](examples/motion-and-slides/) · [`EVALUATION.md`](examples/motion-and-slides/EVALUATION.md) |
 
 ---
 
@@ -43,7 +45,21 @@ Built-in 64×64 motif library with dual rendering presets (`--size lg` for galle
 
 ---
 
-### 2. Tactile UI Component Kit, Empty States & Interactive Web UI ([`examples/ui-kit/`](examples/ui-kit/))
+### 2. AI-Designed Editorial Hero Landing Pages & Boutique E-Commerce Storefronts ([`examples/pages-hero/`](examples/pages-hero/) · [`examples/pages-storefront/`](examples/pages-storefront/))
+
+Standard AI-generated landing pages and e-commerce shops often fall flat because agents lack bespoke hero artwork or real product photography. `CC-lineart` lets an AI agent generate **100% self-contained, custom-illustrated full pages**:
+- **Editorial Product Hero Page ([`hero-landing-page.html`](examples/pages-hero/hero-landing-page.html))**: Split Hero with a self-drawing 512×512 centerpiece (`hero-centerpiece.svg`), interactive watercolor palette switcher, handwritten margin annotations, a 3-card Bento feature grid with hover wash parallax, and a 2-tier pricing section with a terracotta wax-seal stamp.
+- **Boutique E-Commerce & Marketplace Storefront ([`marketplace-storefront.html`](examples/pages-storefront/marketplace-storefront.html))**: Seasonal promo banner (`storefront-showcase.svg`), category filter pills, 6 custom-illustrated SKU cards with tilted hanging price tags (`$42`, `$24`, `$68`) and stamp badges (`BESTSELLER`, `LIMITED`), plus an interactive shopping bag drawer with an illustrated empty state.
+
+| Editorial Hero Landing Page (`hero-landing-page.html`) | Boutique E-Commerce Storefront (`marketplace-storefront.html`) |
+| :---: | :---: |
+| <img src="examples/pages-hero/hero-landing-page-preview.png" width="410" alt="Editorial Hero Landing Page Preview"> | <img src="examples/pages-storefront/marketplace-storefront-preview.png" width="410" alt="Boutique Storefront Preview"> |
+| **Hero Centerpiece (`hero-centerpiece.svg`)** | **Storefront Shelf & Tote (`storefront-showcase.svg`)** |
+| <img src="examples/pages-hero/hero-centerpiece.png" width="360" alt="Hero Centerpiece"> | <img src="examples/pages-storefront/storefront-showcase.png" width="360" alt="Storefront Showcase"> |
+
+---
+
+### 3. Tactile UI Component Kit, Empty States & Interactive Web UI ([`examples/ui-kit/`](examples/ui-kit/))
 
 `CC-lineart` translates directly from static icons into full UI surfaces: product empty-state illustrations (`empty-state-inbox.svg`), UI component sticker sheets (`ui-component-sheet.svg` featuring a `⌘K` search bar, tactile toggle switch, status pill, notification card with CTA button, and radial gauge), and a self-contained interactive HTML/CSS + SVG workbench ([`interactive-demo.html`](examples/ui-kit/interactive-demo.html)) where the watercolor wash shifts off-axis on `:hover` and compresses on `:active`.
 
@@ -53,7 +69,7 @@ Built-in 64×64 motif library with dual rendering presets (`--size lg` for galle
 
 ---
 
-### 3. Editorial Architecture & Multi-Agent Workflow Diagrams ([`examples/diagrams/`](examples/diagrams/))
+### 4. Editorial Architecture & Multi-Agent Workflow Diagrams ([`examples/diagrams/`](examples/diagrams/))
 
 Replaces sterile Mermaid/Graphviz boxes with warm editorial system diagrams. Overlapping watercolor washes group architectural stages without noisy bounding boxes; dashed rails and curved S-connectors pass *behind* `#FAF9F5` node cards while in-flight message capsules, magnifier lenses, and paper planes float *in front*.
 
@@ -63,7 +79,7 @@ Replaces sterile Mermaid/Graphviz boxes with warm editorial system diagrams. Ove
 
 ---
 
-### 4. Editorial Data Visualization & Benchmark Infographics ([`examples/dataviz/`](examples/dataviz/))
+### 5. Editorial Data Visualization & Benchmark Infographics ([`examples/dataviz/`](examples/dataviz/))
 
 Replaces clinical plotting output with editorial data journalism. Uses thermal contrast (`sky` baseline wash vs. `clay` frontier wash glazed via `multiply`) to highlight generational inflection points, paired with a tiered `handify` hierarchy that keeps bar heights and gauge angles quantitatively faithful while passing `lint` with zero geometric tells.
 
@@ -73,7 +89,7 @@ Replaces clinical plotting output with editorial data journalism. Uses thermal c
 
 ---
 
-### 5. Open-Source Repo Branding, Release Hero Cards & Badges ([`examples/branding/`](examples/branding/))
+### 6. Open-Source Repo Branding, Release Hero Cards & Badges ([`examples/branding/`](examples/branding/))
 
 Gives developer tools and repositories an unmistakable hand-crafted identity without relying on external web fonts. Display typography (`v2.0`, `v2`, `✓`) uses the **centerline double-stroke paper cutout technique** (`W + 2t` ink spines drawn before `W` paper cores) so intersecting strokes merge into seamless paper cutouts.
 
@@ -83,7 +99,7 @@ Gives developer tools and repositories an unmistakable hand-crafted identity wit
 
 ---
 
-### 6. Animated Stroke-Draw Line Art & Presentation Visuals ([`examples/motion-and-slides/`](examples/motion-and-slides/))
+### 7. Animated Stroke-Draw Line Art & Presentation Visuals ([`examples/motion-and-slides/`](examples/motion-and-slides/))
 
 Because `CC-lineart` requires every `<path>` to be drawn as a single intentional movement of a pen (`references/art-direction.md`, Step 5), adding `pathLength="1"` and sequential `data-step` attributes turns any illustration into a choreographed self-drawing animation ([`motion-showcase.html`](examples/motion-and-slides/motion-showcase.html)) where background trails draw first, `{PAPER}` fills fade in to occlude under-lines, and watercolor washes gently breathe — while remaining 100% compatible with static `rsvg-convert` PNG/PDF exports.
 
@@ -129,12 +145,14 @@ python3 -I scripts/lineart.py lint out/mac.svg
 python3 -I scripts/lineart.py preview out/mac.svg motifs/terminal.svg -o out/sheet.png
 ```
 
-### Reproduce All 5 Expanded Scenario Suites
+### Reproduce All 7 Expanded Scenario Suites
 
 ```bash
+python3 -I examples/pages-hero/generate_hero_page.py
+python3 -I examples/pages-storefront/generate_storefront.py
+python3 -I examples/ui-kit/generate_ui_kit.py
 python3 -I examples/diagrams/generate_diagrams.py
 python3 -I examples/dataviz/generate_dataviz.py
-python3 -I examples/ui-kit/generate_ui_kit.py
 python3 -I examples/branding/generate_branding.py
 python3 -I examples/motion-and-slides/generate_motion_slides.py
 ```
@@ -165,6 +183,8 @@ python3 -I examples/motion-and-slides/generate_motion_slides.py
 - [`references/art-direction.md`](references/art-direction.md) — The 7-step drawing process, line quality rules, composition checks, and 10-point critique checklist
 - [`references/drawing-guide.md`](references/drawing-guide.md) — 64 vs. 512 grid scaling table, paint order, double-stroke lettering, and common mistakes
 - **Scenario Evaluations & Engineering Guides**:
+  - [`examples/pages-hero/EVALUATION.md`](examples/pages-hero/EVALUATION.md) — Editorial Product Hero landing pages, self-drawing hero centerpiece & wax-seal pricing
+  - [`examples/pages-storefront/EVALUATION.md`](examples/pages-storefront/EVALUATION.md) — Boutique E-Commerce & Creator Marketplace storefronts with custom vector product cards
   - [`examples/ui-kit/EVALUATION.md`](examples/ui-kit/EVALUATION.md) — Tactile UI components, empty states, and interactive DOM + SVG filter choreography
   - [`examples/diagrams/EVALUATION.md`](examples/diagrams/EVALUATION.md) — Editorial architecture & multi-agent workflow diagrams
   - [`examples/dataviz/EVALUATION.md`](examples/dataviz/EVALUATION.md) — Editorial data visualization & tiered `handify` accuracy

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claudette Goods & Field Supply — CC-lineart Boutique Storefront</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper-bg: #FAF6F0;
+      --paper-card: #FFFEFA;
+      --ink: #141413;
+      --ink-muted: #57524B;
+      --clay: #D4714E;
+      --cactus: #A8C4A2;
+      --sky: #9BB8D3;
+      --kraft: #D4B896;
+      --border: rgba(20, 20, 19, 0.16);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper-bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.55;
+      padding-bottom: 64px;
+    }
+    .announce-bar {
+      background: var(--ink);
+      color: var(--paper-bg);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
+    }
+    .announce-bar span { color: #E8A87C; font-weight: 600; }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Store Header */
+    .store-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 2px solid var(--ink);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      font-family: 'Caveat', cursive;
+      font-size: 18px;
+      color: var(--clay);
+      margin-left: 6px;
+    }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      background: var(--paper-card);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+    .filter-pill:hover { transform: translateY(-2px); }
+    .filter-pill.active {
+      background: var(--ink);
+      color: var(--paper-card);
+    }
+    .bag-toggle-btn {
+      background: #E8A87C;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .bag-toggle-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .bag-count {
+      background: var(--ink);
+      color: var(--paper-card);
+      border-radius: 999px;
+      padding: 1px 8px;
+      font-size: 12px;
+    }
+
+    /* Seasonal Promo Split Banner */
+    .promo-banner {
+      margin: 28px 0 32px;
+      background: var(--paper-card);
+      border: 2.5px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--ink);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      overflow: hidden;
+      position: relative;
+    }
+    .promo-copy {
+      padding: 36px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+    .promo-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: var(--clay);
+    }
+    .promo-headline {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.12;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .promo-lead {
+      color: var(--ink-muted);
+      font-size: 15.5px;
+      max-width: 52ch;
+    }
+    .promo-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .promo-art {
+      background: linear-gradient(135deg, rgba(212, 184, 150, 0.22), rgba(168, 196, 162, 0.22));
+      border-left: 2px dashed rgba(20, 20, 19, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .promo-art svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+
+    /* Main Storefront Layout: Grid + Bag Sidebar */
+    .store-layout {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .promo-banner { grid-template-columns: 1fr; }
+      .store-layout { grid-template-columns: 1fr; }
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+      gap: 22px;
+    }
+    .product-card {
+      background: var(--paper-card);
+      border: 2.2px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 4px 4px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0 var(--ink);
+    }
+    .product-card:hover .prod-wash {
+      transform: translate(5px, -4px) scale(1.05);
+    }
+    .prod-wash {
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: center;
+    }
+    .product-visual {
+      position: relative;
+      background: #FAF8F3;
+      border-bottom: 2px solid var(--ink);
+      padding: 14px;
+      height: 176px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prod-svg {
+      width: 100%;
+      height: 148px;
+      display: block;
+    }
+    .stamp-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--paper-card);
+      color: var(--ink);
+      border: 1.8px solid var(--ink);
+      padding: 2px 9px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transform: rotate(-3deg);
+      box-shadow: 2px 2px 0 var(--badge-tint, #D4714E);
+    }
+    .price-tag-wrap {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      width: 78px;
+      height: 38px;
+      transform: rotate(4deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .price-tag-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .price-tag-val {
+      position: relative;
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 8px;
+    }
+    .product-body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 6px;
+    }
+    .product-cat {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+    .product-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      flex: 1;
+      margin-bottom: 10px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1.5px dashed rgba(20, 20, 19, 0.18);
+    }
+    .stock-note {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: #4A6B46;
+    }
+    .add-bag-btn {
+      background: var(--ink);
+      color: var(--paper-card);
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .add-bag-btn:hover {
+      background: var(--clay);
+      color: var(--ink);
+    }
+
+    /* Tactile Shopping Bag Drawer / Panel */
+    .bag-panel {
+      background: var(--paper-card);
+      border: 2.5px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 20px;
+      position: sticky;
+      top: 20px;
+    }
+    .bag-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 14px;
+    }
+    .bag-panel-title {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .bag-clear-btn {
+      background: none;
+      border: none;
+      font-size: 12px;
+      text-decoration: underline;
+      color: var(--ink-muted);
+      cursor: pointer;
+    }
+    .bag-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .bag-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAF6F0;
+      border: 1.6px solid var(--ink);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+    .bag-item-name { font-weight: 600; }
+    .bag-item-meta { color: var(--ink-muted); font-size: 12px; }
+    .bag-empty {
+      text-align: center;
+      padding: 18px 8px;
+      color: var(--ink-muted);
+      font-size: 13.5px;
+    }
+    .bag-empty svg {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 8px;
+      display: block;
+    }
+    .bag-summary {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 2px dashed rgba(20, 20, 19, 0.25);
+    }
+    .bag-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .bag-total {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .checkout-btn {
+      width: 100%;
+      margin-top: 12px;
+      background: var(--clay);
+      color: var(--paper-card);
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared SVG Filters for Product Cards -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="ui-wash" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="19" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="ui-ink" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="29" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="announce-bar">
+    <span>AUTUMN MONOGRAPH DROP</span> · Free global courier on orders over $75 · Every item illustrated in 100% vector ink
+  </div>
+
+  <div class="container">
+    <header class="store-header">
+      <a href="#" class="brand">
+        <span class="brand-title">Claudette Goods &amp; Field Supply</span>
+        <span class="brand-sub">Est. Vol IV</span>
+      </a>
+      <div class="header-controls">
+        <div class="filter-pills" role="tablist" aria-label="Product categories">
+          <button class="filter-pill active" onclick="filterCategory('all', this)">All Goods (6)</button>
+          <button class="filter-pill" onclick="filterCategory('stationery', this)">Field Stationery</button>
+          <button class="filter-pill" onclick="filterCategory('hardware', this)">Desk Hardware</button>
+          <button class="filter-pill" onclick="filterCategory('digital', this)">Digital Packs</button>
+        </div>
+        <button class="bag-toggle-btn" onclick="document.getElementById('bag-panel').scrollIntoView({behavior:'smooth'})">
+          <span>Field Bag</span>
+          <span class="bag-count" id="header-bag-count">2</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="promo-banner">
+      <div class="promo-copy">
+        <div class="promo-eyebrow">★ Curated Objects for Thoughtful Builders</div>
+        <h1 class="promo-headline">Tactile tools &amp; field monographs, drawn in warm ink &amp; watercolor.</h1>
+        <p class="promo-lead">
+          No stock photography, no sterile white-box renders. Every product card, hanging price tag, and quality seal on this storefront is synthesized deterministically with <strong>CC-lineart</strong>.
+        </p>
+        <div class="promo-meta">
+          <span>✓ 100% Vector Product Art</span>
+          <span>✓ Hover Watercolor Parallax</span>
+          <span>✓ Interactive Field Bag</span>
+        </div>
+      </div>
+      <div class="promo-art">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="37" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="61" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation: isolate">
+  <g class="wash-blob">
+    <path d="M64.3 115.0 C152.2 100.7 240.9 89.5 330.1 85.5 C329.6 163.1 333.3 240.5 344.4 317.5 C256.7 328.2 168.8 337.3 80.4 341.5 Z" fill="#D4A27F"/>
+    <path d="M64.3 115.0 C152.2 100.7 240.9 89.5 330.1 85.5 C329.6 163.1 333.3 240.5 344.4 317.5 C256.7 328.2 168.8 337.3 80.4 341.5 Z" fill="none" stroke="#B9845F" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob" style="mix-blend-mode: multiply">
+    <path d="M189.5 212.9 C269.5 202.1 349.6 194.3 430.2 190.0 C441.6 268.3 448.9 347.0 449.3 426.3 C365.5 428.8 282.1 434.3 199.2 448.9 Z" fill="#BCD1CA"/>
+    <path d="M189.5 212.9 C269.5 202.1 349.6 194.3 430.2 190.0 C441.6 268.3 448.9 347.0 449.3 426.3 C365.5 428.8 282.1 434.3 199.2 448.9 Z" fill="none" stroke="#93B0A6" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob">
+    <path d="M357.6 104.0 C373.0 92.1 394.7 90.5 410.7 102.6 C426.7 114.6 431.0 136.0 423.8 153.9 C416.6 171.9 397.9 181.7 379.2 179.5 C360.5 177.4 345.5 162.9 342.7 144.2 C339.9 125.6 346.9 104.7 365.6 96.4" fill="#D97757"/>
+    <path d="M357.6 104.0 C373.0 92.1 394.7 90.5 410.7 102.6 C426.7 114.6 431.0 136.0 423.8 153.9 C416.6 171.9 397.9 181.7 379.2 179.5 C360.5 177.4 345.5 162.9 342.7 144.2 C339.9 125.6 346.9 104.7 365.6 96.4" fill="none" stroke="#B85C3E" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Background awning & brackets -->
+  <path d="M34.0 84.3 C126.2 43.2 246.9 46.2 344.9 83.0" stroke-width="4.5" stroke-dasharray="14 16"/>
+  <path d="M73.1 267.4 C73.6 288.6 75.6 309.7 78.7 330.8 C91.3 308.4 105.4 287.0 120.5 266.1" stroke-width="6.0"/>
+  <path d="M310.9 245.9 C313.8 266.9 315.6 288.0 316.7 309.2 C301.7 290.6 288.0 271.2 275.4 250.8" stroke-width="6.0"/>
+  <path d="M152.3 342.2 C177.7 392.1 214.4 422.2 256.3 417.5" stroke-width="4.5" stroke-dasharray="10 14"/>
+
+  <!-- Item A: Ceramic Pour-Over Dripper -->
+  <path d="M36.0 135.3 C72.2 132.6 108.1 128.3 144.0 122.5 C135.2 160.1 128.5 197.9 124.9 236.4 C103.7 237.4 82.4 239.1 61.3 242.5 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M32.3 137.3 C72.4 129.9 112.9 126.3 153.7 125.3 M148.0 120.5 C138.0 161.2 129.6 202.3 123.2 243.9" stroke-width="8.5"/>
+  <path d="M134.2 235.2 C107.2 236.0 80.5 238.9 53.9 244.3 M65.9 251.5 C53.0 212.2 43.0 172.4 35.6 131.9" stroke-width="8.5"/>
+  <path d="M138.3 148.2 C171.1 145.3 169.7 200.1 130.1 208.3" stroke-width="8.5"/>
+  <path d="M63.5 156.6 C69.0 177.8 73.0 199.4 76.7 221.0" stroke-width="4.5"/>
+  <path d="M91.2 152.6 C95.1 174.8 96.4 197.2 96.9 219.7" stroke-width="4.5"/>
+  <path d="M118.8 147.0 C115.6 170.1 114.0 193.2 112.8 216.4" stroke-width="4.5"/>
+  <path d="M73.6 112.4 C66.5 92.6 85.3 76.4 75.9 57.1" stroke-width="4.5"/>
+  <path d="M106.4 106.0 C98.1 87.2 118.6 70.6 108.9 49.6" stroke-width="4.5"/>
+
+  <!-- Item B: Spiral Field Monograph Notebook -->
+  <path d="M178.9 92.8 C224.9 88.9 270.6 83.0 316.0 75.1 C318.2 123.7 322.0 172.1 327.4 220.4 C283.3 228.1 239.1 232.7 194.4 233.9 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M227.1 117.9 C249.9 116.8 272.6 114.8 295.1 110.7 C296.2 124.0 297.0 137.2 296.5 150.6 C274.6 151.9 252.8 154.3 231.3 158.9 Z" fill="#D97757" fill-opacity="0.32" stroke="none"/>
+  <path d="M168.0 94.9 C219.2 90.7 270.1 85.0 320.7 76.6 M312.6 69.8 C321.2 123.6 326.2 177.6 329.0 232.1" stroke-width="8.5"/>
+  <path d="M336.2 219.5 C284.7 222.3 233.5 228.7 182.7 237.3 M193.4 246.2 C190.4 192.8 185.1 139.6 177.9 86.6" stroke-width="8.5"/>
+  <path d="M204.7 90.9 C211.6 137.2 217.3 183.9 216.3 230.9" stroke-width="6.0"/>
+  <path d="M227.1 117.9 C249.9 116.8 272.6 114.8 295.1 110.7 C296.2 124.0 297.0 137.2 296.5 150.6 C274.6 151.9 252.8 154.3 231.3 158.9 Z" stroke-width="6.0"/>
+  <path d="M233.2 180.9 C254.0 177.2 275.0 174.6 296.2 174.0" stroke-width="6.0"/>
+  <path d="M234.1 196.9 C248.3 194.5 262.5 193.2 276.9 192.9" stroke-width="4.5"/>
+
+  <!-- Wooden Boutique Shelf Plank -->
+  <path d="M26.7 247.0 C135.7 233.7 245.1 223.3 354.7 217.2 C356.5 227.5 358.6 237.6 361.5 247.6 C251.2 252.8 141.2 260.0 31.9 276.6 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M17.9 250.2 C134.2 236.5 250.7 225.0 367.6 216.5 M355.0 206.4 C358.0 221.2 360.5 236.2 362.1 251.3 M371.2 243.6 C255.7 251.2 140.4 262.0 25.3 274.5 M36.1 283.4 C31.7 269.3 27.7 255.0 24.8 240.5" stroke-width="8.5"/>
+
+  <!-- Item C: Canvas Supply Tote Bag -->
+  <path d="M295.9 248.0 C292.9 175.6 356.4 166.3 367.2 238.4" stroke-width="8.5"/>
+  <path d="M341.9 243.4 C343.0 183.6 404.4 172.3 415.5 232.8" stroke-width="8.5"/>
+  <path d="M246.0 251.2 C320.4 249.2 394.5 239.9 468.2 229.2 C472.6 309.0 480.8 388.6 490.0 467.9 C414.4 477.1 338.5 481.4 262.4 484.0 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M293.8 332.4 C337.2 331.7 380.2 328.1 423.0 320.9 C427.5 355.6 430.9 390.4 432.7 425.3 C389.0 427.4 345.5 430.4 302.3 437.7 Z" fill="#BCD1CA" fill-opacity="0.28" stroke="none"/>
+  <path d="M236.8 254.7 C318.1 251.7 398.8 241.6 478.6 226.6 M468.8 222.0 C472.2 308.8 477.5 395.3 487.6 481.6" stroke-width="8.5"/>
+  <path d="M498.9 466.9 C419.0 477.7 338.7 484.8 258.2 487.7 M264.3 493.4 C264.9 409.5 260.1 326.1 247.0 243.1" stroke-width="8.5"/>
+  <path d="M293.8 332.4 C337.2 331.7 380.2 328.1 423.0 320.9 C427.5 355.6 430.9 390.4 432.7 425.3 C389.0 427.4 345.5 430.4 302.3 437.7 Z" stroke-width="6.0"/>
+  <path d="M311.1 364.6 C341.4 358.6 372.0 355.5 402.8 353.8" stroke-width="6.0"/>
+  <path d="M315.5 389.0 C338.0 388.6 360.4 387.1 382.8 384.9" stroke-width="4.5"/>
+
+  <!-- Hanging Boutique Price Tag -->
+  <path d="M294.6 246.8 C253.8 262.4 223.4 293.8 212.6 324.3" stroke-width="6.0"/>
+  <path d="M152.1 317.5 C182.3 308.4 213.0 301.2 244.0 295.9 C248.4 329.9 254.4 363.6 261.9 397.1 C232.1 402.4 202.5 408.4 173.4 416.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M142.8 319.8 C178.0 308.3 213.7 300.1 250.2 295.5 M240.7 293.7 C246.1 329.6 252.7 365.2 261.1 400.5 M265.4 395.5 C230.8 402.0 196.5 408.8 162.4 418.2 M171.3 422.0 C162.6 385.4 155.4 348.4 150.9 311.0" stroke-width="8.5"/>
+  <path d="M196.3 319.8 C199.1 319.0 201.5 321.0 202.8 323.2 C204.1 325.3 204.5 328.3 202.5 330.4 C200.5 332.4 197.5 332.6 195.1 331.3 C192.7 330.0 191.2 327.3 191.9 324.5 C192.6 321.8 194.7 319.2 197.8 319.2" stroke-width="4.5"/>
+  <path d="M177.0 356.5 C195.7 350.9 214.5 346.4 233.8 343.2" stroke-width="6.0"/>
+  <path d="M180.8 378.4 C195.4 374.1 210.0 370.8 224.9 368.0" stroke-width="6.0"/>
+
+  <!-- Upper-Right Quality Seal Badge -->
+  <path d="M415.7 156.3 C397.5 155.2 381.3 142.7 377.5 124.4 C373.7 106.1 382.6 87.4 399.4 79.0 C416.1 70.6 437.0 73.2 449.8 87.6 C462.7 102.0 466.3 123.6 455.2 140.4 C444.2 157.2 422.4 157.6 406.1 152.2" fill="#FAF9F5" stroke="none"/>
+  <path d="M415.7 156.3 C397.5 155.2 381.3 142.7 377.5 124.4 C373.7 106.1 382.6 87.4 399.4 79.0 C416.1 70.6 437.0 73.2 449.8 87.6 C462.7 102.0 466.3 123.6 455.2 140.4 C444.2 157.2 422.4 157.6 406.1 152.2" stroke-width="8.5"/>
+  <path d="M408.9 113.8 Q421.6 119.4 435.5 120.2 M421.0 103.7 Q415.0 119.7 413.0 136.6" stroke-width="6.0"/>
+  <path d="M398.2 154.9 C392.2 168.2 386.6 181.9 382.9 196.1 C392.0 191.5 400.9 186.7 409.7 181.6" stroke-width="6.0"/>
+  <path d="M436.1 153.1 C440.8 166.4 446.7 178.9 453.8 191.0 C444.4 186.2 434.9 182.6 425.0 179.3" stroke-width="6.0"/>
+
+  <!-- Quiet-area sparkles -->
+  <path d="M63.0 395.2 Q81.3 393.5 99.2 397.2 M78.8 381.9 Q79.1 400.1 76.8 418.3" stroke-width="4.5"/>
+  <path d="M106.9 431.8 Q118.6 435.9 130.9 437.7 M118.2 424.9 Q113.9 437.8 111.8 451.3" stroke-width="4.5"/>
+  <path d="M48.9 443.2 Q56.6 440.7 64.7 439.5 M52.5 435.5 Q55.6 444.4 56.8 453.7" stroke-width="4.5"/>
+  <path d="M449.2 55.8 Q458.9 54.4 468.6 56.3 M456.3 46.3 Q454.4 58.8 455.6 71.3" stroke-width="4.5"/>
+  <circle cx="136" cy="382" r="4.5" fill="#141413" stroke="none"/>
+  <circle cx="52" cy="364" r="3.8" fill="#6A9BCC" stroke="none"/>
+</g>
+</svg>
+
+      </div>
+    </section>
+
+    <div class="store-layout">
+      <main class="product-grid" id="product-grid">
+        
+        <article class="product-card" data-category="hardware" data-id="dripper" data-name="Artisan Ceramic V60 Dripper" data-price="42">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #D4714E">BESTSELLER</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M33.2 27.1 C73.4 25.7 113.3 21.5 153.1 16.0 C160.1 54.3 163.8 92.7 164.8 131.7 C124.9 136.4 84.9 139.8 44.8 141.9 Z" fill="#D97757"/><path d="M33.2 27.1 C73.4 25.7 113.3 21.5 153.1 16.0 C160.1 54.3 163.8 92.7 164.8 131.7 C124.9 136.4 84.9 139.8 44.8 141.9 Z" fill="none" stroke="#B85C3E" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M135.8 47.9 C166.7 47.2 164.3 95.4 127.2 101.4" stroke-width="3.4"/><path d="M55.6 37.1 C84.4 35.5 113.0 32.4 141.4 27.5 C138.7 60.2 132.3 92.5 125.3 124.4 C108.2 127.3 91.0 129.2 73.7 130.5 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M53.4 127.9 C83.7 126.6 114.0 124.4 144.2 120.7 C145.1 124.9 145.7 129.2 145.9 133.5 C114.8 137.5 83.5 139.8 52.1 141.2 Z" fill="#FAF9F5" stroke-width="3.2"/><path d="M78.4 51.5 C82.0 71.5 84.5 91.7 85.7 111.9" stroke-width="2.2"/><path d="M103.7 47.4 C103.3 68.2 104.5 89.0 106.2 109.7" stroke-width="2.2"/><path d="M32.5 43.0 Q39.6 40.5 47.2 40.3 M37.0 36.7 Q39.3 45.0 40.2 53.6" stroke-width="2.0"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $42">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M7.6 6.4 C31.1 6.6 54.5 6.3 78.0 4.4 C80.6 14.7 82.8 24.9 84.7 35.3 C60.5 37.3 36.3 38.6 11.9 37.3 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$42</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Desk Hardware</div>
+            <h3 class="product-title">Artisan Ceramic V60 Dripper</h3>
+            <p class="product-desc">Hand-thrown stoneware pour-over cone with spiral internal ribs for late-night debugging sessions.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('dripper', 'Artisan Ceramic V60 Dripper', 42)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="product-card" data-category="stationery" data-id="notebook" data-name="Dot-Grid Field Monograph" data-price="24">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #6F8F6B">NEW EDITION</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M36.4 22.3 C77.3 22.1 118.1 19.4 158.8 14.6 C163.7 54.5 166.6 94.6 168.3 134.8 C127.9 141.1 87.2 142.7 46.5 143.5 Z" fill="#BCD1CA"/><path d="M36.4 22.3 C77.3 22.1 118.1 19.4 158.8 14.6 C163.7 54.5 166.6 94.6 168.3 134.8 C127.9 141.1 87.2 142.7 46.5 143.5 Z" fill="none" stroke="#93B0A6" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M54.8 20.5 C86.0 16.1 117.3 13.3 148.8 12.4 C153.5 54.1 157.2 95.9 158.5 137.8 C127.3 141.5 96.0 144.3 64.6 145.1 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M76.7 42.4 C95.4 40.9 113.9 38.7 132.4 35.6 C134.3 48.3 135.7 61.0 136.0 73.8 C117.0 74.6 98.2 76.7 79.4 79.7 Z" fill="#EBC9B7" stroke-width="2.4"/><path d="M80.0 99.9 C98.3 99.6 116.4 97.0 134.3 93.4" stroke-width="2.2"/><path d="M81.8 115.6 C94.0 115.3 106.0 114.0 118.1 111.9" stroke-width="2.2"/><path d="M28.7 37.1 Q36.1 39.5 43.9 39.7 M35.2 31.0 Q34.9 39.7 32.3 48.0" stroke-width="2.0"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $24">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M7.7 6.1 C30.9 3.9 54.1 4.0 77.4 4.6 C80.1 14.9 82.5 25.2 84.6 35.6 C60.5 37.4 36.4 38.5 12.3 38.5 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$24</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Field Stationery</div>
+            <h3 class="product-title">Dot-Grid Field Monograph</h3>
+            <p class="product-desc">160gsm warm cream archival paper (`#FAF9F5`) with lay-flat thread binding and architecture index.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('notebook', 'Dot-Grid Field Monograph', 24)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="product-card" data-category="hardware" data-id="keycaps" data-name="Tactile Terracotta Keycap Set" data-price="68">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #5B8FA8">LIMITED</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M32.8 27.6 C76.4 22.5 120.1 18.9 164.0 18.2 C168.4 56.0 170.2 93.8 171.4 131.8 C128.1 137.7 84.6 141.6 40.9 142.3 Z" fill="#6A9BCC"/><path d="M32.8 27.6 C76.4 22.5 120.1 18.9 164.0 18.2 C168.4 56.0 170.2 93.8 171.4 131.8 C128.1 137.7 84.6 141.6 40.9 142.3 Z" fill="none" stroke="#4C7FB3" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M37.4 41.1 C79.0 39.4 120.5 35.3 161.7 29.8 C161.9 61.6 164.4 93.3 169.1 124.8 C128.1 127.8 87.3 131.8 46.5 136.7 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M55.9 58.6 C68.8 57.8 81.6 56.5 94.4 54.6 C96.1 67.1 97.3 79.5 97.6 92.0 C85.2 94.1 72.7 95.3 60.1 95.5 Z" fill="#D97757" fill-opacity="0.35" stroke-width="2.6"/><path d="M107.8 52.0 C121.3 51.9 134.8 50.9 148.2 48.7 C148.4 61.5 150.1 74.1 152.5 86.6 C138.8 87.0 125.1 88.3 111.5 90.6 Z" fill="#EBC9B7" fill-opacity="0.45" stroke-width="2.6"/><path d="M123.1 69.1 Q129.1 66.8 135.5 66.3 M126.9 63.2 Q129.3 70.5 130.4 78.1" stroke-width="2.0"/><path d="M22.1 29.9 Q29.7 30.7 37.3 30.1 M28.1 24.7 Q26.9 31.9 27.9 39.1" stroke-width="2.0"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $68">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M8.2 6.7 C31.7 7.9 55.2 6.2 78.5 3.6 C79.7 14.7 81.5 25.5 84.4 36.3 C60.1 37.9 35.8 38.5 11.4 38.5 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$68</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Desk Hardware</div>
+            <h3 class="product-title">Tactile Terracotta Keycap Set</h3>
+            <p class="product-desc">PBT dye-sublimated keycaps featuring hand-drawn Claude starburst & wobbly return legends.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('keycaps', 'Tactile Terracotta Keycap Set', 68)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="product-card" data-category="stationery" data-id="satchel" data-name="Waxed Canvas Cable Satchel" data-price="54">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #A87E52">CRAFT SERIES</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M32.8 25.5 C75.3 19.8 118.0 17.4 160.9 17.2 C165.2 56.3 167.1 95.4 167.0 134.8 C125.6 136.0 84.3 139.1 43.1 143.1 Z" fill="#D4A27F"/><path d="M32.8 25.5 C75.3 19.8 118.0 17.4 160.9 17.2 C165.2 56.3 167.1 95.4 167.0 134.8 C125.6 136.0 84.3 139.1 43.1 143.1 Z" fill="none" stroke="#B9845F" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M78.4 44.2 C78.1 16.3 124.7 14.0 127.7 39.3" stroke-width="3.4"/><path d="M46.8 48.1 C82.4 43.8 118.2 40.7 154.2 39.0 C158.6 70.2 160.4 101.5 161.4 133.0 C125.8 137.9 89.9 140.8 53.8 141.1 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M46.7 47.2 C82.3 44.8 117.8 42.0 153.2 37.6 C149.9 54.1 147.1 70.8 145.1 87.5 C116.4 91.2 87.7 93.9 58.8 95.2 Z" fill="#FAF9F5" stroke-width="3.0"/><path d="M96.0 78.4 C101.4 77.3 106.9 76.5 112.4 76.0 C113.1 83.3 113.6 90.7 113.6 98.0 C108.3 98.7 103.0 99.3 97.7 99.7 Z" fill="#D97757" stroke-width="2.4"/><path d="M27.0 34.2 Q34.0 35.0 40.9 33.7 M31.7 26.7 Q32.9 35.7 32.4 44.8" stroke-width="2.0"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $54">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M8.4 5.5 C31.5 6.4 54.6 5.7 77.7 4.0 C78.7 14.7 81.0 25.3 83.6 35.8 C59.9 35.2 36.3 36.0 12.7 38.0 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$54</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Field Stationery</div>
+            <h3 class="product-title">Waxed Canvas Cable Satchel</h3>
+            <p class="product-desc">Structured kraft-dyed organizer pouch for adapters, fountain pens, and SSD field drives.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('satchel', 'Waxed Canvas Cable Satchel', 54)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="product-card" data-category="digital" data-id="deck" data-name="Visual Architecture Prompt Deck" data-price="29">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #8E72A8">DIGITAL + PRINT</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M37.9 23.4 C79.4 19.8 120.8 16.6 162.4 15.2 C161.3 54.6 164.3 93.7 170.5 132.8 C128.6 135.3 86.7 139.9 45.0 145.2 Z" fill="#CBCADB"/><path d="M37.9 23.4 C79.4 19.8 120.8 16.6 162.4 15.2 C161.3 54.6 164.3 93.7 170.5 132.8 C128.6 135.3 86.7 139.9 45.0 145.2 Z" fill="none" stroke="#A4A2BF" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M48.8 34.2 C73.4 31.5 97.8 27.6 122.0 22.8 C125.7 54.8 130.4 86.6 136.2 118.2 C111.7 123.6 87.1 127.6 62.1 130.3 Z" fill="#FAF9F5" stroke-width="3.0"/><path d="M74.3 28.5 C100.0 31.6 125.7 34.0 151.6 35.7 C149.5 68.8 146.3 101.8 142.1 134.7 C115.7 133.0 89.4 129.9 63.2 126.4 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M109.0 96.5 C100.7 97.0 93.5 91.4 90.9 83.7 C88.3 76.0 92.1 68.0 98.5 63.7 C104.9 59.5 114.0 58.3 120.4 63.9 C126.7 69.4 127.6 78.6 124.1 85.8 C120.5 93.1 113.0 98.6 104.4 97.0" fill="#827DBD" fill-opacity="0.28" stroke-width="2.6"/><path d="M102.2 77.6 Q109.7 78.9 117.2 78.7 M108.5 71.4 Q106.8 80.2 107.2 89.0" stroke-width="2.2"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $29">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M7.7 6.1 C31.2 6.2 54.7 5.4 78.2 4.0 C79.6 14.8 81.3 25.4 84.0 36.0 C60.0 34.5 36.1 35.3 12.2 37.3 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$29</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Digital Packs</div>
+            <h3 class="product-title">Visual Architecture Prompt Deck</h3>
+            <p class="product-desc">52 tactile reference cards + SVG generator recipes for diagrams, UI kits, and hero illustrations.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('deck', 'Visual Architecture Prompt Deck', 29)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="product-card" data-category="hardware" data-id="lamp" data-name="Atelier Brass Studio Lamp" data-price="86">
+          <div class="product-visual">
+            <span class="stamp-badge" style="--badge-tint: #7D8B52">STUDIO PICK</span>
+            <svg viewBox="0 0 200 160" class="prod-svg"><g class="prod-wash" filter="url(#ui-wash)"><path d="M37.1 24.0 C77.6 18.9 118.2 16.0 158.9 15.0 C157.5 55.1 160.0 95.0 164.9 134.8 C124.4 134.9 84.1 137.1 44.1 142.2 Z" fill="#788C5D"/><path d="M37.1 24.0 C77.6 18.9 118.2 16.0 158.9 15.0 C157.5 55.1 160.0 95.0 164.9 134.8 C124.4 134.9 84.1 137.1 44.1 142.2 Z" fill="none" stroke="#5D7046" stroke-width="2" stroke-opacity="0.5"/></g><g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round"><path d="M102.0 54.1 C104.0 77.6 105.2 101.1 105.5 124.6" stroke-width="3.4"/><path d="M123.5 53.7 C123.8 63.3 124.6 72.8 126.0 82.2" stroke-width="2.2"/><path d="M53.0 58.5 C61.7 21.2 137.2 15.7 148.7 52.8 Z" fill="#FAF9F5" stroke-width="3.4"/><path d="M68.1 124.1 C91.3 120.0 114.6 118.6 138.0 118.9 C140.2 124.7 142.0 130.6 143.5 136.6 C116.7 137.0 89.9 139.4 63.4 142.6 Z" fill="#FAF9F5" stroke-width="3.2"/><path d="M34.0 35.1 Q41.5 33.0 49.2 32.3 M38.8 27.9 Q41.3 35.5 41.8 43.5" stroke-width="2.0"/></g></svg>
+            <div class="price-tag-wrap" aria-label="Price $86">
+              <svg viewBox="0 0 92 44" class="price-tag-svg">
+                <path d="M8.1 5.8 C31.6 6.0 55.1 5.7 78.5 3.8 C80.9 14.6 82.7 25.5 83.4 36.5 C59.8 38.2 36.2 38.9 12.5 37.7 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="18" cy="22" r="3.2" fill="#FAF6F0" stroke="#141413" stroke-width="2"/>
+              </svg>
+              <span class="price-tag-val">$86</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-cat">Desk Hardware</div>
+            <h3 class="product-title">Atelier Brass Studio Lamp</h3>
+            <p class="product-desc">Warm 2700K parchment-diffused task lamp with tactile brass pull-chain and weighted base.</p>
+            <div class="product-footer">
+              <span class="stock-note">In Stock · Ships in 24h</span>
+              <button type="button" class="add-bag-btn" onclick="addToBag('lamp', 'Atelier Brass Studio Lamp', 86)">
+                <span>+ Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        
+      </main>
+
+      <aside class="bag-panel" id="bag-panel" aria-label="Shopping Bag">
+        <div class="bag-panel-head">
+          <h2 class="bag-panel-title">Your Field Bag</h2>
+          <button class="bag-clear-btn" onclick="clearBag()">Empty bag</button>
+        </div>
+        <div id="bag-items" class="bag-items"></div>
+        <div id="bag-empty" class="bag-empty" style="display:none">
+          <svg viewBox="0 0 140 140">
+            <g filter="url(#ui-wash)">
+              <circle cx="72" cy="78" r="38" fill="#E8C99B" opacity="0.55"/>
+            </g>
+            <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M53.4 40.1 C53.4 17.9 85.6 15.8 87.4 37.8" stroke-width="3.2"/>
+              <path d="M35.1 42.0 C58.1 41.2 81.1 38.7 103.9 35.7 C108.9 61.6 111.5 87.7 112.2 114.1 C89.1 115.5 66.0 117.3 43.0 120.2 Z" fill="#FFFEFA" stroke-width="3.2"/>
+              <path d="M18.9 31.1 Q25.7 28.9 32.9 28.1 M22.6 23.5 Q23.5 31.1 25.8 38.5" stroke-width="2.0"/>
+            </g>
+          </svg>
+          <p><strong>Your field bag is empty</strong><br/>Add a notebook, dripper, or keycap set from the shelf.</p>
+        </div>
+        <div class="bag-summary">
+          <div class="bag-row"><span>Complimentary Monograph Bookmark</span><span>FREE</span></div>
+          <div class="bag-row bag-total"><span>Subtotal</span><span id="bag-subtotal">$66</span></div>
+          <button class="checkout-btn" onclick="alert('Demo Checkout — All storefront illustrations generated by CC-lineart!')">
+            Proceed to Atelier Checkout →
+          </button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    let bag = [
+      { id: 'dripper', name: 'Artisan Ceramic V60 Dripper', price: 42, qty: 1 },
+      { id: 'notebook', name: 'Dot-Grid Field Monograph', price: 24, qty: 1 }
+    ];
+
+    function renderBag() {
+      const listEl = document.getElementById('bag-items');
+      const emptyEl = document.getElementById('bag-empty');
+      const countEl = document.getElementById('header-bag-count');
+      const subEl = document.getElementById('bag-subtotal');
+
+      const totalQty = bag.reduce((s, item) => s + item.qty, 0);
+      const totalPrice = bag.reduce((s, item) => s + item.price * item.qty, 0);
+      countEl.textContent = totalQty;
+      subEl.textContent = '$' + totalPrice;
+
+      if (bag.length === 0) {
+        listEl.style.display = 'none';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      listEl.style.display = 'flex';
+      emptyEl.style.display = 'none';
+      listEl.innerHTML = bag.map(item => `
+        <div class="bag-item">
+          <div>
+            <div class="bag-item-name">${item.name}</div>
+            <div class="bag-item-meta">Qty ${item.qty} × $${item.price}</div>
+          </div>
+          <strong>$${item.qty * item.price}</strong>
+        </div>
+      `).join('');
+    }
+
+    function addToBag(id, name, price) {
+      const found = bag.find(x => x.id === id);
+      if (found) found.qty += 1;
+      else bag.push({ id, name, price, qty: 1 });
+      renderBag();
+    }
+
+    function clearBag() {
+      bag = [];
+      renderBag();
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    renderBag();
+  </script>
+</body>
+</html>

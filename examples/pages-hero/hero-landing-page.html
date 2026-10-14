@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Atelier Claude — Autonomous Design &amp; Reasoning Studio (CC-lineart Track 6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg-cream: #FAF6F0;
+    --paper: #FAF9F5;
+    --paper-card: #FFFEFA;
+    --ink: #141413;
+    --ink-muted: #57544E;
+    --clay: #D97757;
+    --clay-edge: #B85C3E;
+    --sky: #6A9BCC;
+    --sky-edge: #4C7FB3;
+    --cactus: #BCD1CA;
+    --cactus-edge: #93B0A6;
+    --heather: #CBCADB;
+    --plum: #827DBD;
+    --mineral: #629987;
+    --peach: #EBC9B7;
+    --kraft: #D4A27F;
+    --olive: #788C5D;
+    --serif: 'Newsreader', 'Source Serif 4', Georgia, serif;
+    --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-cream);
+    background-image:
+      radial-gradient(rgba(20, 20, 19, 0.04) 1px, transparent 0),
+      radial-gradient(rgba(217, 119, 87, 0.05) 1px, transparent 0);
+    background-size: 28px 28px;
+    background-position: 0 0, 14px 14px;
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .svg-defs-bank {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .page-wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 24px 32px 84px;
+  }
+
+  /* 1. Editorial Navbar */
+  .editorial-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0 22px;
+    border-bottom: 2px solid rgba(20, 20, 19, 0.14);
+    margin-bottom: 42px;
+  }
+
+  .brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand-title {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border: 1.6px solid var(--ink);
+    border-radius: 999px;
+    background: var(--paper-card);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding-bottom: 6px;
+  }
+
+  .nav-link svg {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 9px;
+    overflow: visible;
+  }
+
+  .nav-link svg path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-link:hover svg path {
+    stroke-dashoffset: 0;
+  }
+
+  .nav-pill-btn {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--paper-card);
+    border: 2.2px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 18px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--clay);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-pill-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--clay);
+  }
+
+  /* 2. Split Above-the-Fold Hero Section */
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.06fr 0.94fr;
+    gap: 44px;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+
+  @media (max-width: 980px) {
+    .hero-split {
+      grid-template-columns: 1fr;
+    }
+    .nav-links {
+      display: none;
+    }
+  }
+
+  .release-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    isolation: isolate;
+  }
+
+  .release-badge svg.badge-bg {
+    position: absolute;
+    inset: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    z-index: -1;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--clay);
+    border: 1.5px solid var(--ink);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.55rem, 4.4vw, 3.85rem);
+    font-weight: 500;
+    line-height: 1.07;
+    letter-spacing: -0.025em;
+    margin: 0 0 20px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(180deg, transparent 62%, rgba(217, 119, 87, 0.28) 62%);
+    padding: 0 4px;
+  }
+
+  .hero-lead {
+    font-size: 1.12rem;
+    color: var(--ink-muted);
+    max-width: 56ch;
+    margin: 0 0 28px;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .tactile-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 26px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.98rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    isolation: isolate;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tactile-cta.primary {
+    color: var(--paper);
+  }
+
+  .tactile-cta.secondary {
+    color: var(--ink);
+  }
+
+  .tactile-cta svg.cta-bg {
+    position: absolute;
+    inset: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .tactile-cta .cta-wash {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate(5px, 5px);
+  }
+
+  .tactile-cta:hover {
+    transform: translate(-2px, -3px);
+  }
+
+  .tactile-cta:hover .cta-wash {
+    transform: translate(11px, 10px) scale(1.03) rotate(-0.8deg);
+  }
+
+  /* Hand-drawn Margin Annotations */
+  .margin-notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding-top: 8px;
+  }
+
+  .margin-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .margin-note code {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11.5px;
+    background: var(--paper-card);
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    padding: 2px 7px;
+  }
+
+  /* Right Column: Interactive Self-Drawing Hero Centerpiece Stage */
+  .hero-stage-card {
+    background: var(--paper-card);
+    border: 2.6px solid var(--ink);
+    border-radius: 20px;
+    padding: 20px 20px 18px;
+    box-shadow: 10px 10px 0 rgba(20, 20, 19, 0.08);
+    position: relative;
+  }
+
+  .stage-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1.8px dashed rgba(20, 20, 19, 0.2);
+  }
+
+  .stage-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .stage-label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--olive);
+    border: 1.5px solid var(--ink);
+  }
+
+  .replay-btn {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1.8px solid var(--ink);
+    border-radius: 999px;
+    padding: 5px 13px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--peach);
+    transition: transform 0.18s ease;
+  }
+
+  .replay-btn:hover {
+    transform: translate(-1px, -1px);
+  }
+
+  .centerpiece-viewport {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .centerpiece-viewport svg {
+    width: 100%;
+    max-width: 468px;
+    height: auto;
+    display: block;
+  }
+
+  /* Self-Drawing Stroke Animation Keyframes */
+  @keyframes penDraw {
+    0% {
+      stroke-dashoffset: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes paperReveal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .centerpiece-viewport.is-drawing path.draw-stroke {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: penDraw 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--step, 1) * 28ms);
+  }
+
+  .centerpiece-viewport.is-drawing .paper-fill {
+    opacity: 0;
+    animation: paperReveal 0.4s ease forwards;
+    animation-delay: calc(var(--step, 1) * 26ms);
+  }
+
+  .theme-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .theme-pill {
+    flex: 1;
+    min-width: 130px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1.8px solid var(--ink);
+    background: var(--paper);
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+  }
+
+  .theme-pill[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .swatch-pair {
+    display: inline-flex;
+    gap: 3px;
+  }
+
+  .swatch-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1.2px solid var(--ink);
+  }
+
+  /* 3. 3-Card Feature Bento Grid */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.85rem, 3vw, 2.5rem);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 76px;
+  }
+
+  @media (max-width: 960px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .bento-card {
+    position: relative;
+    padding: 26px 24px 24px;
+    isolation: isolate;
+    cursor: pointer;
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .bento-card svg.bento-bg {
+    position: absolute;
+    inset: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .bento-card .bento-wash,
+  .bento-card .mini-wash {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .bento-card .bento-wash {
+    transform: translate(7px, 7px);
+  }
+
+  .bento-card:hover {
+    transform: translate(-3px, -4px);
+  }
+
+  .bento-card:hover .bento-wash {
+    transform: translate(15px, 13px) scale(1.03) rotate(-0.9deg);
+  }
+
+  .bento-card:hover .mini-wash {
+    transform: translate(6px, -4px) scale(1.07) rotate(1.5deg);
+  }
+
+  .bento-mini-svg {
+    width: 100%;
+    max-width: 186px;
+    height: auto;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .bento-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1.6px solid var(--ink);
+    border-radius: 999px;
+    background: var(--paper);
+    margin-bottom: 10px;
+  }
+
+  .bento-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    margin: 0 0 8px;
+  }
+
+  .bento-card p {
+    margin: 0 0 14px;
+    font-size: 0.94rem;
+    color: var(--ink-muted);
+  }
+
+  .bento-meta {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    padding-top: 10px;
+    border-top: 1.5px dashed rgba(20, 20, 19, 0.22);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 4. 2-Tier Editorial Pricing Section */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 880px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pricing-card {
+    position: relative;
+    padding: 34px 32px 30px;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pricing-card svg.pricing-bg {
+    position: absolute;
+    inset: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .pricing-card .pricing-wash {
+    transform: translate(8px, 8px);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pricing-card:hover .pricing-wash {
+    transform: translate(15px, 14px) scale(1.02) rotate(-0.6deg);
+  }
+
+  .tier-name {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .tier-price {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 0 8px;
+  }
+
+  .tier-price span {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+
+  .tier-desc {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    margin: 0 0 20px;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+  }
+
+  .feature-list svg {
+    flex-shrink: 0;
+  }
+
+  .wax-seal-stamp {
+    position: absolute;
+    top: -18px;
+    right: 18px;
+    width: 116px;
+    height: 116px;
+    transform: rotate(9deg);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .pricing-card:hover .wax-seal-stamp {
+    transform: rotate(15deg) scale(1.06);
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG Filter Defs Bank for DOM UI Components -->
+<svg class="svg-defs-bank" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="ui-wash" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="29" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.42" result="a"/>
+      <feComposite in="d" in2="a" operator="in"/>
+    </filter>
+    <filter id="ui-ink" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="43" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="page-wrap">
+  <!-- 1. Editorial Navbar -->
+  <nav class="editorial-nav" aria-label="Primary Editorial Navigation">
+    <a href="#top" class="brand-lockup">
+      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+        <g filter="url(#ui-wash)">
+          <path d="M10.0 18.0 C23.8 15.4 37.8 13.4 51.9 12.2 C53.8 24.8 55.2 37.5 55.6 50.2 C42.0 52.3 28.4 53.7 14.7 54.3 Z" fill="#D97757"/>
+        </g>
+        <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.3 14.1 C26.4 13.4 38.4 12.0 50.2 9.8 C52.6 22.2 53.9 34.8 54.4 47.4 C41.6 48.3 29.0 50.0 16.5 52.4 Z" fill="#FAF9F5"/>
+          <path d="M27.3 31.8 Q37.0 29.1 47.1 29.4 M33.2 24.5 Q33.7 34.6 35.6 44.7" stroke-width="2.8"/>
+        </g>
+      </svg>
+      <span class="brand-title">Atelier Claude</span>
+      <span class="brand-sub">CC-lineart v2.4</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#workbench" class="nav-link">
+        Studio Workbench
+        <svg viewBox="0 0 96 10" preserveAspectRatio="none"><path pathLength="1" d="M2.2 5.9 C28.3 2.3 62.3 9.2 93.8 4.5" fill="none" stroke="#D97757" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#bento-features" class="nav-link">
+        3-Layer Architecture
+        <svg viewBox="0 0 96 10" preserveAspectRatio="none"><path pathLength="1" d="M2.2 5.9 C28.3 2.3 62.3 9.2 93.8 4.5" fill="none" stroke="#6A9BCC" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#pricing-section" class="nav-link">
+        Editorial Pricing
+        <svg viewBox="0 0 96 10" preserveAspectRatio="none"><path pathLength="1" d="M2.2 5.9 C28.3 2.3 62.3 9.2 93.8 4.5" fill="none" stroke="#788C5D" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
+    <button type="button" class="nav-pill-btn" onclick="document.getElementById('btn-replay-draw').click()">
+      Replay Ink Stroke ↻
+    </button>
+  </nav>
+
+  <!-- 2. Split Above-the-Fold Hero Section -->
+  <section class="hero-split" id="workbench">
+    <div class="hero-copy-col">
+      <div class="release-badge">
+        <svg class="badge-bg" viewBox="0 0 268 44" preserveAspectRatio="none">
+          <g filter="url(#ui-wash)">
+            <path d="M10.1 8.4 C92.8 5.2 175.5 3.3 258.3 3.5 C259.1 15.2 261.0 26.7 263.5 38.2 C180.4 38.7 97.2 40.3 14.0 42.6 Z" fill="#EBC9B7"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M5.7 5.8 C88.5 4.5 171.4 4.2 254.2 4.5 C255.9 14.8 257.1 25.2 258.0 35.7 C174.8 38.4 91.6 38.9 8.4 37.7 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.2" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <span class="badge-dot"></span>
+        <span>v2.4 — Hand-Drawn UI Engine</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Autonomous design &amp; reasoning, <em>drawn in real ink</em>.
+      </h1>
+
+      <p class="hero-lead">
+        Atelier Claude replaces sterile SaaS stock photos and rigid bounding boxes with deterministic <code>#141413</code> fountain-pen vectors, warm <code>#FAF9F5</code> paper cutouts, and glazed watercolor washes that pass automated visual lint checks.
+      </p>
+
+      <div class="cta-row">
+        <button type="button" class="tactile-cta primary" id="cta-launch-studio">
+          <svg class="cta-bg" viewBox="0 0 248 62" preserveAspectRatio="none">
+            <g class="cta-wash" filter="url(#ui-wash)">
+              <path d="M11.3 10.0 C86.3 10.7 161.2 9.6 236.1 5.4 C239.5 21.4 241.7 37.5 243.0 54.0 C167.4 56.9 91.9 57.8 16.3 57.8 Z" fill="#D97757"/>
+              <path d="M11.3 10.0 C86.3 10.7 161.2 9.6 236.1 5.4 C239.5 21.4 241.7 37.5 243.0 54.0 C167.4 56.9 91.9 57.8 16.3 57.8 Z" fill="none" stroke="#B85C3E" stroke-width="2" stroke-opacity="0.55"/>
+            </g>
+            <g filter="url(#ui-ink)">
+              <path d="M6.1 6.8 C81.2 7.9 156.3 6.3 231.3 3.3 C233.6 18.7 234.8 34.2 235.7 49.7 C160.1 52.9 84.4 53.8 8.8 51.5 Z" fill="#141413" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+            </g>
+          </svg>
+          <span>Launch Autonomous Studio →</span>
+        </button>
+
+        <button type="button" class="tactile-cta secondary" id="cta-inspect-lint">
+          <svg class="cta-bg" viewBox="0 0 218 62" preserveAspectRatio="none">
+            <g class="cta-wash" filter="url(#ui-wash)">
+              <path d="M11.6 9.3 C76.7 7.0 141.8 5.8 206.9 5.8 C209.9 21.9 211.8 38.1 212.4 54.5 C147.0 52.5 81.6 54.1 16.3 57.2 Z" fill="#6A9BCC"/>
+            </g>
+            <g filter="url(#ui-ink)">
+              <path d="M6.1 5.8 C71.2 8.1 136.3 7.9 201.4 4.7 C201.9 19.7 203.2 34.5 206.0 49.3 C140.3 52.2 74.5 53.6 8.8 52.2 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+            </g>
+          </svg>
+          <span id="lint-btn-label">Inspect Lint: 0 Warnings</span>
+        </button>
+      </div>
+
+      <!-- Hand-drawn Margin Annotation Arrows -->
+      <div class="margin-notes">
+        <div class="margin-note">
+          <svg width="92" height="34" viewBox="0 0 92 34" fill="none" stroke="#141413" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#ui-ink)">
+            <path d="M5.7 28.9 C28.7 11.1 56.9 7.3 82.1 20.0"/>
+            <path d="M69.7 11.6 C74.5 14.8 79.5 17.8 84.5 20.7 C78.8 22.7 73.1 24.9 67.6 27.3"/>
+          </svg>
+          <span>100% Vector Ink <code>8.5 / 6.0 / 4.5</code></span>
+        </div>
+
+        <div class="margin-note">
+          <svg width="96" height="34" viewBox="0 0 96 34" fill="none" stroke="#B85C3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#ui-ink)">
+            <path d="M7.2 10.7 C33.3 26.3 62.8 27.5 88.1 14.7"/>
+            <path d="M74.4 8.6 C79.6 10.5 85.0 12.0 90.4 13.3 C86.0 16.5 81.8 20.0 77.9 24.0"/>
+          </svg>
+          <span>Zero Stock Photos <code>100% SVG</code></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Self-Drawing Hero Centerpiece SVG -->
+    <div class="hero-stage-card">
+      <div class="stage-toolbar">
+        <span class="stage-label">
+          <span class="stage-label-dot"></span>
+          <span>hero-centerpiece.svg · 512×512 · 0 Lint Warnings</span>
+        </span>
+        <button type="button" class="replay-btn" id="btn-replay-draw">
+          Replay Pen Draw ✎
+        </button>
+      </div>
+
+      <div class="centerpiece-viewport" id="hero-svg-viewport">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="41" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="59" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation: isolate">
+  <g class="wash-blob wash-cool">
+    <path id="hero-wash-cool-fill" d="M63.5 239.3 C137.1 233.5 210.2 225.4 283.2 215.3 C292.6 292.0 296.2 368.8 297.5 446.0 C223.1 447.1 148.8 451.9 74.9 460.9 Z" fill="#6A9BCC"/>
+    <path id="hero-wash-cool-edge" d="M63.5 239.3 C137.1 233.5 210.2 225.4 283.2 215.3 C292.6 292.0 296.2 368.8 297.5 446.0 C223.1 447.1 148.8 451.9 74.9 460.9 Z" fill="none" stroke="#4C7FB3" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-warm" style="mix-blend-mode: multiply">
+    <path id="hero-wash-warm-fill" d="M187.5 107.4 C269.5 91.6 351.9 85.5 435.1 82.5 C444.2 163.5 451.0 245.0 449.4 326.7 C367.4 325.7 286.0 331.1 205.0 343.1 Z" fill="#EBC9B7"/>
+    <path id="hero-wash-warm-edge" d="M187.5 107.4 C269.5 91.6 351.9 85.5 435.1 82.5 C444.2 163.5 451.0 245.0 449.4 326.7 C367.4 325.7 286.0 331.1 205.0 343.1 Z" fill="none" stroke="#D3A58D" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-focal">
+    <path id="hero-wash-focal-fill" d="M430.2 151.9 C414.9 162.8 393.7 163.8 378.6 151.4 C363.5 139.1 357.0 118.2 365.2 99.7 C373.4 81.3 393.5 72.4 412.7 75.5 C431.9 78.5 445.6 94.6 447.7 113.4 C449.8 132.2 440.5 151.6 422.1 158.9" fill="#D97757"/>
+    <path id="hero-wash-focal-edge" d="M430.2 151.9 C414.9 162.8 393.7 163.8 378.6 151.4 C363.5 139.1 357.0 118.2 365.2 99.7 C373.4 81.3 393.5 72.4 412.7 75.5 C431.9 78.5 445.6 94.6 447.7 113.4 C449.8 132.2 440.5 151.6 422.1 158.9" fill="none" stroke="#B85C3E" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Background trajectory & registration arcs -->
+  <path class="draw-stroke" data-step="1" pathLength="1" d="M33.1 425.0 C117.6 443.7 197.7 395.0 252.5 325.1" stroke-width="4.5" stroke-dasharray="14 16"/>
+  <path class="draw-stroke" data-step="2" pathLength="1" d="M172.9 331.8 C208.0 314.9 221.1 273.9 245.2 252.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="3" pathLength="1" d="M337.9 192.7 C363.5 166.3 379.3 138.8 398.1 125.3" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="4" pathLength="1" d="M424.1 77.6 C455.6 52.2 475.8 36.8 496.1 23.5" stroke-width="4.5"/>
+
+  <!-- Act I: Tilted Architect's Sketchbook (Lower-Left) -->
+  <path class="paper-fill" data-step="5" d="M29.6 289.7 C79.8 280.8 130.4 273.8 181.2 269.2 C189.7 332.2 194.4 395.3 196.1 458.6 C145.9 467.4 95.5 473.8 44.7 478.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="6" pathLength="1" d="M21.8 305.3 C26.7 296.1 30.8 286.5 34.0 276.5 M20.5 288.5 C78.1 283.5 135.5 276.1 192.6 266.4 M180.4 262.5 C190.1 331.3 198.5 400.5 199.2 470.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="7" pathLength="1" d="M204.5 456.9 C150.5 467.3 96.1 474.3 41.3 474.9 M46.7 483.9 C44.7 415.0 38.9 346.4 27.4 278.3" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="8" pathLength="1" d="M56.3 286.9 C63.8 346.7 68.7 406.9 69.5 467.3" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="9" pathLength="1" d="M149.5 272.4 C151.4 283.5 153.6 294.6 156.3 305.5 C166.6 303.9 176.7 301.6 186.7 298.5" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="10" pathLength="1" d="M79.0 331.8 C107.6 319.6 135.2 341.3 164.6 327.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="11" pathLength="1" d="M82.5 365.4 C109.1 353.5 131.3 375.4 154.8 361.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="12" pathLength="1" d="M79.4 398.2 C97.3 395.2 115.1 391.4 132.5 386.2 M130.2 383.4 C127.3 399.7 122.7 415.7 116.9 431.2 M120.6 427.7 C105.0 425.1 89.5 421.7 74.2 417.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="13" pathLength="1" d="M125.0 408.1 C140.0 397.3 153.4 414.7 167.1 403.1" stroke-width="4.5"/>
+
+  <!-- Drafting Fountain Pen -->
+  <path class="paper-fill" data-step="14" d="M138.1 439.6 C168.8 415.9 198.8 391.0 227.2 364.9 C233.2 370.0 238.6 375.4 243.7 381.4 C211.9 403.7 182.4 428.8 153.9 454.9 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="15" pathLength="1" d="M138.1 439.6 C168.8 415.9 198.8 391.0 227.2 364.9 C233.2 370.0 238.6 375.4 243.7 381.4 C211.9 403.7 182.4 428.8 153.9 454.9 Z" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="16" pathLength="1" d="M137.3 440.0 C130.0 450.3 122.0 460.2 113.5 469.5 C127.1 465.8 140.3 460.7 153.1 454.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="17" pathLength="1" d="M200.6 387.5 C205.4 393.2 210.4 398.8 215.6 404.2" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="18" pathLength="1" d="M213.1 373.0 C222.8 364.8 233.0 357.6 243.9 351.1 C245.7 353.7 247.6 356.1 249.6 358.5" stroke-width="4.5"/>
+
+  <!-- Act II: Autonomous Studio Cloud Workbench (Center) -->
+  <path class="paper-fill" data-step="19" d="M173.4 163.3 C236.0 151.0 298.8 146.5 362.4 144.7 C369.6 202.3 373.5 260.0 376.6 317.8 C313.7 319.8 251.3 322.7 189.1 333.7 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="20" pathLength="1" d="M168.9 164.3 C236.4 153.0 304.4 147.6 372.7 144.3 M361.2 134.7 C371.9 198.4 376.8 262.5 378.4 327.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="21" pathLength="1" d="M384.3 319.7 C316.3 328.9 248.1 334.4 179.6 336.5 M188.1 341.4 C178.6 279.1 173.3 216.2 173.4 153.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="22" pathLength="1" d="M181.3 199.4 C241.9 195.7 302.4 190.6 362.6 182.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="23" pathLength="1" d="M202.9 230.9 C210.2 235.3 217.3 240.2 224.0 245.6 C217.3 251.3 211.1 257.4 205.2 263.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="24" pathLength="1" d="M233.0 264.8 C244.4 262.9 255.8 262.0 267.4 261.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="25" pathLength="1" d="M312.3 238.6 C312.4 228.4 312.1 218.3 311.3 208.1 M321.5 242.0 C326.3 238.1 330.9 234.1 335.4 229.9 M323.3 249.5 C332.0 250.9 340.6 252.5 349.1 254.6 M319.2 257.0 C323.0 262.8 327.1 268.4 331.3 273.8 M309.3 258.0 C307.3 268.1 305.6 278.4 304.8 288.7 M301.0 253.4 C295.9 256.5 290.9 259.8 286.0 263.4 M302.4 244.3 C294.2 241.5 285.7 239.4 277.2 237.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="26" pathLength="1" d="M204.6 291.0 C229.4 289.0 254.1 287.4 279.0 286.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="27" pathLength="1" d="M205.1 309.2 C222.5 306.4 240.1 304.6 257.7 304.7" stroke-width="4.5"/>
+
+  <!-- Act III: Shipped UI Artifact Card + Verification Seal (Upper-Right) -->
+  <path class="paper-fill" data-step="28" d="M303.7 36.7 C363.9 29.9 424.3 25.9 484.7 22.7 C485.4 75.2 489.0 127.4 495.9 179.4 C434.7 178.6 373.7 184.5 313.1 194.2 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="29" pathLength="1" d="M296.1 40.2 C362.7 35.4 429.1 28.8 495.2 19.3 M483.4 12.6 C483.7 71.2 487.8 129.6 496.7 187.5" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="30" pathLength="1" d="M507.2 176.8 C440.3 185.9 373.2 191.1 305.7 194.6 M314.0 198.1 C307.3 142.9 301.9 87.7 299.4 32.2" stroke-width="8.5"/>
+  <path class="paper-fill" data-step="31" id="hero-seal-tint" d="M426.8 64.3 C443.9 69.1 453.4 85.8 453.1 102.6 C452.9 119.4 441.9 134.7 425.2 138.9 C408.5 143.0 391.0 135.7 382.6 120.5 C374.2 105.4 375.0 85.7 388.0 73.1 C401.1 60.4 420.7 61.2 435.2 70.0" fill="#D97757" fill-opacity="0.28" stroke="none"/>
+  <path class="draw-stroke" data-step="32" pathLength="1" d="M426.8 64.3 C443.9 69.1 453.4 85.8 453.1 102.6 C452.9 119.4 441.9 134.7 425.2 138.9 C408.5 143.0 391.0 135.7 382.6 120.5 C374.2 105.4 375.0 85.7 388.0 73.1 C401.1 60.4 420.7 61.2 435.2 70.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="33" pathLength="1" d="M398.1 104.2 C402.0 108.6 406.3 112.8 410.7 116.8 C420.8 107.0 430.1 96.2 439.0 85.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="34" pathLength="1" d="M324.9 72.9 C337.9 71.2 351.0 69.9 364.2 69.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="35" pathLength="1" d="M327.2 103.2 C337.0 101.0 346.8 99.4 356.8 98.2" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="36" pathLength="1" d="M328.4 152.7 C373.7 146.4 419.3 141.9 465.1 141.2" stroke-width="6.0"/>
+
+  <!-- Foreground bridging arrows -->
+  <path class="draw-stroke" data-step="37" pathLength="1" d="M160.7 312.9 C188.0 281.0 210.5 267.4 236.7 255.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="38" pathLength="1" d="M221.7 248.2 C227.6 249.9 233.6 251.2 239.7 252.1 C236.0 258.5 231.8 264.6 227.3 270.3" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="39" pathLength="1" d="M324.5 193.6 C346.4 164.6 362.1 140.8 380.8 125.6" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="40" pathLength="1" d="M361.5 124.2 C368.1 124.1 374.8 124.3 381.4 124.7 C379.1 130.7 376.6 136.4 373.4 142.0" stroke-width="6.0"/>
+
+  <!-- Quiet-area sparkles & ink dots -->
+  <path class="draw-stroke" data-step="41" pathLength="1" d="M70.5 90.8 Q90.0 92.8 108.6 98.7 M89.8 75.4 Q83.3 97.4 80.6 120.2" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="42" pathLength="1" d="M120.8 73.7 Q131.7 72.4 142.1 68.7 M126.0 63.3 Q130.6 75.3 131.7 88.0" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="43" pathLength="1" d="M59.0 135.6 Q67.3 132.4 76.2 131.6 M64.3 126.5 Q67.0 135.7 68.6 145.1" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="44" pathLength="1" d="M438.8 419.5 Q450.5 416.4 462.5 415.6 M446.4 408.6 Q446.6 420.7 450.4 432.2" stroke-width="4.5"/>
+  <circle class="paper-fill" data-step="45" cx="148" cy="112" r="4.5" fill="#141413" stroke="none"/>
+  <circle class="paper-fill" data-step="46" cx="56" cy="92" r="3.8" fill="#788C5D" stroke="none"/>
+</g>
+</svg>
+
+      </div>
+
+      <!-- Watercolor Wash Theme Switcher -->
+      <div class="theme-switcher" role="group" aria-label="Watercolor Wash Theme Switcher">
+        <button type="button" class="theme-pill" data-theme="warm" aria-pressed="true">
+          <span class="swatch-pair">
+            <span class="swatch-dot" style="background:#D97757"></span>
+            <span class="swatch-dot" style="background:#6A9BCC"></span>
+          </span>
+          <span>Warm Clay &amp; Sky</span>
+        </button>
+
+        <button type="button" class="theme-pill" data-theme="sage" aria-pressed="false">
+          <span class="swatch-pair">
+            <span class="swatch-dot" style="background:#BCD1CA"></span>
+            <span class="swatch-dot" style="background:#D4A27F"></span>
+          </span>
+          <span>Sage Cactus &amp; Oat</span>
+        </button>
+
+        <button type="button" class="theme-pill" data-theme="botanical" aria-pressed="false">
+          <span class="swatch-pair">
+            <span class="swatch-dot" style="background:#827DBD"></span>
+            <span class="swatch-dot" style="background:#CBCADB"></span>
+          </span>
+          <span>Botanical Fig &amp; Heather</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 3-Card Feature Bento Grid -->
+  <section id="bento-features">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Three-Layer Craftsmanship</div>
+        <h2 class="section-title">Why AI-Designed Hero Pages Need Ink &amp; Paper</h2>
+      </div>
+      <span class="brand-sub">Hover any bento card to shift its wet watercolor wash</span>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card 1 -->
+      <article class="bento-card">
+        <svg class="bento-bg" viewBox="0 0 370 284" preserveAspectRatio="none">
+          <g class="bento-wash" filter="url(#ui-wash)">
+            <path d="M18.8 15.1 C129.5 17.6 240.2 14.9 350.8 9.5 C352.5 95.5 356.3 181.4 363.3 267.2 C250.4 272.9 137.5 276.6 24.5 275.0 Z" fill="#6A9BCC"/>
+            <path d="M18.8 15.1 C129.5 17.6 240.2 14.9 350.8 9.5 C352.5 95.5 356.3 181.4 363.3 267.2 C250.4 272.9 137.5 276.6 24.5 275.0 Z" fill="none" stroke="#4C7FB3" stroke-width="2.2" stroke-opacity="0.55"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M10.4 10.6 C122.1 12.5 233.7 11.1 345.3 6.3 C346.3 90.5 348.2 174.7 352.2 258.8 C238.4 257.3 124.6 259.2 10.9 265.2 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 168 112" class="bento-mini-svg" aria-hidden="true">
+  <g class="mini-wash" filter="url(#ui-wash)">
+    <path d="M18.5 23.2 C51.1 18.5 84.0 15.7 117.1 15.0 C117.7 39.5 120.1 63.8 123.7 88.1 C90.5 91.9 57.3 94.6 23.9 96.2 Z" fill="#6A9BCC"/>
+    <path d="M18.5 23.2 C51.1 18.5 84.0 15.7 117.1 15.0 C117.7 39.5 120.1 63.8 123.7 88.1 C90.5 91.9 57.3 94.6 23.9 96.2 Z" fill="none" stroke="#4C7FB3" stroke-width="1.8" stroke-opacity="0.55"/>
+  </g>
+  <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31.7 22.4 C67.2 18.0 103.0 14.4 138.8 14.8 C140.0 38.8 141.7 62.6 145.2 86.4 C109.5 87.2 74.1 89.7 38.7 93.7 Z" fill="#FAF9F5" stroke-width="3.0"/>
+    <path d="M46.5 71.6 C53.6 60.3 60.5 48.7 65.7 36.3" stroke-width="2.0" stroke-dasharray="4 4"/>
+    <path d="M127.8 35.8 C121.1 48.0 113.6 60.1 105.9 71.8" stroke-width="2.0" stroke-dasharray="4 4"/>
+    <path d="M46.6 71.6 C68.6 31.4 104.8 81.9 127.4 35.9" stroke-width="3.2"/>
+    <path d="M61.6 32.9 C63.0 30.9 65.6 30.2 67.8 31.1 C70.0 31.9 71.6 34.0 71.4 36.4 C71.2 38.9 69.3 40.7 66.9 41.1 C64.6 41.6 62.0 40.7 60.9 38.4 C59.8 36.1 60.8 33.6 62.6 32.1" fill="#D97757" stroke-width="2.4"/>
+    <path d="M110.9 69.1 C112.2 71.4 111.4 74.0 109.8 75.7 C108.1 77.4 105.4 77.9 103.3 76.7 C101.2 75.5 100.1 73.0 100.7 70.6 C101.3 68.3 103.3 66.3 105.9 66.2 C108.5 66.2 110.6 68.1 111.3 70.5" fill="#EBC9B7" stroke-width="2.4"/>
+    <path d="M17.0 26.4 Q22.9 26.4 28.8 25.4 M21.6 21.1 Q23.0 27.4 22.7 33.8" stroke-width="2.0"/>
+  </g>
+</svg>
+        <span class="bento-tag">01 · Bowed Cubic Paths</span>
+        <h3>Zero-Template Vector Synthesis</h3>
+        <p>Every container, connector, and icon is synthesized directly in Python via <code>handify()</code> with controlled bow and corner overshoots—never generic stock imagery.</p>
+        <div class="bento-meta">
+          <span>Skewed Quadrilaterals</span>
+          <span>0 Ruler Lines</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="bento-card">
+        <svg class="bento-bg" viewBox="0 0 370 284" preserveAspectRatio="none">
+          <g class="bento-wash" filter="url(#ui-wash)">
+            <path d="M14.8 13.5 C128.0 12.4 241.2 13.2 354.3 18.2 C348.7 103.1 345.8 188.2 348.0 273.4 C238.2 274.3 128.4 272.0 18.6 267.7 Z" fill="#EBC9B7"/>
+            <path d="M14.8 13.5 C128.0 12.4 241.2 13.2 354.3 18.2 C348.7 103.1 345.8 188.2 348.0 273.4 C238.2 274.3 128.4 272.0 18.6 267.7 Z" fill="none" stroke="#D3A58D" stroke-width="2.2" stroke-opacity="0.55"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M11.0 8.7 C123.5 7.2 235.9 8.8 348.3 12.1 C344.1 96.3 342.5 180.6 342.9 264.9 C232.4 262.0 121.9 259.8 11.4 259.8 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 168 112" class="bento-mini-svg" aria-hidden="true">
+  <g class="mini-wash" filter="url(#ui-wash)" style="isolation:isolate">
+    <path d="M20.2 25.1 C48.6 21.4 77.0 18.2 105.6 16.8 C107.1 39.8 109.8 62.6 114.5 85.2 C85.8 86.9 57.1 89.4 28.7 93.5 Z" fill="#D97757"/>
+    <path d="M56.4 17.6 C85.9 21.9 115.4 25.2 145.1 27.6 C143.3 50.6 141.0 73.4 136.9 96.0 C107.5 94.0 78.2 90.9 49.1 86.4 Z" fill="#6A9BCC" style="mix-blend-mode:multiply"/>
+  </g>
+  <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42.7 32.4 C71.3 31.1 99.7 28.6 128.0 24.8 C130.6 43.5 132.7 62.4 133.8 81.3 C105.3 83.0 77.0 86.0 48.7 89.8 Z" fill="#FAF9F5" stroke-width="3.0"/>
+    <path d="M102.2 49.3 C105.2 55.7 103.2 63.1 98.0 67.6 C92.7 72.1 85.1 72.4 79.5 68.5 C73.8 64.7 72.4 57.4 74.5 51.3 C76.6 45.2 82.1 40.1 89.0 40.5 C96.0 41.0 101.4 46.4 102.8 53.0" fill="#EBC9B7" stroke-width="2.6"/>
+    <path d="M61.6 72.6 C77.5 63.5 97.5 75.3 115.7 65.8" stroke-width="2.2"/>
+    <path d="M140.0 22.4 Q145.9 21.3 151.9 21.1 M143.4 17.1 Q143.5 23.6 144.9 29.9" stroke-width="2.0"/>
+  </g>
+</svg>
+        <span class="bento-tag">02 · Multiply Glaze</span>
+        <h3>Glazed Watercolor Layers</h3>
+        <p>Overlapping warm <code>clay</code>/<code>peach</code> and cool <code>sky</code>/<code>cactus</code> washes blend with <code>mix-blend-mode: multiply</code> and fractal-noise pigment pooling.</p>
+        <div class="bento-meta">
+          <span>Coverage: 15–45%</span>
+          <span>Breakout ≥ 20%</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="bento-card">
+        <svg class="bento-bg" viewBox="0 0 370 284" preserveAspectRatio="none">
+          <g class="bento-wash" filter="url(#ui-wash)">
+            <path d="M19.8 15.3 C131.9 18.0 243.9 15.0 355.8 10.8 C359.6 98.1 360.5 185.5 358.7 273.0 C244.8 278.0 131.0 279.9 17.0 276.6 Z" fill="#BCD1CA"/>
+            <path d="M19.8 15.3 C131.9 18.0 243.9 15.0 355.8 10.8 C359.6 98.1 360.5 185.5 358.7 273.0 C244.8 278.0 131.0 279.9 17.0 276.6 Z" fill="none" stroke="#93B0A6" stroke-width="2.2" stroke-opacity="0.55"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M8.8 10.0 C120.9 10.0 232.9 8.9 344.9 5.5 C343.7 90.6 345.3 175.7 350.4 260.8 C237.9 260.3 125.3 261.2 12.8 265.7 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 168 112" class="bento-mini-svg" aria-hidden="true">
+  <g class="mini-wash" filter="url(#ui-wash)">
+    <path d="M21.6 19.3 C56.7 19.3 91.6 17.9 126.5 14.1 C127.0 39.0 129.6 63.6 133.0 88.1 C98.9 92.2 64.7 95.5 30.3 95.9 Z" fill="#BCD1CA"/>
+    <path d="M21.6 19.3 C56.7 19.3 91.6 17.9 126.5 14.1 C127.0 39.0 129.6 63.6 133.0 88.1 C98.9 92.2 64.7 95.5 30.3 95.9 Z" fill="none" stroke="#93B0A6" stroke-width="1.8" stroke-opacity="0.55"/>
+  </g>
+  <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M34.3 17.7 C70.6 18.5 106.7 21.1 142.8 25.3 C141.8 47.6 139.3 69.5 134.8 91.4 C98.9 91.0 63.2 88.0 27.6 83.8 Z" fill="#FAF9F5" stroke-width="3.0"/>
+    <path d="M106.7 56.6 C105.5 65.9 98.7 74.1 89.0 75.4 C79.3 76.8 71.2 70.2 67.6 61.9 C64.1 53.6 66.1 43.7 73.3 38.0 C80.5 32.3 91.0 30.7 98.9 36.5 C106.8 42.3 107.9 52.8 104.7 61.2" fill="#788C5D" fill-opacity="0.25" stroke-width="2.8"/>
+    <path d="M75.2 54.3 C78.1 57.3 80.9 60.3 83.6 63.5 C89.2 57.2 94.4 50.6 99.3 43.7" stroke-width="3.2"/>
+    <path d="M143.8 25.8 Q150.2 25.4 156.4 26.5 M148.3 21.1 Q147.1 27.6 147.6 34.2" stroke-width="2.0"/>
+  </g>
+</svg>
+        <span class="bento-tag">03 · Automated Quality Gate</span>
+        <h3>Deterministic Lint Gate</h3>
+        <p>Every centerpiece SVG is audited by <code>lineart.py lint</code> for mirror-symmetry tells, stroke hierarchy (<code>8.5 / 6.0 / 4.5</code>), wash visibility, and 28px hole survival.</p>
+        <div class="bento-meta">
+          <span>Markup + Raster Audit</span>
+          <span>0 Warnings</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. 2-Tier Editorial Pricing Section -->
+  <section id="pricing-section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Transparent Studio Editions</div>
+        <h2 class="section-title">Editorial Pricing for Craft-Minded Teams</h2>
+      </div>
+      <span class="brand-sub">Hand-stamped wax seal marks our recommended team tier</span>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Tier 1: Studio Pass -->
+      <article class="pricing-card">
+        <svg class="pricing-bg" viewBox="0 0 452 388" preserveAspectRatio="none">
+          <g class="pricing-wash" filter="url(#ui-wash)">
+            <path d="M17.2 15.8 C155.5 15.5 293.7 14.4 431.9 8.9 C436.0 128.6 438.4 248.4 439.5 368.2 C301.1 375.8 162.7 377.5 24.2 375.8 Z" fill="#BCD1CA"/>
+            <path d="M17.2 15.8 C155.5 15.5 293.7 14.4 431.9 8.9 C436.0 128.6 438.4 248.4 439.5 368.2 C301.1 375.8 162.7 377.5 24.2 375.8 Z" fill="none" stroke="#93B0A6" stroke-width="2.2" stroke-opacity="0.55"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M9.4 9.9 C147.4 6.3 285.4 4.8 423.4 5.8 C423.2 123.1 424.5 240.3 429.4 357.5 C290.9 358.4 152.4 360.5 14.0 364.8 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+
+        <div>
+          <div class="tier-name">Studio Pass · Local CLI</div>
+          <div class="tier-price">$0 <span>/ local forever</span></div>
+          <p class="tier-desc">Full offline access to <code>scripts/lineart.py</code>, motif library, and deterministic SVG/PNG rendering.</p>
+
+          <ul class="feature-list">
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#788C5D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Unlimited 64×64 motifs &amp; 512×512 hero scenes</span>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#788C5D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Built-in <code>lineart.py lint</code> markup &amp; raster checks</span>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#788C5D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Self-drawing <code>pathLength="1"</code> stroke animation ready</span>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="nav-pill-btn" style="align-self:flex-start; box-shadow: 4px 4px 0 var(--cactus-edge);">
+          Clone Local Skill →
+        </button>
+      </article>
+
+      <!-- Tier 2: Atelier Pro with Wax-Seal Stamp -->
+      <article class="pricing-card">
+        <svg class="pricing-bg" viewBox="0 0 452 388" preserveAspectRatio="none">
+          <g class="pricing-wash" filter="url(#ui-wash)">
+            <path d="M17.7 12.2 C156.9 19.7 296.1 21.0 435.5 19.5 C429.3 137.2 427.1 255.0 428.6 372.8 C291.1 373.6 153.7 370.9 16.3 367.6 Z" fill="#D97757"/>
+            <path d="M17.7 12.2 C156.9 19.7 296.1 21.0 435.5 19.5 C429.3 137.2 427.1 255.0 428.6 372.8 C291.1 373.6 153.7 370.9 16.3 367.6 Z" fill="none" stroke="#B85C3E" stroke-width="2.2" stroke-opacity="0.55"/>
+          </g>
+          <g filter="url(#ui-ink)">
+            <path d="M10.0 8.1 C149.0 10.9 287.9 11.7 426.9 10.7 C428.9 127.8 426.9 244.8 422.4 361.8 C285.9 357.9 149.4 356.6 12.8 356.4 Z" fill="#FFFEFA" stroke="#141413" stroke-width="2.8" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+
+        <!-- Hand-Drawn Wax-Seal Stamp (RECOMMENDED) -->
+        <svg class="wax-seal-stamp" viewBox="0 0 116 116" aria-label="Recommended Tier Wax Seal">
+          <g filter="url(#ui-wash)">
+            <path d="M70.3 101.9 C50.4 107.4 28.0 100.6 17.1 82.1 C6.2 63.5 14.0 41.7 27.6 27.9 C41.3 14.2 62.6 10.2 79.8 20.1 C97.0 30.0 102.2 50.8 97.4 68.7 C92.6 86.5 77.1 100.7 57.8 100.6" fill="#D97757"/>
+            <path d="M70.3 101.9 C50.4 107.4 28.0 100.6 17.1 82.1 C6.2 63.5 14.0 41.7 27.6 27.9 C41.3 14.2 62.6 10.2 79.8 20.1 C97.0 30.0 102.2 50.8 97.4 68.7 C92.6 86.5 77.1 100.7 57.8 100.6" fill="none" stroke="#B85C3E" stroke-width="2.5" stroke-opacity="0.7"/>
+          </g>
+          <g filter="url(#ui-ink)" fill="none" stroke="#141413" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M70.3 101.9 C50.4 107.4 28.0 100.6 17.1 82.1 C6.2 63.5 14.0 41.7 27.6 27.9 C41.3 14.2 62.6 10.2 79.8 20.1 C97.0 30.0 102.2 50.8 97.4 68.7 C92.6 86.5 77.1 100.7 57.8 100.6" stroke-width="2.8"/>
+            <path d="M73.2 87.5 C59.9 94.4 44.4 90.0 34.7 79.6 C25.0 69.1 21.7 53.3 29.5 40.5 C37.4 27.7 52.6 20.7 67.5 24.9 C82.3 29.2 92.4 42.9 92.3 58.2 C92.2 73.6 82.0 87.3 67.1 91.3" fill="#FAF9F5" stroke-width="2.2"/>
+            <path d="M52.6 43.3 Q60.0 40.3 68.0 39.5 M56.7 36.5 Q59.7 44.1 60.5 52.3" stroke-width="2.2"/>
+          </g>
+          <text x="58" y="64" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" font-weight="600" fill="#141413" letter-spacing="0.06em">RECOMMENDED</text>
+          <text x="58" y="75" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="8" fill="#B85C3E">Atelier Seal</text>
+        </svg>
+
+        <div>
+          <div class="tier-name" style="color: var(--clay-edge); font-weight: 600;">Atelier Pro · Multi-Agent Studio</div>
+          <div class="tier-price">$29 <span>/ seat / month</span></div>
+          <p class="tier-desc">Shared brand motif registries, live multi-theme watercolor tokens, and automated CI visual lint gates.</p>
+
+          <ul class="feature-list">
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#D97757" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Everything in Studio Pass + team motif syncing</span>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#D97757" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Interactive watercolor glaze switcher &amp; CSS tokens</span>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#D97757" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.0 10.6 C5.6 12.3 7.2 14.2 8.8 16.1 C12.0 12.1 15.5 8.3 19.3 4.8"/></svg>
+              <span>Zero-stock-photo editorial hero &amp; slide deck pipelines</span>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="nav-pill-btn" style="align-self:flex-start; background: var(--ink); color: var(--paper);">
+          Start 14-Day Atelier Trial →
+        </button>
+      </article>
+    </div>
+  </section>
+</div>
+
+<script>
+  // 1. Assign sequential --step CSS custom properties for stroke-draw replay
+  const viewport = document.getElementById('hero-svg-viewport');
+  const stepNodes = viewport.querySelectorAll('[data-step]');
+  stepNodes.forEach((node) => {
+    node.style.setProperty('--step', node.getAttribute('data-step'));
+  });
+
+  function triggerPenReplay() {
+    viewport.classList.remove('is-drawing');
+    void viewport.offsetWidth; // Force reflow
+    viewport.classList.add('is-drawing');
+  }
+
+  document.getElementById('btn-replay-draw').addEventListener('click', triggerPenReplay);
+  document.getElementById('cta-launch-studio').addEventListener('click', triggerPenReplay);
+
+  // Run initial pen draw on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(triggerPenReplay, 120);
+  });
+
+  // 2. Watercolor Wash Theme Switcher
+  const themes = {
+    warm: {
+      coolFill: '#6A9BCC', coolEdge: '#4C7FB3',
+      warmFill: '#EBC9B7', warmEdge: '#D3A58D',
+      focalFill: '#D97757', focalEdge: '#B85C3E',
+    },
+    sage: {
+      coolFill: '#BCD1CA', coolEdge: '#93B0A6',
+      warmFill: '#D4A27F', warmEdge: '#B9845F',
+      focalFill: '#788C5D', focalEdge: '#5D7046',
+    },
+    botanical: {
+      coolFill: '#CBCADB', coolEdge: '#A4A2BF',
+      warmFill: '#827DBD', warmEdge: '#635DA3',
+      focalFill: '#D97757', focalEdge: '#B85C3E',
+    }
+  };
+
+  const themeBtns = document.querySelectorAll('.theme-pill');
+  themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-theme');
+      const t = themes[key];
+      if (!t) return;
+      themeBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      document.getElementById('hero-wash-cool-fill').setAttribute('fill', t.coolFill);
+      document.getElementById('hero-wash-cool-edge').setAttribute('stroke', t.coolEdge);
+      document.getElementById('hero-wash-warm-fill').setAttribute('fill', t.warmFill);
+      document.getElementById('hero-wash-warm-edge').setAttribute('stroke', t.warmEdge);
+      document.getElementById('hero-wash-focal-fill').setAttribute('fill', t.focalFill);
+      document.getElementById('hero-wash-focal-edge').setAttribute('stroke', t.focalEdge);
+      document.getElementById('hero-seal-tint').setAttribute('fill', t.focalFill);
+    });
+  });
+
+  // 3. Lint button feedback
+  const lintBtn = document.getElementById('cta-inspect-lint');
+  const lintLabel = document.getElementById('lint-btn-label');
+  lintBtn.addEventListener('click', () => {
+    lintLabel.textContent = '✓ Verified: 0 Warnings (36% Wash)';
+    setTimeout(() => {
+      lintLabel.textContent = 'Inspect Lint: 0 Warnings';
+    }, 2600);
+  });
+</script>
+</body>
+</html>
