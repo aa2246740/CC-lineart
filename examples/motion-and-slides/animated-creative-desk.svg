@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="53" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="71" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation: isolate">
+  <g class="wash-blob wash-1">
+    <path d="M81.3 121.1 C168.2 116.7 255.0 111.5 341.7 102.1 C352.9 183.7 358.4 265.8 358.8 348.1 C271.1 345.7 184.1 350.7 97.3 362.5 Z" fill="#6A9BCC"/>
+    <path d="M81.3 121.1 C168.2 116.7 255.0 111.5 341.7 102.1 C352.9 183.7 358.4 265.8 358.8 348.1 C271.1 345.7 184.1 350.7 97.3 362.5 Z" fill="none" stroke="#4C7FB3" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-2" style="mix-blend-mode: multiply">
+    <path d="M233.4 240.1 C304.5 227.3 376.1 220.6 448.2 216.3 C456.6 291.4 462.0 366.8 461.5 442.5 C390.2 452.9 318.9 457.8 246.8 457.8 Z" fill="#EBC9B7"/>
+    <path d="M233.4 240.1 C304.5 227.3 376.1 220.6 448.2 216.3 C456.6 291.4 462.0 366.8 461.5 442.5 C390.2 452.9 318.9 457.8 246.8 457.8 Z" fill="none" stroke="#D3A58D" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-3">
+    <path d="M453.9 85.3 C465.9 98.7 465.7 118.2 456.4 132.7 C447.1 147.3 429.4 154.8 412.5 149.6 C395.6 144.5 385.4 128.2 385.9 111.1 C386.3 93.9 396.3 77.0 414.0 72.6 C431.7 68.1 451.1 74.8 460.4 91.1" fill="#D97757"/>
+    <path d="M453.9 85.3 C465.9 98.7 465.7 118.2 456.4 132.7 C447.1 147.3 429.4 154.8 412.5 149.6 C395.6 144.5 385.4 128.2 385.9 111.1 C386.3 93.9 396.3 77.0 414.0 72.6 C431.7 68.1 451.1 74.8 460.4 91.1" fill="none" stroke="#B85C3E" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 1. Background desk horizon & flight trail behind monitor -->
+  <path class="draw-stroke" data-step="1" pathLength="1" d="M18.5 371.9 C48.8 370.9 79.0 368.8 109.2 365.5" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="2" pathLength="1" d="M423.6 349.8 C447.7 348.0 471.6 345.2 495.2 340.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="3" pathLength="1" d="M150.1 393.6 C198.9 311.4 269.0 233.8 377.0 138.9" stroke-width="5.5" stroke-dasharray="14 18"/>
+
+  <!-- 2. Studio Display Monitor -->
+  <path class="paper-fill" data-step="4" d="M205.0 313.0 C221.4 311.0 237.8 309.4 254.4 308.7 C258.7 327.1 263.6 345.4 269.2 363.4 C244.1 365.5 218.9 365.6 193.7 365.0 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="5" pathLength="1" d="M206.0 312.2 C203.3 330.0 199.4 347.8 195.1 365.3" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="6" pathLength="1" d="M252.6 308.2 C257.7 325.5 261.7 342.9 264.8 360.7" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="7" pathLength="1" d="M161.8 367.7 C206.2 363.0 250.8 359.9 295.5 360.5" stroke-width="8.5"/>
+
+  <path class="paper-fill" data-step="8" d="M80.6 120.7 C171.4 117.3 262.0 111.3 352.4 101.3 C350.1 168.6 355.5 235.7 362.5 302.4 C271.1 300.5 180.1 306.1 89.4 316.3 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="9" pathLength="1" d="M65.8 118.9 C164.0 110.0 262.3 104.7 360.8 101.6 M349.3 91.9 C350.3 163.5 354.6 234.9 364.6 306.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="10" pathLength="1" d="M372.7 303.6 C277.5 303.7 182.5 305.8 87.8 318.3 M93.1 323.9 C87.1 252.5 83.7 181.0 83.4 109.4" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="11" pathLength="1" d="M89.0 272.1 C178.9 271.5 268.6 267.7 358.1 258.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="12" pathLength="1" d="M142.7 117.0 C148.2 166.7 151.9 216.6 153.6 266.5" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="13" pathLength="1" d="M172.6 146.8 C200.6 143.1 228.8 142.6 257.1 143.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="14" pathLength="1" d="M175.2 174.8 C221.4 175.2 267.3 171.0 313.0 164.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="15" pathLength="1" d="M189.7 199.7 C220.1 194.8 250.6 192.6 281.3 192.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="16" pathLength="1" d="M178.5 237.5 C211.3 216.6 243.6 249.5 276.6 224.4 C301.0 208.0 318.2 231.1 335.0 216.7" stroke-width="6.0"/>
+
+  <!-- 3. Open Notebook in Foreground Left -->
+  <path class="paper-fill" data-step="17" d="M30.7 350.7 C97.5 340.2 164.8 331.1 232.6 330.9 C241.5 377.1 246.8 423.8 250.1 470.8 C180.6 472.9 111.7 479.6 43.3 490.2 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="18" pathLength="1" d="M22.5 350.3 C93.7 339.8 165.3 333.0 237.4 330.1 M229.6 320.1 C231.0 373.5 237.8 426.5 248.4 478.7" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="19" pathLength="1" d="M253.4 468.4 C180.1 471.1 107.5 476.5 35.5 490.7 M44.1 496.4 C34.6 443.4 29.6 389.9 28.0 336.2" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="20" pathLength="1" d="M132.8 339.4 C135.3 385.9 140.6 432.1 147.6 478.1" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="21" pathLength="1" d="M122.1 366.1 C133.7 360.0 144.2 361.7 151.4 367.4" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="22" pathLength="1" d="M125.9 403.8 C138.2 398.4 148.6 400.5 155.4 405.6" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="23" pathLength="1" d="M130.6 442.3 C141.9 436.4 152.8 437.0 160.4 444.4" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="24" pathLength="1" d="M53.3 381.3 C72.6 377.9 91.9 376.2 111.4 375.5" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="25" pathLength="1" d="M59.1 413.0 C74.6 410.6 90.2 409.0 105.9 407.8" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="26" pathLength="1" d="M60.0 441.4 C79.6 441.0 99.1 439.3 118.4 435.9" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="27" pathLength="1" d="M192.1 377.3 C203.3 378.3 213.0 386.2 215.0 397.5 C217.1 408.8 211.3 420.0 200.9 424.9 C190.6 429.9 178.4 426.8 171.0 418.3 C163.7 409.7 164.7 397.6 170.6 388.9 C176.6 380.1 187.6 376.4 197.6 379.9" stroke-width="5.5"/>
+
+  <!-- 4. Steaming Mug on Right -->
+  <path class="paper-fill" data-step="28" d="M345.6 310.1 C378.5 306.7 411.6 304.8 444.7 303.8 C438.7 344.5 435.2 385.5 434.1 426.8 C407.5 431.2 380.8 432.3 354.0 432.9 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="paper-fill" data-step="29" d="M350.5 398.0 C376.6 383.1 408.3 406.4 437.0 385.6 C434.9 400.1 433.5 414.8 433.1 429.5 C406.7 429.7 380.4 431.1 354.1 433.5 Z" fill="#D97757" fill-opacity="0.32" stroke="none"/>
+  <path class="draw-stroke" data-step="30" pathLength="1" d="M342.2 313.7 C378.4 308.0 414.9 304.3 451.6 304.7 M446.2 298.5 C438.3 343.5 433.6 388.6 432.8 434.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="31" pathLength="1" d="M436.5 429.3 C408.6 432.1 380.7 434.0 352.7 434.5 M358.8 441.6 C350.7 396.5 346.4 351.2 344.2 305.5" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="32" pathLength="1" d="M347.7 314.0 C374.7 326.3 416.8 322.7 442.9 305.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="33" pathLength="1" d="M443.6 327.4 C483.6 323.9 482.2 388.9 445.0 396.9" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="34" pathLength="1" d="M353.2 395.9 C378.8 382.7 408.3 402.9 436.4 382.7" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="35" pathLength="1" d="M364.7 286.7 C354.6 260.6 377.4 241.3 363.5 218.8" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="36" pathLength="1" d="M394.8 276.3 C381.3 245.9 408.6 223.9 396.4 192.9" stroke-width="5.5"/>
+  <path class="draw-stroke" data-step="37" pathLength="1" d="M421.4 291.1 C413.6 269.6 432.2 248.4 422.2 229.5" stroke-width="5.5"/>
+
+  <!-- 5. Paper Plane Launching Across Upper-Right -->
+  <path class="paper-fill" data-step="38" d="M362.2 117.2 C404.3 97.2 446.9 78.3 490.1 60.7 C472.5 96.3 453.1 130.6 430.6 163.3 C420.8 152.8 411.6 141.8 403.2 130.2 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="39" pathLength="1" d="M362.6 117.2 C404.3 97.2 446.3 78.9 489.4 62.1 C458.9 84.0 429.4 106.8 401.1 131.0 Z" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="40" pathLength="1" d="M402.9 132.5 C433.6 110.7 462.8 86.9 489.6 60.9 C468.0 94.0 449.4 128.1 432.5 163.1 C421.6 153.0 411.4 142.0 402.3 130.5" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="41" pathLength="1" d="M401.5 131.6 C405.1 140.0 408.3 148.5 411.0 157.2 C415.9 152.2 420.5 147.2 424.8 141.7" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="42" pathLength="1" d="M315.3 152.5 C327.1 143.7 339.6 136.2 352.8 129.4" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="43" pathLength="1" d="M341.4 179.8 C356.5 169.8 372.2 160.9 388.3 152.9" stroke-width="5.0"/>
+
+  <!-- 6. Accents -->
+  <path class="draw-stroke" data-step="44" pathLength="1" d="M401.9 38.6 Q420.9 41.1 438.9 47.6 M419.2 28.8 Q417.0 46.2 411.0 62.6" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="45" pathLength="1" d="M362.9 59.1 Q372.4 56.4 382.3 56.0 M368.7 49.8 Q372.1 61.7 372.6 74.1" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="46" pathLength="1" d="M457.9 131.7 Q467.7 131.3 477.4 132.4 M466.3 122.8 Q467.4 133.7 465.6 144.5" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="47" pathLength="1" d="M39.2 246.1 Q49.3 242.2 60.1 241.1 M45.9 235.3 Q49.8 246.9 51.6 258.9" stroke-width="5.0"/>
+  <circle class="paper-fill" data-step="48" cx="348" cy="50" r="4.5" fill="#141413" stroke="none"/>
+  <circle class="paper-fill" data-step="49" cx="472" cy="96" r="4.0" fill="#6A9BCC" stroke="none"/>
+</g>
+</svg>
