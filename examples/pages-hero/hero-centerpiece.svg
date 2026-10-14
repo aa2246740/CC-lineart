@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="41" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="59" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation: isolate">
+  <g class="wash-blob wash-cool">
+    <path id="hero-wash-cool-fill" d="M63.5 239.3 C137.1 233.5 210.2 225.4 283.2 215.3 C292.6 292.0 296.2 368.8 297.5 446.0 C223.1 447.1 148.8 451.9 74.9 460.9 Z" fill="#6A9BCC"/>
+    <path id="hero-wash-cool-edge" d="M63.5 239.3 C137.1 233.5 210.2 225.4 283.2 215.3 C292.6 292.0 296.2 368.8 297.5 446.0 C223.1 447.1 148.8 451.9 74.9 460.9 Z" fill="none" stroke="#4C7FB3" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-warm" style="mix-blend-mode: multiply">
+    <path id="hero-wash-warm-fill" d="M187.5 107.4 C269.5 91.6 351.9 85.5 435.1 82.5 C444.2 163.5 451.0 245.0 449.4 326.7 C367.4 325.7 286.0 331.1 205.0 343.1 Z" fill="#EBC9B7"/>
+    <path id="hero-wash-warm-edge" d="M187.5 107.4 C269.5 91.6 351.9 85.5 435.1 82.5 C444.2 163.5 451.0 245.0 449.4 326.7 C367.4 325.7 286.0 331.1 205.0 343.1 Z" fill="none" stroke="#D3A58D" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-focal">
+    <path id="hero-wash-focal-fill" d="M430.2 151.9 C414.9 162.8 393.7 163.8 378.6 151.4 C363.5 139.1 357.0 118.2 365.2 99.7 C373.4 81.3 393.5 72.4 412.7 75.5 C431.9 78.5 445.6 94.6 447.7 113.4 C449.8 132.2 440.5 151.6 422.1 158.9" fill="#D97757"/>
+    <path id="hero-wash-focal-edge" d="M430.2 151.9 C414.9 162.8 393.7 163.8 378.6 151.4 C363.5 139.1 357.0 118.2 365.2 99.7 C373.4 81.3 393.5 72.4 412.7 75.5 C431.9 78.5 445.6 94.6 447.7 113.4 C449.8 132.2 440.5 151.6 422.1 158.9" fill="none" stroke="#B85C3E" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Background trajectory & registration arcs -->
+  <path class="draw-stroke" data-step="1" pathLength="1" d="M33.1 425.0 C117.6 443.7 197.7 395.0 252.5 325.1" stroke-width="4.5" stroke-dasharray="14 16"/>
+  <path class="draw-stroke" data-step="2" pathLength="1" d="M172.9 331.8 C208.0 314.9 221.1 273.9 245.2 252.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="3" pathLength="1" d="M337.9 192.7 C363.5 166.3 379.3 138.8 398.1 125.3" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="4" pathLength="1" d="M424.1 77.6 C455.6 52.2 475.8 36.8 496.1 23.5" stroke-width="4.5"/>
+
+  <!-- Act I: Tilted Architect's Sketchbook (Lower-Left) -->
+  <path class="paper-fill" data-step="5" d="M29.6 289.7 C79.8 280.8 130.4 273.8 181.2 269.2 C189.7 332.2 194.4 395.3 196.1 458.6 C145.9 467.4 95.5 473.8 44.7 478.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="6" pathLength="1" d="M21.8 305.3 C26.7 296.1 30.8 286.5 34.0 276.5 M20.5 288.5 C78.1 283.5 135.5 276.1 192.6 266.4 M180.4 262.5 C190.1 331.3 198.5 400.5 199.2 470.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="7" pathLength="1" d="M204.5 456.9 C150.5 467.3 96.1 474.3 41.3 474.9 M46.7 483.9 C44.7 415.0 38.9 346.4 27.4 278.3" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="8" pathLength="1" d="M56.3 286.9 C63.8 346.7 68.7 406.9 69.5 467.3" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="9" pathLength="1" d="M149.5 272.4 C151.4 283.5 153.6 294.6 156.3 305.5 C166.6 303.9 176.7 301.6 186.7 298.5" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="10" pathLength="1" d="M79.0 331.8 C107.6 319.6 135.2 341.3 164.6 327.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="11" pathLength="1" d="M82.5 365.4 C109.1 353.5 131.3 375.4 154.8 361.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="12" pathLength="1" d="M79.4 398.2 C97.3 395.2 115.1 391.4 132.5 386.2 M130.2 383.4 C127.3 399.7 122.7 415.7 116.9 431.2 M120.6 427.7 C105.0 425.1 89.5 421.7 74.2 417.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="13" pathLength="1" d="M125.0 408.1 C140.0 397.3 153.4 414.7 167.1 403.1" stroke-width="4.5"/>
+
+  <!-- Drafting Fountain Pen -->
+  <path class="paper-fill" data-step="14" d="M138.1 439.6 C168.8 415.9 198.8 391.0 227.2 364.9 C233.2 370.0 238.6 375.4 243.7 381.4 C211.9 403.7 182.4 428.8 153.9 454.9 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="15" pathLength="1" d="M138.1 439.6 C168.8 415.9 198.8 391.0 227.2 364.9 C233.2 370.0 238.6 375.4 243.7 381.4 C211.9 403.7 182.4 428.8 153.9 454.9 Z" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="16" pathLength="1" d="M137.3 440.0 C130.0 450.3 122.0 460.2 113.5 469.5 C127.1 465.8 140.3 460.7 153.1 454.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="17" pathLength="1" d="M200.6 387.5 C205.4 393.2 210.4 398.8 215.6 404.2" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="18" pathLength="1" d="M213.1 373.0 C222.8 364.8 233.0 357.6 243.9 351.1 C245.7 353.7 247.6 356.1 249.6 358.5" stroke-width="4.5"/>
+
+  <!-- Act II: Autonomous Studio Cloud Workbench (Center) -->
+  <path class="paper-fill" data-step="19" d="M173.4 163.3 C236.0 151.0 298.8 146.5 362.4 144.7 C369.6 202.3 373.5 260.0 376.6 317.8 C313.7 319.8 251.3 322.7 189.1 333.7 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="20" pathLength="1" d="M168.9 164.3 C236.4 153.0 304.4 147.6 372.7 144.3 M361.2 134.7 C371.9 198.4 376.8 262.5 378.4 327.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="21" pathLength="1" d="M384.3 319.7 C316.3 328.9 248.1 334.4 179.6 336.5 M188.1 341.4 C178.6 279.1 173.3 216.2 173.4 153.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="22" pathLength="1" d="M181.3 199.4 C241.9 195.7 302.4 190.6 362.6 182.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="23" pathLength="1" d="M202.9 230.9 C210.2 235.3 217.3 240.2 224.0 245.6 C217.3 251.3 211.1 257.4 205.2 263.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="24" pathLength="1" d="M233.0 264.8 C244.4 262.9 255.8 262.0 267.4 261.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="25" pathLength="1" d="M312.3 238.6 C312.4 228.4 312.1 218.3 311.3 208.1 M321.5 242.0 C326.3 238.1 330.9 234.1 335.4 229.9 M323.3 249.5 C332.0 250.9 340.6 252.5 349.1 254.6 M319.2 257.0 C323.0 262.8 327.1 268.4 331.3 273.8 M309.3 258.0 C307.3 268.1 305.6 278.4 304.8 288.7 M301.0 253.4 C295.9 256.5 290.9 259.8 286.0 263.4 M302.4 244.3 C294.2 241.5 285.7 239.4 277.2 237.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="26" pathLength="1" d="M204.6 291.0 C229.4 289.0 254.1 287.4 279.0 286.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="27" pathLength="1" d="M205.1 309.2 C222.5 306.4 240.1 304.6 257.7 304.7" stroke-width="4.5"/>
+
+  <!-- Act III: Shipped UI Artifact Card + Verification Seal (Upper-Right) -->
+  <path class="paper-fill" data-step="28" d="M303.7 36.7 C363.9 29.9 424.3 25.9 484.7 22.7 C485.4 75.2 489.0 127.4 495.9 179.4 C434.7 178.6 373.7 184.5 313.1 194.2 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="29" pathLength="1" d="M296.1 40.2 C362.7 35.4 429.1 28.8 495.2 19.3 M483.4 12.6 C483.7 71.2 487.8 129.6 496.7 187.5" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="30" pathLength="1" d="M507.2 176.8 C440.3 185.9 373.2 191.1 305.7 194.6 M314.0 198.1 C307.3 142.9 301.9 87.7 299.4 32.2" stroke-width="8.5"/>
+  <path class="paper-fill" data-step="31" id="hero-seal-tint" d="M426.8 64.3 C443.9 69.1 453.4 85.8 453.1 102.6 C452.9 119.4 441.9 134.7 425.2 138.9 C408.5 143.0 391.0 135.7 382.6 120.5 C374.2 105.4 375.0 85.7 388.0 73.1 C401.1 60.4 420.7 61.2 435.2 70.0" fill="#D97757" fill-opacity="0.28" stroke="none"/>
+  <path class="draw-stroke" data-step="32" pathLength="1" d="M426.8 64.3 C443.9 69.1 453.4 85.8 453.1 102.6 C452.9 119.4 441.9 134.7 425.2 138.9 C408.5 143.0 391.0 135.7 382.6 120.5 C374.2 105.4 375.0 85.7 388.0 73.1 C401.1 60.4 420.7 61.2 435.2 70.0" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="33" pathLength="1" d="M398.1 104.2 C402.0 108.6 406.3 112.8 410.7 116.8 C420.8 107.0 430.1 96.2 439.0 85.1" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="34" pathLength="1" d="M324.9 72.9 C337.9 71.2 351.0 69.9 364.2 69.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="35" pathLength="1" d="M327.2 103.2 C337.0 101.0 346.8 99.4 356.8 98.2" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="36" pathLength="1" d="M328.4 152.7 C373.7 146.4 419.3 141.9 465.1 141.2" stroke-width="6.0"/>
+
+  <!-- Foreground bridging arrows -->
+  <path class="draw-stroke" data-step="37" pathLength="1" d="M160.7 312.9 C188.0 281.0 210.5 267.4 236.7 255.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="38" pathLength="1" d="M221.7 248.2 C227.6 249.9 233.6 251.2 239.7 252.1 C236.0 258.5 231.8 264.6 227.3 270.3" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="39" pathLength="1" d="M324.5 193.6 C346.4 164.6 362.1 140.8 380.8 125.6" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="40" pathLength="1" d="M361.5 124.2 C368.1 124.1 374.8 124.3 381.4 124.7 C379.1 130.7 376.6 136.4 373.4 142.0" stroke-width="6.0"/>
+
+  <!-- Quiet-area sparkles & ink dots -->
+  <path class="draw-stroke" data-step="41" pathLength="1" d="M70.5 90.8 Q90.0 92.8 108.6 98.7 M89.8 75.4 Q83.3 97.4 80.6 120.2" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="42" pathLength="1" d="M120.8 73.7 Q131.7 72.4 142.1 68.7 M126.0 63.3 Q130.6 75.3 131.7 88.0" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="43" pathLength="1" d="M59.0 135.6 Q67.3 132.4 76.2 131.6 M64.3 126.5 Q67.0 135.7 68.6 145.1" stroke-width="4.5"/>
+  <path class="draw-stroke" data-step="44" pathLength="1" d="M438.8 419.5 Q450.5 416.4 462.5 415.6 M446.4 408.6 Q446.6 420.7 450.4 432.2" stroke-width="4.5"/>
+  <circle class="paper-fill" data-step="45" cx="148" cy="112" r="4.5" fill="#141413" stroke="none"/>
+  <circle class="paper-fill" data-step="46" cx="56" cy="92" r="3.8" fill="#788C5D" stroke="none"/>
+</g>
+</svg>

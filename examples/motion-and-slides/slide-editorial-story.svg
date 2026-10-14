@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="31" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.1 1.45" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="47" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation: isolate">
+  <g class="wash-blob wash-1">
+    <path d="M55.9 256.9 C123.7 246.5 191.9 238.4 260.4 232.5 C260.4 305.5 265.1 378.2 273.6 450.7 C207.6 457.0 141.4 461.1 75.1 462.4 Z" fill="#788C5D"/>
+    <path d="M55.9 256.9 C123.7 246.5 191.9 238.4 260.4 232.5 C260.4 305.5 265.1 378.2 273.6 450.7 C207.6 457.0 141.4 461.1 75.1 462.4 Z" fill="none" stroke="#5D7046" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-2" style="mix-blend-mode: multiply">
+    <path d="M197.4 117.7 C276.2 117.0 354.2 111.7 432.1 98.4 C432.2 175.5 437.0 252.4 445.9 329.1 C368.9 338.1 291.7 345.2 214.2 348.7 Z" fill="#EBC9B7"/>
+    <path d="M197.4 117.7 C276.2 117.0 354.2 111.7 432.1 98.4 C432.2 175.5 437.0 252.4 445.9 329.1 C368.9 338.1 291.7 345.2 214.2 348.7 Z" fill="none" stroke="#D3A58D" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g class="wash-blob wash-3">
+    <path d="M432.1 151.9 C421.4 167.2 401.6 172.0 384.6 165.9 C367.6 159.9 356.3 143.4 357.5 125.3 C358.8 107.1 369.7 88.9 389.0 84.9 C408.4 80.9 428.3 89.8 437.5 107.6 C446.7 125.3 437.7 144.8 424.8 156.8" fill="#D97757"/>
+    <path d="M432.1 151.9 C421.4 167.2 401.6 172.0 384.6 165.9 C367.6 159.9 356.3 143.4 357.5 125.3 C358.8 107.1 369.7 88.9 389.0 84.9 C408.4 80.9 428.3 89.8 437.5 107.6 C446.7 125.3 437.7 144.8 424.8 156.8" fill="none" stroke="#B85C3E" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 1. Background trajectory strokes passing behind paper shapes -->
+  <path class="draw-stroke" data-step="1" pathLength="1" d="M26.7 432.3 C113.4 445.8 189.9 399.4 249.6 328.7" stroke-width="5.5" stroke-dasharray="14 16"/>
+  <path class="draw-stroke" data-step="2" pathLength="1" d="M177.2 334.2 C213.4 320.1 223.7 278.1 248.6 258.5" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="3" pathLength="1" d="M331.2 199.4 C359.7 170.3 373.4 140.8 396.0 128.1" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="4" pathLength="1" d="M432.0 82.6 C459.2 54.4 478.4 36.0 498.9 24.7" stroke-width="5.5"/>
+
+  <!-- 2. Act I: Sketch Card (Lower-Left) -->
+  <path class="paper-fill" data-step="5" d="M34.2 292.4 C81.7 282.9 129.7 275.7 178.5 272.6 C178.6 334.3 185.1 395.2 195.7 455.9 C146.6 465.7 97.0 472.6 47.2 476.7 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="6" pathLength="1" d="M30.3 311.1 C31.2 301.6 31.9 292.2 32.3 282.7 M24.8 294.7 C77.9 282.6 131.7 274.1 186.0 271.5 M179.4 261.7 C188.2 329.4 193.7 397.5 196.6 465.9" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="7" pathLength="1" d="M201.6 453.9 C148.0 457.6 94.7 465.0 42.3 476.2 M48.4 480.4 C46.7 415.1 42.5 350.1 33.4 285.5" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="8" pathLength="1" d="M147.8 277.0 C149.2 288.3 151.2 299.4 154.0 310.5 C164.2 308.4 174.3 305.9 184.3 303.1" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="9" pathLength="1" d="M57.2 335.0 C87.1 320.6 118.5 345.1 154.6 330.6" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="10" pathLength="1" d="M61.7 369.6 C93.4 358.6 114.3 379.1 144.6 366.7" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="11" pathLength="1" d="M59.9 404.4 C76.2 401.9 92.0 397.5 107.6 392.6 M106.4 389.1 C102.2 405.0 97.4 420.7 92.2 436.3 M97.1 434.0 C82.9 430.7 68.8 427.0 54.9 422.4" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="12" pathLength="1" d="M101.3 413.9 C119.1 404.9 132.4 423.2 148.9 409.2" stroke-width="5.5"/>
+
+  <!-- Drafting Pen across Act I corner -->
+  <path class="paper-fill" data-step="13" d="M134.7 442.4 C165.8 420.6 195.4 395.3 222.4 369.3 C227.9 374.7 232.7 380.5 237.4 386.7 C209.8 412.6 181.2 436.3 150.5 458.1 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="14" pathLength="1" d="M134.7 442.4 C165.8 420.6 195.4 395.3 222.4 369.3 C227.9 374.7 232.7 380.5 237.4 386.7 C209.8 412.6 181.2 436.3 150.5 458.1 Z" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="15" pathLength="1" d="M136.2 441.0 C129.4 451.2 122.3 461.1 114.8 471.0 C127.6 467.1 140.2 462.4 152.5 457.4" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="16" pathLength="1" d="M198.9 389.6 C203.3 395.3 208.1 400.7 213.2 405.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="17" pathLength="1" d="M212.5 378.7 C222.2 369.8 232.1 361.4 242.7 353.5 C244.1 356.3 245.6 359.0 247.2 361.6" stroke-width="5.5"/>
+
+  <!-- 3. Act II: Agent Execution Card (Center) -->
+  <path class="paper-fill" data-step="18" d="M177.7 167.5 C237.9 165.2 297.9 160.1 357.8 152.5 C362.8 208.3 365.8 264.3 366.9 320.4 C307.6 321.5 248.5 328.4 189.9 336.8 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="19" pathLength="1" d="M166.7 167.1 C232.6 164.5 298.1 158.6 363.5 150.8 M353.9 146.6 C363.8 208.6 369.1 271.0 368.7 333.7" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="20" pathLength="1" d="M373.1 320.8 C308.9 320.7 245.2 326.9 181.8 336.1 M190.3 345.0 C182.5 283.5 178.5 221.6 177.8 159.6" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="21" pathLength="1" d="M182.1 204.8 C240.5 194.3 299.4 190.8 358.7 189.0" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="22" pathLength="1" d="M204.8 233.0 C211.8 238.6 219.2 243.9 227.1 248.3 C220.2 254.1 213.0 259.7 205.7 265.0" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="23" pathLength="1" d="M235.7 267.8 C246.6 266.3 257.6 265.3 268.7 265.2" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="24" pathLength="1" d="M307.5 241.5 C307.9 232.3 307.8 223.1 307.0 213.9 M317.7 244.1 C322.7 241.3 327.4 238.1 331.9 234.7 M320.0 253.7 C328.1 255.5 336.2 257.0 344.3 258.3 M314.7 261.1 C318.5 266.3 322.8 271.1 327.3 275.6 M307.3 263.4 C304.8 272.5 303.0 281.8 301.9 291.2 M299.3 258.4 C294.4 261.8 289.2 264.8 283.8 267.5 M298.5 250.1 C290.1 248.4 281.8 245.7 273.7 242.8" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="25" pathLength="1" d="M205.0 294.5 C227.6 290.7 250.4 288.3 273.3 286.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="26" pathLength="1" d="M208.1 311.7 C224.5 309.0 240.9 307.7 257.4 307.2" stroke-width="6.0"/>
+
+  <!-- 4. Act III: Shipped Artifact Card (Upper-Right) -->
+  <path class="paper-fill" data-step="27" d="M304.2 41.7 C363.8 41.9 423.2 34.9 481.9 24.3 C482.1 76.8 485.3 129.1 494.1 180.9 C435.8 190.9 376.8 196.6 317.6 197.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path class="draw-stroke" data-step="28" pathLength="1" d="M292.0 41.1 C359.4 33.1 427.0 28.3 494.9 27.5 M484.6 21.9 C485.1 75.9 488.2 129.7 494.6 183.4" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="29" pathLength="1" d="M504.6 180.5 C439.0 188.6 372.9 195.3 306.8 197.4 M317.4 202.4 C310.3 146.4 305.4 90.3 301.7 33.9" stroke-width="8.5"/>
+  <path class="paper-fill" data-step="30" d="M438.8 76.2 C452.3 87.4 455.0 106.3 447.9 121.7 C440.8 137.0 424.6 146.9 407.5 144.0 C390.3 141.0 377.4 126.8 375.8 109.5 C374.2 92.2 383.5 75.0 400.3 68.8 C417.1 62.6 436.6 67.6 447.2 82.6" fill="#D97757" fill-opacity="0.28" stroke="none"/>
+  <path class="draw-stroke" data-step="31" pathLength="1" d="M438.8 76.2 C452.3 87.4 455.0 106.3 447.9 121.7 C440.8 137.0 424.6 146.9 407.5 144.0 C390.3 141.0 377.4 126.8 375.8 109.5 C374.2 92.2 383.5 75.0 400.3 68.8 C417.1 62.6 436.6 67.6 447.2 82.6" stroke-width="8.0"/>
+  <path class="draw-stroke" data-step="32" pathLength="1" d="M397.0 109.2 C400.8 114.2 405.0 118.7 409.6 123.0 C418.1 110.3 427.1 98.7 437.1 87.3" stroke-width="8.5"/>
+  <path class="draw-stroke" data-step="33" pathLength="1" d="M326.2 77.8 C338.5 75.3 350.9 73.5 363.4 72.9" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="34" pathLength="1" d="M328.8 105.9 C337.6 105.6 346.3 104.8 354.9 103.3" stroke-width="6.0"/>
+  <path class="draw-stroke" data-step="35" pathLength="1" d="M331.2 157.5 C373.9 148.9 416.9 146.0 460.3 144.6" stroke-width="6.0"/>
+
+  <!-- 5. Foreground flow connectors crossing over cards -->
+  <path class="draw-stroke" data-step="36" pathLength="1" d="M159.8 314.8 C190.8 283.7 213.1 269.0 239.4 255.6" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="37" pathLength="1" d="M221.1 250.3 C227.2 251.4 233.1 252.8 239.0 254.5 C235.2 260.2 231.3 265.8 227.1 271.2" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="38" pathLength="1" d="M322.9 197.0 C343.9 169.7 360.6 145.6 376.9 128.5" stroke-width="6.5"/>
+  <path class="draw-stroke" data-step="39" pathLength="1" d="M359.9 125.5 C366.8 126.0 373.8 125.9 380.8 125.5 C378.0 131.9 374.9 138.2 371.8 144.4" stroke-width="6.5"/>
+
+  <!-- 6. Accents in quiet upper-left quadrant + 1 echo -->
+  <path class="draw-stroke" data-step="40" pathLength="1" d="M73.1 96.6 Q93.8 98.6 114.3 95.0 M87.5 82.0 Q90.4 100.9 88.9 119.9" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="41" pathLength="1" d="M118.2 75.1 Q130.6 72.4 143.3 72.2 M126.8 63.4 Q127.3 76.8 129.8 89.9" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="42" pathLength="1" d="M63.0 135.2 Q71.3 134.6 78.9 131.4 M66.1 126.0 Q69.4 135.5 70.8 145.6" stroke-width="5.0"/>
+  <path class="draw-stroke" data-step="43" pathLength="1" d="M437.3 414.2 Q448.2 415.4 458.6 418.7 M447.9 407.1 Q446.9 419.2 442.9 430.8" stroke-width="5.0"/>
+  <circle class="paper-fill" data-step="44" cx="148" cy="112" r="4.5" fill="#141413" stroke="none"/>
+  <circle class="paper-fill" data-step="45" cx="56" cy="92" r="3.8" fill="#788C5D" stroke="none"/>
+</g>
+</svg>

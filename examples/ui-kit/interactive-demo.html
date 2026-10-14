@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CC-Lineart UI Kit — Tactile Ink &amp; Watercolor Interface System</title>
+<style>
+  :root {
+    --paper: #FAF9F5;
+    --paper-elevated: #F3F1EA;
+    --paper-deep: #EAE6DC;
+    --ink: #141413;
+    --ink-muted: #575550;
+    --ink-faint: #8A877F;
+    --clay: #D97757;
+    --clay-rim: #B85C3E;
+    --sky: #6A9BCC;
+    --sky-rim: #4C7FB3;
+    --cactus: #BCD1CA;
+    --cactus-rim: #93B0A6;
+    --heather: #CBCADB;
+    --heather-rim: #A4A2BF;
+    --plum: #827DBD;
+    --plum-rim: #635DA3;
+    --mineral: #629987;
+    --mineral-rim: #4A7D6C;
+    --peach: #EBC9B7;
+    --peach-rim: #D3A58D;
+    --kraft: #D4A27F;
+    --kraft-rim: #B9845F;
+    --olive: #788C5D;
+    --olive-rim: #5D7046;
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(235, 201, 183, 0.18), transparent 38%),
+      radial-gradient(circle at 84% 28%, rgba(106, 155, 204, 0.12), transparent 42%);
+  }
+
+  /* Shared hidden SVG filter bank */
+  .svg-defs-bank {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .page-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 28px 88px;
+  }
+
+  /* Top Editorial Masthead */
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 36px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clay-rim);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--clay);
+    border: 1.8px solid var(--ink);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 3.6vw, 3.1rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+
+  .subtitle {
+    max-width: 640px;
+    color: var(--ink-muted);
+    font-size: 1.04rem;
+    margin: 0;
+  }
+
+  /* Interactive Tactile SVG Buttons */
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .sketch-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 26px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    isolation: isolate;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sketch-btn svg.btn-bg {
+    position: absolute;
+    inset: -6px -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 12px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .sketch-btn .wash-layer {
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease;
+    transform: translate(5px, 5px);
+  }
+
+  .sketch-btn .paper-layer {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sketch-btn:hover {
+    transform: translate(-1px, -2px);
+  }
+
+  .sketch-btn:hover .wash-layer {
+    transform: translate(10px, 9px) scale(1.03) rotate(-1deg);
+  }
+
+  .sketch-btn:active {
+    transform: translate(2px, 2px);
+  }
+
+  .sketch-btn:active .wash-layer {
+    transform: translate(2px, 2px) scale(0.98);
+  }
+
+  /* Section Headers */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin: 44px 0 20px;
+  }
+
+  .section-head h2 {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .section-head .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  /* Callout Banner */
+  .callout-banner {
+    position: relative;
+    padding: 24px 30px;
+    margin-bottom: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    isolation: isolate;
+  }
+
+  .callout-banner svg.banner-bg {
+    position: absolute;
+    inset: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .callout-banner .wash-shift {
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate(6px, 6px);
+  }
+
+  .callout-banner:hover .wash-shift {
+    transform: translate(12px, 10px) rotate(-0.4deg);
+  }
+
+  .callout-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 680px;
+  }
+
+  .callout-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--clay);
+    color: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .callout-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .callout-desc {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--ink-muted);
+  }
+
+  /* Interactive Controls Bar (Search + Toggle + Filter Pills) */
+  .workbench-bar {
+    display: grid;
+    grid-template-columns: 1.3fr auto auto;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 860px) {
+    .workbench-bar {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--paper);
+    border: 2.4px solid var(--ink);
+    border-radius: 999px;
+    padding: 10px 18px;
+    box-shadow: 6px 6px 0 var(--cactus);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+
+  .search-box:focus-within {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 9px 0 var(--sky);
+  }
+
+  .search-box input {
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.96rem;
+    color: var(--ink);
+    width: 100%;
+    outline: none;
+  }
+
+  .kbd-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    background: var(--peach);
+    border: 1.8px solid var(--ink);
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  /* Tactile Toggle Switch in DOM */
+  .tactile-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    user-select: none;
+    padding: 6px 12px;
+  }
+
+  .toggle-track-ui {
+    width: 58px;
+    height: 32px;
+    border-radius: 999px;
+    border: 2.4px solid var(--ink);
+    background: var(--cactus);
+    position: relative;
+    transition: background 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 4px 4px 0 var(--mineral);
+  }
+
+  .toggle-knob-ui {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2.4px solid var(--ink);
+    position: absolute;
+    top: 2.5px;
+    left: 28px;
+    transition: left 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tactile-toggle[aria-checked="false"] .toggle-track-ui {
+    background: var(--paper-elevated);
+    box-shadow: 3px 3px 0 var(--heather);
+  }
+
+  .tactile-toggle[aria-checked="false"] .toggle-knob-ui {
+    left: 3.5px;
+  }
+
+  /* Onboarding / Feature Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    margin-bottom: 44px;
+  }
+
+  @media (max-width: 920px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sketch-card {
+    position: relative;
+    padding: 26px 24px 24px;
+    isolation: isolate;
+    cursor: pointer;
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sketch-card svg.card-bg {
+    position: absolute;
+    inset: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .sketch-card .card-wash {
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate(7px, 7px);
+  }
+
+  .sketch-card:hover {
+    transform: translate(-2px, -3px);
+  }
+
+  .sketch-card:hover .card-wash {
+    transform: translate(14px, 12px) scale(1.02) rotate(-0.8deg);
+  }
+
+  .card-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1.8px solid var(--ink);
+    background: var(--paper);
+    margin-bottom: 14px;
+  }
+
+  .sketch-card h3 {
+    font-family: var(--serif);
+    font-size: 1.28rem;
+    margin: 0 0 8px;
+  }
+
+  .sketch-card p {
+    margin: 0 0 16px;
+    font-size: 0.93rem;
+    color: var(--ink-muted);
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding-top: 10px;
+    border-top: 1.5px dashed rgba(20, 20, 19, 0.25);
+  }
+
+  /* Dual Showcase Grid: Interactive Empty State + Sticker Sheet */
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 960px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .showcase-panel {
+    background: var(--paper-elevated);
+    border: 2.5px solid var(--ink);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(20, 20, 19, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .panel-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1.8px solid rgba(20, 20, 19, 0.14);
+  }
+
+  .panel-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1.8px solid var(--ink);
+    background: var(--paper);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--olive);
+    border: 1.5px solid var(--ink);
+  }
+
+  .svg-stage {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .svg-stage svg {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    display: block;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .svg-stage:hover svg {
+    transform: scale(1.015);
+  }
+
+  /* Task Simulator List inside Empty State Panel */
+  .task-drawer {
+    margin-top: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .task-drawer.active {
+    display: flex;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    font-size: 0.92rem;
+    box-shadow: 4px 4px 0 var(--peach);
+  }
+
+  .task-item button {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    background: var(--cactus);
+    border: 1.8px solid var(--ink);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+
+  .panel-caption {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  /* Live Wash Mode when toggled off */
+  body.wash-muted .wash-layer,
+  body.wash-muted .card-wash,
+  body.wash-muted .wash-shift {
+    opacity: 0.18;
+    transform: translate(0, 0) !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG Filter Defs Bank for DOM UI Components -->
+<svg class="svg-defs-bank" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="ui-wash" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="19" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.42" result="a"/>
+      <feComposite in="d" in2="a" operator="in"/>
+    </filter>
+    <filter id="ui-ink" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="37" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="page-shell">
+  <header class="masthead">
+    <div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>CC-Lineart · Track 3 UI Component System</div>
+      <h1>Tactile Ink &amp; Watercolor UI</h1>
+      <p class="subtitle">
+        Hand-drawn `#141413` ink strokes with corner overshoots, `#FAF9F5` paper surfaces, and offset watercolor washes that shift like wet pigment on hover.
+      </p>
+    </div>
+    <div class="btn-row">
+      <button class="sketch-btn" id="btn-simulate" type="button">
+        <svg class="btn-bg" viewBox="0 0 196 60" preserveAspectRatio="none">
+          <g class="wash-layer" filter="url(#ui-wash)">
+            <path d="M14.4 9.3 C71.2 4.8 128.1 3.5 185.0 5.8 C184.7 22.0 183.1 38.1 181.0 54.2 C124.3 54.1 67.7 52.7 11.1 49.8 Z" fill="#D97757"/>
+            <path d="M14.4 9.3 C71.2 4.8 128.1 3.5 185.0 5.8 C184.7 22.0 183.1 38.1 181.0 54.2 C124.3 54.1 67.7 52.7 11.1 49.8 Z" fill="none" stroke="#B85C3E" stroke-width="2" stroke-opacity="0.55"/>
+          </g>
+          <g class="paper-layer" filter="url(#ui-ink)">
+            <path d="M25.7 7.1 C69.3 4.2 112.9 4.3 156.5 5.5 C160.8 8.9 165.4 12.2 170.1 15.0 C174.2 18.2 178.1 21.6 181.7 25.3 C178.6 30.4 175.7 35.7 173.2 41.2 C167.3 45.0 161.2 48.4 155.0 51.6 C111.6 48.9 68.2 48.2 24.8 50.1 C21.0 48.1 17.2 46.3 13.2 45.0 C10.8 40.2 8.8 35.5 7.1 30.5 C9.1 23.9 11.6 17.5 14.1 11.1 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <span id="btn-simulate-label">Simulate 2 Incoming Tasks</span>
+      </button>
+
+      <button class="sketch-btn" id="btn-cycle-palette" type="button">
+        <svg class="btn-bg" viewBox="0 0 176 60" preserveAspectRatio="none">
+          <g class="wash-layer" filter="url(#ui-wash)">
+            <path id="cycle-wash-path" d="M18.2 12.8 C68.4 9.0 118.7 6.7 169.0 6.9 C168.8 22.2 167.4 37.4 164.3 52.5 C114.6 48.5 64.8 47.0 14.9 47.5 Z" fill="#6A9BCC"/>
+          </g>
+          <g class="paper-layer" filter="url(#ui-ink)">
+            <path d="M26.6 5.0 C64.0 4.4 101.4 5.7 138.7 7.5 C143.3 10.3 148.1 12.8 153.0 15.0 C156.4 18.3 159.5 21.9 162.5 25.7 C160.0 30.1 157.3 34.4 154.5 38.6 C148.3 42.0 142.3 45.7 136.4 49.6 C98.9 52.9 61.3 53.3 23.7 50.7 C20.2 49.3 16.7 47.7 13.3 45.9 C11.9 41.0 10.3 36.3 8.2 31.7 C10.3 24.9 12.2 18.1 13.4 11.1 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <span>Cycle Wash Glaze</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Editorial Callout Banner -->
+  <section class="callout-banner" aria-label="Architecture note">
+    <svg class="banner-bg" viewBox="0 0 780 120" preserveAspectRatio="none">
+      <g class="wash-shift" filter="url(#ui-wash)" style="isolation:isolate">
+        <path d="M22.2 12.1 C154.6 13.8 287.0 13.9 419.3 8.0 C414.1 42.4 410.2 77.0 409.3 112.0 C278.3 107.4 147.2 105.0 16.1 104.9 Z" fill="#EBC9B7"/>
+        <path d="M308.1 16.8 C459.3 10.4 610.5 8.2 761.8 10.6 C755.8 45.7 751.1 80.9 747.4 116.5 C597.1 111.8 446.8 108.5 296.4 107.8 Z" fill="#CBCADB" style="mix-blend-mode:multiply"/>
+      </g>
+      <g filter="url(#ui-ink)">
+        <path d="M18.5 8.4 C263.6 10.2 508.7 10.1 753.8 8.0 C760.1 15.0 766.5 21.5 773.3 28.0 C771.6 51.3 771.4 74.5 772.0 97.8 C765.6 103.0 758.8 108.0 751.9 112.6 C507.5 113.9 263.2 114.0 18.8 109.5 C14.9 104.8 11.5 100.0 8.2 94.9 C10.1 69.1 10.1 43.2 8.0 17.3 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+    <div class="callout-content">
+      <span class="callout-badge">3-Layer Rule</span>
+      <div>
+        <h2 class="callout-title">Every UI control is an offset watercolor block, a paper cutout, and a bowed pen stroke</h2>
+        <p class="callout-desc">
+          Hover any button, card, or banner below to feel the watercolor wash drift independently behind the `#FAF9F5` paper surface while `vector-effect: non-scaling-stroke` preserves crisp ink weight.
+        </p>
+      </div>
+    </div>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      <span>Lint: 0 Warnings</span>
+    </div>
+  </section>
+
+  <!-- Interactive Workbench Controls -->
+  <div class="workbench-bar">
+    <label class="search-box" aria-label="Filter UI motifs">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="2.4" stroke-linecap="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="M15.5 15.5 L20.5 20.5"/>
+      </svg>
+      <input type="text" id="card-filter-input" placeholder="Filter onboarding cards (e.g. wash, stroke, empty state)..." />
+      <span class="kbd-tag">⌘K</span>
+    </label>
+
+    <div class="tactile-toggle" id="wash-toggle" role="switch" aria-checked="true" tabindex="0">
+      <div class="toggle-track-ui">
+        <div class="toggle-knob-ui"></div>
+      </div>
+      <span>Offset Wash Active</span>
+    </div>
+
+    <div class="status-pill" id="active-count-pill">
+      <span class="status-dot" style="background: var(--clay)"></span>
+      <span id="card-count-text">3 / 3 Cards Visible</span>
+    </div>
+  </div>
+
+  <!-- 3 Interactive Onboarding / System Cards -->
+  <section class="cards-grid" id="onboarding-cards">
+    <article class="sketch-card" data-keywords="watercolor wash glaze multiply offset">
+      <svg class="card-bg" viewBox="0 0 340 220" preserveAspectRatio="none">
+        <g class="card-wash" filter="url(#ui-wash)">
+          <path d="M27.8 21.2 C122.5 17.3 217.2 15.6 312.0 15.1 C302.5 76.2 298.6 137.4 298.1 199.1 C204.5 201.3 111.0 196.1 17.8 189.1 Z" fill="#6A9BCC"/>
+          <path d="M27.8 21.2 C122.5 17.3 217.2 15.6 312.0 15.1 C302.5 76.2 298.6 137.4 298.1 199.1 C204.5 201.3 111.0 196.1 17.8 189.1 Z" fill="none" stroke="#4C7FB3" stroke-width="2.2" stroke-opacity="0.55"/>
+        </g>
+        <g filter="url(#ui-ink)">
+          <path d="M23.1 14.3 C119.1 11.5 215.2 11.0 311.3 11.3 C316.6 18.7 322.6 25.8 328.9 32.5 C330.9 87.0 329.9 141.4 326.2 195.7 C319.8 199.9 313.6 204.7 307.8 209.8 C212.5 206.7 117.1 206.2 21.8 207.7 C18.6 203.4 15.3 199.3 11.7 195.4 C9.8 137.0 9.1 78.6 12.9 20.3 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+        </g>
+      </svg>
+      <span class="card-pill" style="background: var(--sky); color: var(--paper)">01 · Layer Block</span>
+      <h3>Offset Glazed Washes</h3>
+      <p>Washes never sit centered like a digital drop-shadow. They shift 10–25% off-axis and glaze warm over cool with <code>mix-blend-mode: multiply</code>.</p>
+      <div class="card-footer">
+        <span>Coverage: 18–22%</span>
+        <span>Sky + Clay</span>
+      </div>
+    </article>
+
+    <article class="sketch-card" data-keywords="paper cutout fill surface empty state">
+      <svg class="card-bg" viewBox="0 0 340 220" preserveAspectRatio="none">
+        <g class="card-wash" filter="url(#ui-wash)">
+          <path d="M33.0 17.4 C127.6 25.9 222.5 26.7 317.5 24.3 C311.2 83.0 308.1 141.8 307.3 200.7 C212.3 193.4 117.2 190.8 22.0 192.5 Z" fill="#EBC9B7"/>
+          <path d="M33.0 17.4 C127.6 25.9 222.5 26.7 317.5 24.3 C311.2 83.0 308.1 141.8 307.3 200.7 C212.3 193.4 117.2 190.8 22.0 192.5 Z" fill="none" stroke="#D3A58D" stroke-width="2.2" stroke-opacity="0.55"/>
+        </g>
+        <g filter="url(#ui-ink)">
+          <path d="M22.8 11.6 C118.7 14.9 214.7 16.0 310.7 14.6 C316.5 20.3 322.4 25.9 328.5 31.3 C330.4 86.1 329.6 140.9 326.2 195.7 C320.0 198.8 314.1 202.3 308.4 206.2 C212.4 204.8 116.5 205.8 20.5 209.1 C16.9 204.4 13.5 199.5 10.3 194.4 C13.1 137.0 13.4 79.5 12.2 22.1 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+        </g>
+      </svg>
+      <span class="card-pill" style="background: var(--peach)">02 · Paper Cutout</span>
+      <h3>Warm Paper Occlusion</h3>
+      <p>Closed UI containers are filled with warm <code>#FAF9F5</code> paper so they mask part of the watercolor block while letting 30%+ of the wash breathe around the edges.</p>
+      <div class="card-footer">
+        <span>Surface: #FAF9F5</span>
+        <span>Breakout ≥ 20%</span>
+      </div>
+    </article>
+
+    <article class="sketch-card" data-keywords="ink stroke handify overshoot wobble">
+      <svg class="card-bg" viewBox="0 0 340 220" preserveAspectRatio="none">
+        <g class="card-wash" filter="url(#ui-wash)">
+          <path d="M19.8 23.2 C116.6 22.8 213.5 20.7 310.2 17.0 C312.3 77.5 308.3 137.8 302.1 198.0 C211.2 197.4 120.4 194.4 29.7 190.1 Z" fill="#BCD1CA"/>
+          <path d="M19.8 23.2 C116.6 22.8 213.5 20.7 310.2 17.0 C312.3 77.5 308.3 137.8 302.1 198.0 C211.2 197.4 120.4 194.4 29.7 190.1 Z" fill="none" stroke="#93B0A6" stroke-width="2.2" stroke-opacity="0.55"/>
+        </g>
+        <g filter="url(#ui-ink)">
+          <path d="M23.4 14.0 C119.0 16.5 214.5 15.9 310.0 12.1 C315.9 18.9 321.4 26.2 326.4 33.6 C324.3 87.3 323.6 140.9 329.0 194.4 C321.7 198.9 314.8 203.9 308.1 209.4 C212.9 205.7 117.6 205.3 22.4 207.1 C19.1 203.0 15.6 199.0 12.0 195.2 C9.8 137.1 8.9 79.0 10.3 20.9 Z" fill="#FAF9F5" stroke="#141413" stroke-width="2.6" vector-effect="non-scaling-stroke"/>
+        </g>
+      </svg>
+      <span class="card-pill" style="background: var(--cactus)">03 · Layer Ink</span>
+      <h3>Bowed Ink &amp; Overshoots</h3>
+      <p>Every straight run bows by 0.5–1.5% via <code>handify</code>, corners overshoot like an architect's pen sketch, and 3 stroke weights separate frame from detail.</p>
+      <div class="card-footer">
+        <span>Stroke: #141413</span>
+        <span>Weights: 8.5 / 6 / 4.5</span>
+      </div>
+    </article>
+  </section>
+
+  <div class="section-head">
+    <h2>512×512 Production SVG Deliverables</h2>
+    <span class="meta">Both SVGs pass <code>python3 -I scripts/lineart.py lint</code> with 0 warnings</span>
+  </div>
+
+  <!-- Dual Live Showcase -->
+  <section class="showcase-grid">
+    <!-- Left: Interactive Empty State Panel -->
+    <div class="showcase-panel">
+      <div>
+        <div class="panel-bar">
+          <h3 class="panel-title">Empty State — Zero Inbox / All Clear</h3>
+          <span class="status-pill" id="inbox-status-pill">
+            <span class="status-dot" id="inbox-status-dot"></span>
+            <span id="inbox-status-text">0 Pending · All Clear</span>
+          </span>
+        </div>
+
+        <div class="svg-stage" id="empty-state-stage">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-12%" y="-12%" width="124%" height="124%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="31" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.05 1.48" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="42" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation:isolate">
+  <g>
+    <path d="M55.4 177.9 C133.1 175.8 210.7 167.2 287.4 156.2 C296.8 244.1 301.8 332.4 304.6 420.8 C227.5 430.4 149.9 435.6 72.1 437.7 Z" fill="#6A9BCC"/>
+    <path d="M55.4 177.9 C133.1 175.8 210.7 167.2 287.4 156.2 C296.8 244.1 301.8 332.4 304.6 420.8 C227.5 430.4 149.9 435.6 72.1 437.7 Z" fill="none" stroke="#4C7FB3" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g style="mix-blend-mode:multiply">
+    <path d="M218.0 97.5 C294.5 96.6 370.3 99.3 445.9 111.1 C445.0 185.6 441.7 259.9 430.6 333.8 C353.8 328.2 277.6 320.8 201.6 309.0 Z" fill="#EBC9B7"/>
+    <path d="M218.0 97.5 C294.5 96.6 370.3 99.3 445.9 111.1 C445.0 185.6 441.7 259.9 430.6 333.8 C353.8 328.2 277.6 320.8 201.6 309.0 Z" fill="none" stroke="#D3A58D" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g style="mix-blend-mode:multiply">
+    <path d="M333.8 106.3 C361.7 112.7 390.0 117.0 418.6 119.6 C416.5 143.5 412.2 167.1 406.0 190.3 C379.0 190.6 352.1 188.2 325.3 184.6 Z" fill="#D97757" fill-opacity="0.85"/>
+    <path d="M333.8 106.3 C361.7 112.7 390.0 117.0 418.6 119.6 C416.5 143.5 412.2 167.1 406.0 190.3 C379.0 190.6 352.1 188.2 325.3 184.6 Z" fill="none" stroke="#B85C3E" stroke-width="4.0" stroke-opacity="0.5" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Behind paper shapes: tilted archive card & registration ticks -->
+  <path d="M85.0 180.1 C162.7 175.0 239.7 165.1 316.3 151.1 C326.1 219.7 332.2 288.6 335.8 357.9 C257.7 361.9 180.5 369.6 103.7 383.8 Z" fill="#FAF9F5" stroke-width="6.5"/>
+  <path d="M43.1 290.8 C58.3 289.3 73.5 288.9 88.7 289.4 M410.9 245.8 C429.6 243.8 448.3 242.5 467.1 242.2 M136.2 410.3 C136.0 426.6 134.2 442.8 131.3 458.8" stroke-width="5.0"/>
+
+  <!-- Main Inbox Window Card (Paper + overshooting frame) -->
+  <path d="M120.8 177.7 C205.7 172.4 290.7 171.2 375.8 172.3 C382.4 181.1 389.5 189.7 396.8 197.9 C397.9 262.7 397.4 327.4 394.7 392.2 C388.6 398.6 382.0 404.7 375.2 410.5 C289.7 410.3 204.3 408.7 118.9 404.2 C114.3 400.5 110.0 396.4 106.1 392.0 C101.7 324.1 103.7 256.2 108.3 188.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M154.8 340.3 C174.3 339.0 193.7 338.8 213.1 340.4 C218.5 334.2 223.4 327.6 227.6 320.5 C245.0 321.2 262.3 320.7 279.6 318.9 C283.6 326.1 288.2 332.8 293.3 339.3 C312.0 339.8 330.6 339.1 349.1 336.7 C351.2 341.8 352.7 347.0 354.0 352.4 C287.4 355.4 220.7 356.5 153.9 356.2 Z" fill="#EBC9B7" stroke="none"/>
+  <path d="M97.1 183.3 C199.8 185.3 302.4 182.4 404.9 175.3 M397.0 167.8 C393.4 250.7 393.2 333.6 398.4 416.4" stroke-width="8.5"/>
+  <path d="M407.3 401.9 C303.5 410.4 199.5 412.3 95.4 408.9 M104.0 415.7 C102.1 332.5 103.4 249.4 107.3 166.3" stroke-width="8.5"/>
+  <path d="M111.0 221.6 C205.1 215.9 299.3 214.9 393.5 219.2" stroke-width="6.5"/>
+  <path d="M141.8 265.3 C148.3 295.7 152.9 326.6 155.7 357.6 C176.2 356.3 196.8 356.2 217.3 357.6 C222.4 349.2 227.1 340.5 231.1 331.6 C247.1 330.2 263.1 330.2 279.1 330.6 C282.8 339.5 287.0 348.0 292.1 356.2 C312.4 353.6 332.7 351.7 353.2 351.2 C356.3 320.8 360.2 290.6 364.9 260.4" stroke-width="6.5"/>
+
+  <!-- Window controls & interior empty-tray whisper lines -->
+  <path d="M136.8 203.3 C134.9 204.5 132.2 205.0 130.2 203.3 C128.3 201.6 127.7 198.8 128.9 196.5 C130.0 194.1 132.6 193.1 135.1 193.6 C137.5 194.0 139.7 195.9 139.9 198.6 C140.1 201.2 138.1 203.3 135.8 204.1" fill="#D97757" stroke-width="5.0"/>
+  <path d="M148.7 199.2 C148.1 196.8 149.8 194.7 151.7 193.7 C153.7 192.6 156.1 193.1 157.6 194.7 C159.1 196.3 159.2 198.7 158.1 200.6 C156.9 202.4 154.7 203.7 152.5 203.0 C150.2 202.3 148.8 200.2 148.9 197.9" fill="#EBC9B7" stroke-width="5.0"/>
+  <path d="M175.5 193.1 C178.1 193.4 180.0 195.5 180.5 198.0 C180.9 200.4 179.8 203.0 177.5 204.2 C175.2 205.3 172.4 204.6 170.7 202.7 C169.1 200.8 168.5 197.9 170.0 195.7 C171.5 193.4 174.4 193.0 176.7 193.8" fill="#BCD1CA" stroke-width="5.0"/>
+  <path d="M286.6 197.0 C313.2 197.0 339.9 196.4 366.5 195.0" stroke-width="5.5"/>
+  <path d="M183.1 284.3 C211.0 281.0 238.9 280.4 266.9 281.0 M195.8 303.1 C214.6 301.5 233.5 301.2 252.3 302.1" stroke-width="5.5"/>
+
+  <!-- Sweeping flight path launching out of the tray -->
+  <path d="M177.4 304.6 C141.5 267.6 153.0 213.4 210.9 199.2 M231.5 191.0 C264.5 184.3 293.8 167.0 316.8 143.3" stroke-width="5.5" stroke-dasharray="14 16"/>
+
+  <!-- Floating Status Toast Pill ("All Clear") breaking out lower-right -->
+  <path d="M272.8 377.6 C326.9 377.5 381.0 376.1 435.0 372.5 C441.2 377.4 447.3 382.9 452.8 388.8 C459.8 393.1 466.6 397.9 473.2 402.9 C466.5 411.0 460.4 419.2 454.9 428.3 C446.9 432.6 439.2 437.7 431.7 443.1 C376.7 444.6 321.6 444.6 266.5 441.7 C261.8 438.6 257.0 435.7 251.8 433.3 C249.1 426.3 246.1 419.4 242.5 412.7 C246.7 404.3 250.7 395.5 253.9 386.6 Z" fill="#FAF9F5" stroke-width="8.5"/>
+  <path d="M264.5 410.5 C263.8 402.7 267.9 394.6 275.6 391.8 C283.4 388.9 291.9 392.0 296.6 398.6 C301.3 405.2 299.9 413.8 295.1 419.7 C290.2 425.6 282.0 427.1 275.2 424.1 C268.4 421.0 264.3 413.8 265.5 406.4" fill="#BCD1CA" stroke-width="6.0"/>
+  <path d="M273.7 409.5 C276.0 411.7 278.0 414.1 279.9 416.5 C284.1 411.5 287.9 406.4 291.5 400.8" stroke-width="6.0"/>
+  <path d="M313.3 398.5 C351.3 395.0 389.3 393.9 427.5 395.8" stroke-width="6.5"/>
+  <path d="M312.9 419.4 C339.5 419.7 366.0 419.1 392.6 418.0" stroke-width="5.0"/>
+
+  <!-- Foreground Origami Paper Plane breaking out upper-right -->
+  <path d="M287.9 156.6 C340.7 135.2 392.6 110.3 442.8 82.6 C427.3 134.5 410.9 184.6 389.2 234.2 C375.4 224.3 362.2 214.2 349.3 202.9 C342.0 210.5 334.5 217.5 326.4 224.3 C326.2 210.0 325.4 195.7 323.4 181.4 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M323.0 181.3 C359.3 148.4 396.5 116.4 436.0 87.0 C410.3 126.4 381.2 164.8 349.2 200.3 C342.8 207.9 336.0 215.2 328.6 222.1 Z" fill="#D97757" stroke="none"/>
+  <path d="M284.5 162.0 C337.8 131.4 392.4 105.5 448.8 81.5 M444.2 79.8 C427.8 135.2 407.6 188.8 384.1 240.7 M389.4 237.9 C373.4 225.0 358.5 211.5 344.4 196.3 M441.4 85.5 C399.9 115.7 360.8 148.5 322.5 182.5 C311.6 174.1 300.3 166.2 288.8 158.8 M323.3 182.1 C325.4 196.0 326.7 209.9 327.1 223.8 C335.3 216.7 343.1 209.2 350.2 201.0 M437.5 86.0 C410.2 126.2 380.4 164.3 349.0 201.5" stroke-width="8.5"/>
+
+  <!-- Quiet-space sparkle cluster in upper-left -->
+  <path d="M106.2 103.1 Q120.6 102.8 134.7 100.0 M114.7 89.9 Q118.7 107.2 118.5 125.0" stroke-width="5.0"/>
+  <path d="M148.0 76.8 Q156.2 79.3 164.7 80.2 M155.5 70.8 Q154.8 81.8 151.2 92.2" stroke-width="4.5"/>
+  <path d="M88.0 134.1 Q94.1 133.1 100.2 133.8 M91.9 129.5 Q91.5 136.3 92.2 143.1" stroke-width="4.2"/>
+  <path d="M132.8 121.6 C133.0 120.1 134.1 118.9 135.6 118.8 C137.0 118.6 138.5 119.4 139.0 120.7 C139.6 122.1 139.2 123.7 138.0 124.6 C136.8 125.5 135.2 125.4 134.1 124.5 C133.0 123.7 132.6 122.1 133.2 120.9" fill="#141413" stroke-width="4.0"/>
+  <path d="M174.7 104.1 C174.7 105.3 173.9 106.5 172.6 106.7 C171.4 107.0 170.2 106.3 169.6 105.3 C169.1 104.2 169.3 102.9 170.1 102.0 C171.0 101.2 172.4 100.9 173.5 101.6 C174.6 102.3 175.1 103.6 174.7 104.8" fill="#141413" stroke-width="4.0"/>
+</g>
+</svg>
+
+        </div>
+
+        <div class="task-drawer" id="task-drawer">
+          <div class="task-item" data-task-id="1">
+            <span><strong>Agent #14</strong> · Audit SVG stroke weights on 512 grid</span>
+            <button type="button" class="resolve-btn">Complete ✓</button>
+          </div>
+          <div class="task-item" data-task-id="2">
+            <span><strong>Agent #19</strong> · Verify watercolor wash coverage (10–50%)</span>
+            <button type="button" class="resolve-btn">Complete ✓</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-caption">
+        <span><code>empty-state-inbox.svg</code> · Sky + Peach + Clay glaze</span>
+        <span>Layered archive card · Inbox window · Origami plane</span>
+      </div>
+    </div>
+
+    <!-- Right: UI Component Sticker Sheet -->
+    <div class="showcase-panel">
+      <div>
+        <div class="panel-bar">
+          <h3 class="panel-title">UI Component Sticker Sheet</h3>
+          <span class="status-pill">
+            <span class="status-dot" style="background: var(--mineral)"></span>
+            <span>5 Tactile Primitives</span>
+          </span>
+        </div>
+
+        <div class="svg-stage">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<filter id="wash" x="-12%" y="-12%" width="124%" height="124%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="47" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.05 1.48" result="a"/>
+  <feComposite in="d" in2="a" operator="in"/>
+</filter>
+<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="58" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="6.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs>
+<g id="layer-block" filter="url(#wash)" style="isolation:isolate">
+  <g>
+    <path d="M68.1 86.7 C153.2 85.0 238.2 81.0 323.1 73.6 C314.6 155.8 310.8 238.2 314.6 320.8 C229.3 310.4 143.7 302.3 57.8 300.0 Z" fill="#629987"/>
+    <path d="M68.1 86.7 C153.2 85.0 238.2 81.0 323.1 73.6 C314.6 155.8 310.8 238.2 314.6 320.8 C229.3 310.4 143.7 302.3 57.8 300.0 Z" fill="none" stroke="#4A7D6C" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g style="mix-blend-mode:multiply">
+    <path d="M214.9 213.0 C294.3 202.1 374.4 195.1 454.9 194.6 C456.1 276.4 452.4 357.8 444.6 439.1 C363.1 426.1 281.4 422.8 199.1 423.4 Z" fill="#D4A27F"/>
+    <path d="M214.9 213.0 C294.3 202.1 374.4 195.1 454.9 194.6 C456.1 276.4 452.4 357.8 444.6 439.1 C363.1 426.1 281.4 422.8 199.1 423.4 Z" fill="none" stroke="#B9845F" stroke-width="4.5" stroke-opacity="0.55" stroke-linejoin="round"/>
+  </g>
+  <g style="mix-blend-mode:multiply">
+    <path d="M313.9 246.0 C353.7 239.7 393.7 238.3 433.9 239.0 C428.2 276.8 424.6 314.9 421.9 353.1 C382.1 347.3 342.1 343.7 302.0 342.1 Z" fill="#D97757" fill-opacity="0.82"/>
+    <path d="M313.9 246.0 C353.7 239.7 393.7 238.3 433.9 239.0 C428.2 276.8 424.6 314.9 421.9 353.1 C382.1 347.3 342.1 343.7 302.0 342.1 Z" fill="none" stroke="#B85C3E" stroke-width="4.0" stroke-opacity="0.5" stroke-linejoin="round"/>
+  </g>
+</g>
+<g id="layer-ink" filter="url(#ink)" fill="none" stroke="#141413" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Behind-component schematic connection guides -->
+  <path d="M164.7 139.2 C163.7 151.9 162.1 164.5 160.0 177.1 M277.0 215.2 C297.0 215.1 317.0 213.6 336.9 211.5 M293.6 357.3 C308.6 357.1 323.6 356.1 338.6 354.5" stroke-width="5.0" stroke-dasharray="10 12"/>
+
+  <!-- 1. Search Command Bar (⌘K) -->
+  <path d="M71.4 68.1 C141.9 61.4 212.5 59.9 283.4 61.3 C289.5 68.0 296.2 74.2 303.1 79.7 C310.0 84.1 316.6 88.9 322.9 94.0 C316.1 103.4 309.9 113.4 304.3 123.6 C295.8 129.2 287.1 134.3 278.0 138.8 C209.0 139.5 140.1 138.5 71.2 135.4 C64.9 133.4 58.7 131.1 52.6 128.6 C49.2 120.6 46.2 112.3 44.2 103.8 C47.6 94.6 50.7 85.4 53.6 76.0 Z" fill="#FAF9F5" stroke-width="8.5"/>
+  <path d="M253.9 81.6 C268.9 79.6 284.0 78.4 299.1 78.2 C299.8 92.5 301.2 106.8 303.1 121.0 C285.2 122.9 267.2 124.0 249.2 124.2 Z" fill="#EBC9B7" stroke-width="5.5"/>
+  <path d="M89.2 113.4 C83.1 114.8 76.7 112.3 73.7 106.7 C70.6 101.2 72.1 94.4 76.6 90.1 C81.0 85.9 87.8 85.0 93.1 88.2 C98.4 91.4 100.4 97.8 98.8 103.6 C97.2 109.4 91.7 113.0 85.9 113.0" stroke-width="6.0"/>
+  <path d="M97.7 110.1 C101.7 115.0 105.8 119.7 110.2 124.2" stroke-width="6.0"/>
+  <path d="M126.2 101.5 C159.1 100.0 192.0 99.5 225.0 100.0" stroke-width="6.5"/>
+  <path d="M268.8 91.6 C268.7 97.6 268.4 103.5 267.4 109.4 M283.3 91.4 C279.1 95.3 274.6 98.9 270.0 102.3 C274.9 105.1 279.6 108.3 284.0 111.7" stroke-width="4.8"/>
+
+  <!-- 2. Tactile Toggle Switch (ON) -->
+  <path d="M359.1 77.7 C389.9 73.8 420.8 71.4 451.8 70.2 C457.3 79.7 462.7 89.7 467.2 99.9 C466.2 111.9 465.1 123.9 463.3 135.8 C430.7 135.2 398.0 136.3 365.5 138.4 C357.6 130.4 349.9 122.0 342.8 113.1 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M362.5 81.8 C390.6 78.9 418.8 77.3 447.0 76.7 C450.8 85.1 454.9 93.4 459.8 101.3 C458.2 110.2 457.1 119.2 456.4 128.2 C427.4 128.6 398.3 129.9 369.3 131.9 C362.7 125.2 356.2 118.1 350.1 110.9 Z" fill="#BCD1CA" stroke="none"/>
+  <path d="M359.1 77.7 C389.9 73.8 420.8 71.4 451.8 70.2 C457.3 79.7 462.7 89.7 467.2 99.9 C466.2 111.9 465.1 123.9 463.3 135.8 C430.7 135.2 398.0 136.3 365.5 138.4 C357.6 130.4 349.9 122.0 342.8 113.1 Z" stroke-width="8.5"/>
+  <path d="M430.5 82.3 C441.2 81.6 449.9 89.3 453.1 98.8 C456.4 108.4 454.5 119.9 445.4 126.0 C436.4 132.0 425.2 128.8 417.8 122.4 C410.4 116.0 406.3 105.4 410.9 95.9 C415.5 86.3 426.1 81.9 436.1 83.8" fill="#FAF9F5" stroke-width="7.0"/>
+  <path d="M374.3 96.8 C374.3 103.0 374.1 109.2 373.7 115.4" stroke-width="5.5"/>
+
+  <!-- 3. Status Pill / Badge -->
+  <path d="M78.2 175.9 C133.6 171.2 189.1 168.7 244.8 171.8 C250.8 175.8 256.6 179.9 262.2 184.2 C267.9 188.8 273.4 193.7 278.6 198.8 C273.5 206.2 268.7 213.8 264.7 221.8 C257.1 227.1 249.2 232.0 240.8 236.1 C185.3 237.6 129.8 237.0 74.4 232.7 C69.1 230.9 63.8 229.0 58.6 226.7 C55.0 221.0 51.8 215.0 48.9 208.8 C52.3 200.4 56.3 192.2 60.6 184.3 Z" fill="#FAF9F5" stroke-width="8.0"/>
+  <path d="M93.8 196.9 C97.0 200.4 97.8 205.6 95.2 209.8 C92.6 213.9 87.4 215.2 83.0 213.9 C78.5 212.5 75.5 208.3 75.7 203.7 C75.8 199.0 78.6 194.5 83.5 193.3 C88.3 192.2 93.4 194.3 95.8 198.7" fill="#D97757" stroke-width="5.5"/>
+  <path d="M112.8 198.3 C142.9 199.3 173.0 197.9 203.0 195.4" stroke-width="6.0"/>
+  <path d="M111.8 213.2 C130.0 214.2 148.2 214.0 166.3 212.2" stroke-width="4.8"/>
+  <path d="M219.4 188.4 C232.3 187.8 245.1 186.5 257.8 183.8 C259.6 195.2 260.8 206.7 261.2 218.2 C246.0 220.5 230.7 221.5 215.3 221.8 Z" fill="#6A9BCC" stroke-width="5.0"/>
+
+  <!-- 4. Notification Card with Action Button -->
+  <path d="M59.2 266.6 C130.9 270.6 202.5 268.2 274.0 262.7 C281.0 271.9 288.6 280.8 296.9 289.1 C291.2 338.5 291.9 387.9 294.6 437.5 C288.2 444.0 281.4 450.1 274.4 456.0 C202.8 452.9 131.2 452.6 59.6 454.4 C54.3 448.7 49.5 442.6 45.0 436.3 C42.9 383.1 43.2 330.0 47.7 277.0 Z" fill="#FAF9F5" stroke="none"/>
+  <path d="M35.8 271.1 C125.3 265.9 214.8 263.5 304.4 262.2 M296.4 255.2 C292.4 324.1 292.9 393.0 299.6 461.8" stroke-width="8.5"/>
+  <path d="M312.0 449.3 C221.7 454.9 131.3 458.2 40.8 456.3 M44.7 461.2 C50.5 392.8 51.9 324.3 48.8 255.8" stroke-width="8.5"/>
+  <path d="M109.8 323.7 C105.4 331.7 96.1 335.3 87.4 333.2 C78.8 331.1 73.0 323.3 72.7 314.6 C72.4 305.9 78.0 298.0 86.3 295.5 C94.7 292.9 103.4 296.8 107.9 304.0 C112.4 311.2 112.1 320.6 106.2 327.0" fill="#EBC9B7" stroke-width="6.0"/>
+  <path d="M127.7 300.8 C172.5 297.4 217.2 296.6 262.0 299.7" stroke-width="6.5"/>
+  <path d="M127.2 324.7 C163.7 326.6 200.1 325.2 236.5 323.1" stroke-width="5.0"/>
+  <path d="M75.2 359.1 C138.0 354.1 200.9 352.6 263.8 354.5" stroke-width="5.0"/>
+  <path d="M87.6 384.3 C123.9 381.3 160.2 380.2 196.7 380.1 C201.0 388.0 205.7 395.6 211.3 402.9 C208.4 410.7 205.7 418.7 203.8 426.8 C166.0 425.3 128.4 427.7 90.9 433.3 C84.0 425.7 77.8 417.4 72.1 408.6 Z" fill="#D97757" stroke-width="6.5"/>
+  <path d="M101.2 407.6 C122.4 405.0 143.6 404.3 164.8 405.4 M176.3 400.3 C179.1 402.3 182.1 404.3 185.1 406.1 C182.1 408.4 178.8 410.6 175.4 412.5" stroke-width="5.0"/>
+  <path d="M236.0 401.4 C244.7 406.3 253.5 410.6 262.8 414.2 M254.1 393.6 C249.2 402.3 244.5 411.0 240.1 420.0" stroke-width="5.0"/>
+
+  <!-- 5. Radial Progress Gauge -->
+  <path d="M339.0 271.0 C376.1 272.0 413.2 273.7 450.2 277.8 C457.5 284.2 465.1 290.4 472.8 296.5 C475.5 342.3 475.2 388.1 471.9 433.8 C464.7 437.9 457.9 442.6 451.3 447.9 C413.4 451.3 375.5 451.2 337.4 450.2 C332.7 443.8 328.5 437.1 324.6 430.4 C321.8 381.4 322.9 332.4 326.3 283.5 Z" fill="#FAF9F5" stroke-width="8.5"/>
+  <path d="M432.6 379.2 C418.5 394.4 396.2 395.2 378.9 386.2 C361.7 377.1 349.8 358.2 354.3 338.1 C358.8 317.9 377.9 306.5 397.0 305.6 C416.2 304.7 433.1 317.2 438.9 335.2 C444.7 353.1 439.7 374.1 423.0 384.9" stroke-width="5.5" stroke-dasharray="10 12"/>
+  <path d="M398.7 304.7 C403.3 305.0 407.8 305.7 412.3 306.8 C415.9 308.3 419.5 309.5 423.2 310.7 C426.1 313.6 429.1 316.3 432.4 318.8 C434.8 322.7 437.4 326.5 440.3 330.1 C440.9 334.4 441.6 338.7 442.5 343.0 C443.0 347.0 443.4 351.0 443.5 355.0 C442.2 359.2 440.7 363.3 438.9 367.3 C436.3 370.3 433.8 373.4 431.4 376.6 C428.0 379.5 424.8 382.5 421.9 385.8 C417.9 387.3 413.8 388.6 409.7 389.7 C405.7 390.0 401.8 390.6 398.0 391.5 C394.0 391.5 390.1 391.4 386.1 390.9 C382.1 388.2 377.9 385.7 373.6 383.4 C370.3 381.0 367.2 378.2 364.2 375.3 C362.0 372.2 360.0 369.0 358.0 365.6 C357.5 361.1 356.7 356.5 355.8 352.0 C355.8 348.0 355.9 343.9 356.5 339.9" stroke="#D97757" stroke-width="14.0"/>
+  <path d="M398.7 304.7 C403.3 305.0 407.8 305.7 412.3 306.8 C415.9 308.3 419.5 309.5 423.2 310.7 C426.1 313.6 429.1 316.3 432.4 318.8 C434.8 322.7 437.4 326.5 440.3 330.1 C440.9 334.4 441.6 338.7 442.5 343.0 C443.0 347.0 443.4 351.0 443.5 355.0 C442.2 359.2 440.7 363.3 438.9 367.3 C436.3 370.3 433.8 373.4 431.4 376.6 C428.0 379.5 424.8 382.5 421.9 385.8 C417.9 387.3 413.8 388.6 409.7 389.7 C405.7 390.0 401.8 390.6 398.0 391.5 C394.0 391.5 390.1 391.4 386.1 390.9 C382.1 388.2 377.9 385.7 373.6 383.4 C370.3 381.0 367.2 378.2 364.2 375.3 C362.0 372.2 360.0 369.0 358.0 365.6 C357.5 361.1 356.7 356.5 355.8 352.0 C355.8 348.0 355.9 343.9 356.5 339.9" stroke="#141413" stroke-width="7.5"/>
+  <path d="M385.3 349.3 C389.1 353.0 392.8 356.9 396.3 360.9 C402.7 352.1 409.4 343.7 416.4 335.3" stroke-width="6.0"/>
+  <path d="M357.2 418.9 C384.3 416.9 411.4 415.8 438.5 415.5" stroke-width="5.5"/>
+
+  <!-- Clustered accents in quiet zone -->
+  <path d="M363.0 177.9 Q376.1 176.9 389.3 178.1 M372.1 168.9 Q373.8 182.4 371.9 195.8" stroke-width="5.0"/>
+  <path d="M407.4 163.2 Q416.4 163.7 425.2 165.4 M415.0 155.8 Q412.9 165.8 412.5 176.1" stroke-width="4.5"/>
+  <path d="M442.2 186.3 Q447.8 186.7 453.1 185.3 M445.5 180.8 Q445.7 187.8 446.8 194.7" stroke-width="4.0"/>
+  <path d="M394.1 196.9 C392.8 196.9 391.6 196.2 391.2 194.9 C390.8 193.6 391.2 192.2 392.4 191.5 C393.5 190.7 395.0 190.7 396.1 191.7 C397.1 192.6 397.1 194.1 396.6 195.3 C396.0 196.4 394.7 197.2 393.4 196.9" fill="#141413" stroke-width="4.0"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+
+      <div class="panel-caption">
+        <span><code>ui-component-sheet.svg</code> · Mineral + Kraft + Clay glaze</span>
+        <span>⌘K Search · Toggle · Status Pill · Toast Card · 78% Gauge</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // 1. Toggle watercolor wash offset state
+  const washToggle = document.getElementById('wash-toggle');
+  washToggle.addEventListener('click', () => {
+    const isChecked = washToggle.getAttribute('aria-checked') === 'true';
+    const next = !isChecked;
+    washToggle.setAttribute('aria-checked', String(next));
+    document.body.classList.toggle('wash-muted', !next);
+  });
+
+  // 2. Filter onboarding cards via search bar (⌘K)
+  const filterInput = document.getElementById('card-filter-input');
+  const cards = Array.from(document.querySelectorAll('#onboarding-cards .sketch-card'));
+  const cardCountText = document.getElementById('card-count-text');
+
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      filterInput.focus();
+    }
+  });
+
+  filterInput.addEventListener('input', () => {
+    const q = filterInput.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach((card) => {
+      const hay = (card.textContent + ' ' + (card.dataset.keywords || '')).toLowerCase();
+      const match = !q || hay.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible += 1;
+    });
+    cardCountText.textContent = `${visible} / ${cards.length} Cards Visible`;
+  });
+
+  // 3. Simulate incoming tasks vs Zero Inbox empty state
+  const btnSimulate = document.getElementById('btn-simulate');
+  const btnSimulateLabel = document.getElementById('btn-simulate-label');
+  const taskDrawer = document.getElementById('task-drawer');
+  const emptyStage = document.getElementById('empty-state-stage');
+  const inboxStatusText = document.getElementById('inbox-status-text');
+  const inboxStatusDot = document.getElementById('inbox-status-dot');
+
+  function updateTaskState() {
+    const remaining = taskDrawer.querySelectorAll('.task-item:not([ hidden ])').length;
+    if (remaining === 0) {
+      taskDrawer.classList.remove('active');
+      emptyStage.style.display = 'flex';
+      inboxStatusText.textContent = '0 Pending · All Clear';
+      inboxStatusDot.style.background = 'var(--olive)';
+      btnSimulateLabel.textContent = 'Simulate 2 Incoming Tasks';
+    } else {
+      taskDrawer.classList.add('active');
+      emptyStage.style.display = 'none';
+      inboxStatusText.textContent = `${remaining} Active Task${remaining > 1 ? 's' : ''}`;
+      inboxStatusDot.style.background = 'var(--clay)';
+      btnSimulateLabel.textContent = 'Reset to Zero Inbox';
+    }
+  }
+
+  btnSimulate.addEventListener('click', () => {
+    const isShowingTasks = taskDrawer.classList.contains('active');
+    const items = taskDrawer.querySelectorAll('.task-item');
+    items.forEach((el) => {
+      if (isShowingTasks) {
+        el.setAttribute('hidden', '');
+      } else {
+        el.removeAttribute('hidden');
+      }
+    });
+    updateTaskState();
+  });
+
+  taskDrawer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.resolve-btn');
+    if (!btn) return;
+    const item = btn.closest('.task-item');
+    if (item) {
+      item.setAttribute('hidden', '');
+      updateTaskState();
+    }
+  });
+
+  // 4. Cycle wash glaze palette
+  const paletteCycle = ['#6A9BCC', '#D97757', '#827DBD', '#629987', '#788C5D'];
+  let paletteIdx = 0;
+  const cycleBtn = document.getElementById('btn-cycle-palette');
+  const cycleWashPath = document.getElementById('cycle-wash-path');
+  cycleBtn.addEventListener('click', () => {
+    paletteIdx = (paletteIdx + 1) % paletteCycle.length;
+    cycleWashPath.setAttribute('fill', paletteCycle[paletteIdx]);
+  });
+</script>
+</body>
+</html>
