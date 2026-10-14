@@ -1,0 +1,16 @@
+{
+  "name": "gauge",
+  "description": "半圆仪表盘：外弧刻度不均，指针斜指右上，底部小座",
+  "tags": [
+    "gauge",
+    "usage",
+    "meter",
+    "cost",
+    "tokens",
+    "stats",
+    "speed"
+  ],
+  "color": "mineral",
+  "block": "M9 20 L47 17 L50 55 L12 57 Z",
+  "ink": "<path d=\"M14 42 C14.5 28 22 18.5 33 18 C44 17.5 52.5 27.5 52 41.5\" fill=\"none\"/>\n<path d=\"M17.5 42 L21.5 40.8 M21 30.5 L24.5 32 M32.5 22.5 L32.8 26.5 M44 27 L41.5 30.5 M49 38 L45.5 37\"/>\n<path d=\"M33 41 L44 26.5\"/>\n<circle cx=\"33\" cy=\"41\" r=\"3\" fill=\"{PAPER}\"/>\n<path d=\"M22 49.5 C28 51 38 51.3 44 49.8 L45.5 54.5 C37 56.3 28 56.2 20.5 54.8 Z\" fill=\"{PAPER}\"/>"
+}
